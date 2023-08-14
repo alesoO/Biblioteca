@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublisherController;
 use App\Models\Publisher;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,12 +52,7 @@ Route::get('/register_author', function(){
     return view(('register_author'));
 });
 
-Route::get('/', [PublisherController::class, 'index']);
-Route::post('/store', [PublisherController::class, 'store'])->name('store');
-Route::get('/fetchAllPublisher', [PublisherController::class, 'fetchAllPublisher'])->name('fetchAllPublisher');
-Route::delete('/delete', [PublisherController::class, 'delete'])->name('delete');
-Route::get('/edit', [PublisherController::class, 'edit'])->name('edit');
-Route::post('/update', [PublisherController::class, 'update'])->name('update');
+Route::get('/publishers', [PublisherController::class, 'index'])->name('publishers.index');
 /* ->name('home')->middleware('auth') */;
 
 /* Auth::routes();
