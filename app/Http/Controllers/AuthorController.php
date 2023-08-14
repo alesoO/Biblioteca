@@ -6,6 +6,8 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use function Laravel\Prompts\error;
+
 class AuthorController extends Controller
 {
 
@@ -31,13 +33,36 @@ class AuthorController extends Controller
         }
         return redirect('/table_author')->with('sucess');
     }
-    public function edit(Request $request)
+    public function update(Author $author, Request $request)
     {
+        $validator = Validator::make($request->all(), ['name' => ['required'],]);
+
+        if ($validator->fails()) {
+            return redirect('/')->with('error', 'Dados do post invalidos!');
+        } else {
+            $fieldValues = $request->validate([
+                'name' => ['required'],
+            ]);
+        }
+
+        $fieldValues['name'] = strip_tags($fieldValues['name']);
+        
+        try {
+            $author->update($fieldValues);
+        } catch (\Exception $e) {
+            $errormsg = $e->getMessage();
+            return redirect('/')->with('error', $errormsg);
+        }
+        return redirect('/');
     }
-    public function update(Request $request)
+    public function destroy(Author $author)
     {
-    }
-    public function destroy(Request $request)
-    {
+        try{
+            $author->delete();
+        }catch (\Exception $e){
+            $errormsg = $e->getMessage();
+            return redirect('/')->with('error', $errormsg);
+        }
+        return redirect('/table_author')->with('info', 'Autor deletado com sucesso !');
     }
 }

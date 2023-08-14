@@ -40,11 +40,15 @@ Route::get('/register_author', function () {
 
 Route::post('/register_author', [AuthorController::class, 'create']);
 
+Route::post('/edit_author/{author}', [AuthorController::class, 'update'])->name('edit_author');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
 
 require __DIR__ . '/auth.php';
 

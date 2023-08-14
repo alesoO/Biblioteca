@@ -46,7 +46,8 @@
 
                                                 <button class="d-block btn btn-outline-light btn-lg mx-auto mt-4 px-5"
                                                     type="submit">Cadastrar</button>
-                                                <button type="button" class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5"
+                                                <button type="button"
+                                                    class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5"
                                                     data-bs-dismiss="modal">Cancelar</button>
 
                                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
@@ -87,7 +88,9 @@
                                                     <td>{{ $author->created_at->format('d/m/Y H:i:s') }}</td>
                                                     <td>{{ $author->updated_at->format('d/m/Y H:i:s') }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-warning btn-sm px-3">
+                                                        <button type="button" class="btn btn-warning btn-sm px-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#formEditAuthor{{ $author->id }}">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="14"
                                                                 height="14" fill="currentColor"
                                                                 class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -97,11 +100,115 @@
                                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                             </svg>
                                                         </button>
+                                                        <div class="modal fade" id="formEditAuthor{{ $author->id }}"
+                                                            tabindex="-1" aria-labelledby="formEditAuthorLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="card bg-dark text-white m-0">
+                                                                        <button type="button"
+                                                                            class="btn btn-dark ms-auto m-3 p-2"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"><svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="16" height="16"
+                                                                                fill="currentColor" class="bi bi-x-lg"
+                                                                                viewBox="0 0 16 16">
+                                                                                <path
+                                                                                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                                                                            </svg></button>
+                                                                        <div class="card-body p-5 text-center">
+                                                                            <form
+                                                                                action="{{ route('edit_author', ['author' => $author]) }}"
+                                                                                method="POST">
+                                                                                <input type="hidden" name="_token"
+                                                                                    value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
+                                                                                <div class="mb-md-5 mt-md-4 pb-5">
+                                                                                    <h2
+                                                                                        class="fw-bold mb-2 text-uppercase">
+                                                                                        Editar Autor</h2>
+                                                                                    <p class="text-white-50 mb-5">Por favor
+                                                                                        insira os dados do Autor!
+                                                                                    </p>
+
+                                                                                    <div
+                                                                                        class="form-outline form-white mb-4">
+                                                                                        <label
+                                                                                            class="form-label d-block text-start">Nome:</label>
+                                                                                        <input type="text"
+                                                                                            id="name" name="name"
+                                                                                            value="{{ $author->name }}"
+                                                                                            class="form-control form-control-lg">
+
+                                                                                    </div>
+
+                                                                                    <button
+                                                                                        class="d-block btn btn-outline-light btn-lg mx-auto mt-4 px-5"
+                                                                                        type="submit">Editar</button>
+                                                                                    <button type="button"
+                                                                                        class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5"
+                                                                                        data-bs-dismiss="modal">Cancelar</button>
+
+                                                                                    <div
+                                                                                        class="d-flex justify-content-center text-center mt-4 pt-1">
+                                                                                        <a href=""
+                                                                                            class="text-white"><i
+                                                                                                class="fab fa-facebook-f fa-lg"></i></a>
+                                                                                        <a href=""
+                                                                                            class="text-white"><i
+                                                                                                class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                                                                        <a href=""
+                                                                                            class="text-white"><i
+                                                                                                class="fab fa-google fa-lg"></i></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-danger btn-sm px-3">
+                                                        <button type="submit" class="btn btn-danger btn-sm px-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#warning{{ $author->id }}">
                                                             <i class="fas fa-times"></i>
                                                         </button>
+                                                        <div class="modal fade" id="warning{{ $author->id }}"
+                                                            tabindex="-1" aria-labelledby="warningLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header bg-danger text-white titulos">
+                                                                        <h1 class="modal-title fs-5 fw-bold"
+                                                                            id="warningLabel">Aviso!
+                                                                            -
+                                                                            Essa ação não pode ser desfeita!
+                                                                        </h1>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Tem certza que deseja apagar o Autor ?
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-bs-dismiss="modal">Fechar</button>
+
+                                                                        <form
+                                                                            action="{{ route('delete_author', ['author' => $author]) }}"
+                                                                            method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button type="submit"
+                                                                                class="btn btn-danger">Sim</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
