@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Biblioteca - Autores')
+@section('title', 'Biblioteca - Publicadoras')
 
 @section('content')
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
             <div class="d-flex justify-content-between my-4">
-                <h2 class="">Autores</h2>
+                <h2 class="">Publicadoras</h2>
                 <button type="button" class="btn btn-secondary btn-sm px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -25,7 +25,7 @@
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">NOME</th>
+                                            <th scope="col">NOME DA PUBLICADORA</th>
                                             <th scope="col">CRIADO EM</th>
                                             <th scope="col">EDITADO EM</th>
                                             <th scope="col">EDITAR</th>

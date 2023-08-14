@@ -27,6 +27,10 @@ Route::get('/table_author', function(){
     return view(('table_author'));
 });
 
+Route::get('/table_publisher', function(){
+    return view(('table_publisher'));
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
