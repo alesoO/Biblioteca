@@ -13,7 +13,6 @@
           <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-          <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
         </svg>
         Adicionar Editora
@@ -55,33 +54,25 @@
                     </td>
                   </tr>
                 </tbody>
-
-                <div class="modal fade" id="formNewPublisher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisher Label" aria-hidden="true">
-                  <div class="modal-dialog">
+                <div class="modal fade" id="formNewPublisher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisherLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                      <div class="card bg-dark text-white m-0">
-                        <button type="button" class="btn-close btn-close-white ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="card-body p-5 text-center">
-                          <form action="/register_publisher" method="POST">
-                            <input type="hidden" name="_token" value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
-                            <div class="mb-md-5 mt-md-4 pb-5">
-                              <h2 class="fw-bold mb-4 text-uppercase">Novo Editora</h2>
-                              <p class="text-white-50 mb-5">Por favor insira os dados do editora!</p><br><br><br>
-
-                              <div class="form-outline form-white mb-4">
-                                <label class="form-label d-block text-start">Nome:</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="Insira o nome da sua editora">
-                              </div>
-
-                              <div class="d-flex justify-content-center mt-4" style="margin-left: 155px;">
-                                <button class="btn btn-primary mx-2 px-4" type="submit">Cadastrar
-                                </button>
-                                <button type="button" class="btn btn-primary mx-2 px-4" data-bs-dismiss="modal">Cancelar
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="formNewPublisherLabel">Nova Editora</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="/register_publisher" method="POST">
+                          <input type="hidden" name="_token" value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
+                          <div class="mb-3">
+                            <label for="name" class="form-label">Nome:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome da sua editora">
+                          </div>
+                          <div class="text-right ">
+                            <button type="submit" class="btn btn-primary mx-2">Cadastrar</button>
+                            <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Cancelar</button>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
