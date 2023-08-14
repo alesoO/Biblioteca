@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +25,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/table_author', function(){
-    return view(('table_author'));
+Route::get('/table_author', function () {
+    $authors = Author::all();
+    return view('table_author', ['authors' => $authors]);
 });
 
-Route::get('/table_publisher', function(){
+Route::get('/table_publisher', function () {
     return view(('table_publisher'));
 });
+
+Route::get('/register_author', function () {
+    return view(('register_author'));
+});
+
+Route::post('/register_author', [AuthorController::class, 'create']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

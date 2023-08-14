@@ -1,0 +1,15 @@
+.gradient-custom {
+    background: #efab54;
+
+    background: -webkit-linear-gradient(to right, #efab54, #ffe187);
+
+    background: linear-gradient(to right, #efab54, #ffe187)
+}
+
+.content {
+    padding: 0 !important;
+}
+
+.container-fluid {
+    padding: 0 !important;
+}
