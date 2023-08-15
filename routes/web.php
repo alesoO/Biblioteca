@@ -52,8 +52,20 @@ Route::get('/register_author', function(){
     return view(('register_author'));
 });
 
-Route::get('/publishers', [PublisherController::class, 'index'])->name('publishers.index');
-/* ->name('home')->middleware('auth') */;
+Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
+Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
+
+Route::get('/table_publisher', function () {
+    $publishers = Publisher::all();
+    return view('table_publisher', ['publishers' => $publishers]);
+});
+
+Route::post('/register_publisher', [PublisherController::class, 'create']);
+
+Route::get('/register_publisher',function(){
+    return view(('register_publisher'));
+});
+/* ->name('home')->middleware('auth') */
 
 /* Auth::routes();
 
