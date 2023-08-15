@@ -10,6 +10,13 @@ use function Laravel\Prompts\error;
 
 class PublisherController extends Controller
 {
+    public function index()
+    {
+        $publishers = Publisher::paginate(15);
+
+        return view('/table_publisher', ['publishers' => $publishers]);
+    }
+
 
     public function create(Request $request)
     {

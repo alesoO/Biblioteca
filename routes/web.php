@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\AuthorController;
 use App\Models\Publisher;
 
 
@@ -30,9 +31,7 @@ Route::get('/table_author', function(){
     return view(('table_author'));
 });
 
-Route::get('/table_publisher', function(){
-    return view(('table_publisher'));
-});
+Route::get('/table_publisher', [PublisherController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -52,25 +51,21 @@ Route::get('/register_author', function(){
     return view(('register_author'));
 });
 
+
 Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
 Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
 
-Route::get('/table_publisher', function () {
-    $publishers = Publisher::all();
-    return view('table_publisher', ['publishers' => $publishers]);
-});
+
 
 Route::post('/register_publisher', [PublisherController::class, 'create']);
 
 Route::get('/register_publisher',function(){
     return view(('register_publisher'));
 });
-/* ->name('home')->middleware('auth') */
 
-/* Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
+
+
+
