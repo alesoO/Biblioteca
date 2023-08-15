@@ -62,7 +62,7 @@ class PublisherController extends Controller
             $errormsg = $e->getMessage();
             return redirect('/')->with('error', $errormsg);
         }
-        return redirect('/');
+        return redirect('/table_publisher');
     }
 
 
