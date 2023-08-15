@@ -91,7 +91,6 @@
                                                                             <div class="form-outline form-white mb-4">
                                                                                 <label class="form-label">Nome:</label>
                                                                                 <input type="text" id="name" name="name" value="{{ $publisher->name }}" class="form-control">
-
                                                                             </div>
 
                                                                             <div class="modal-footer">
@@ -115,7 +114,7 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header bg-danger text-white titulos">
-                                                                <h1 class="modal-title fs-5 fw-bold" id="warningLabel">Aviso!
+                                                                <h1 class="btn btn-danger" id="warningLabel">Aviso!
                                                                     -
                                                                     Essa ação não pode ser desfeita!
                                                                 </h1>
@@ -125,7 +124,7 @@
                                                                 Tem certza que deseja apagar a editora?
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                                                <button type="button" class="btn btn-secondary"      data-bs-dismiss="modal">Fechar</button>
 
                                                                 <form action="{{ route('delete_publisher', ['publisher' => $publisher]) }}" method="POST">
                                                                     @csrf
