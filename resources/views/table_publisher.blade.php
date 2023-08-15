@@ -14,33 +14,28 @@
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg> Add Editora
                 </button>
-                <div class="modal fade" id="formNewPublisher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisherLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="formNewPublisher" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisherLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="card bg-dark text-white m-0">
                                 <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                     </svg></button>
-                                <div class="card-body p-5 text-center">
+                                <div class="card-body p-4">
                                     <form action="/register_publisher" method="POST">
                                         @csrf
                                         <div class="mb-md-5 mt-md-4 pb-5">
-                                            <h2 class="fw-bold mb-2 text-uppercase">Nova Editora</h2>
-                                            <p class="text-white-50 mb-5">Por favor insira os dados da editora!
-                                            </p>
+                                            <h2 class="modal-title">Nova Editora</h2>
+                                            <p class="text-white-50 mb-5">Por favor insira os dados da editora!</p> <br>
 
                                             <div class="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Nome:</label>
-                                                <input type="text" id="name" name="name" class="form-control form-control-lg">
+                                                <label class="form-label">Nome:</label>
+                                                <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da editora">
                                             </div>
 
-                                            <button class="d-block btn btn-outline-light btn-lg mx-auto mt-4 px-5" type="submit">Cadastrar</button>
-                                            <button type="button" class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5" data-bs-dismiss="modal">Cancelar</button>
-
-                                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                                <a href="" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                                <a href="" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                                <a href="" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
                                     </form>
@@ -79,42 +74,38 @@
                                                     </svg>
                                                 </button>
                                                 <div class="modal fade" id="formEditPublisher{{ $publisher->id }}" tabindex="-1" aria-labelledby="formEditPublisherLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="card bg-dark text-white m-0">
                                                                 <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                     </svg></button>
-                                                                <div class="card-body p-5 text-center">
+                                                                <div class="card-body">
                                                                     <form action="{{ route('edit_publisher', ['publisher' => $publisher]) }}" method="POST">
                                                                         @csrf
                                                                         <div class="mb-md-5 mt-md-4 pb-5">
-                                                                            <h2 class="fw-bold mb-2 text-uppercase">
+                                                                            <h2 class="modal-title">
                                                                                 Editar Autor</h2>
-                                                                            <p class="text-white-50 mb-5">Por favor
-                                                                                insira os dados do Autor!
-                                                                            </p>
+                                                                            <p class="text-white-50 mb-5">Por favor insira os novos dados da editora</p>
 
                                                                             <div class="form-outline form-white mb-4">
-                                                                                <label class="form-label d-block text-start">Nome:</label>
-                                                                                <input type="text" id="name" name="name" value="{{ $publisher->name }}" class="form-control form-control-lg">
+                                                                                <label class="form-label">Nome:</label>
+                                                                                <input type="text" id="name" name="name" value="{{ $publisher->name }}" class="form-control">
 
                                                                             </div>
 
-                                                                            <button class="d-block btn btn-outline-light btn-lg mx-auto mt-4 px-5" type="submit">Editar</button>
-                                                                            <button type="button" class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5" data-bs-dismiss="modal">Cancelar</button>
-
-                                                                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                                                                <a href="" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                                                                <a href="" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                                                                <a href="" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                                                                            <div class="modal-footer">
+                                                                                <button class="btn btn-primary" type="submit">Editar</button>
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                             </div>
+
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div> <input type="hidden" name="_token" value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
                                                     </div>
+                                                </div>
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-danger btn-sm px-3" data-bs-toggle="modal" data-bs-target="#warning{{ $publisher->id }}">
@@ -131,7 +122,7 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                Tem certza que deseja apagar o Autor ?
+                                                                Tem certza que deseja apagar a editora?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
