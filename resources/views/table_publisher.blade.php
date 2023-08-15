@@ -124,7 +124,7 @@
                                                                 Tem certza que deseja apagar a editora?
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"      data-bs-dismiss="modal">Fechar</button>
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
 
                                                                 <form action="{{ route('delete_publisher', ['publisher' => $publisher]) }}" method="POST">
                                                                     @csrf
