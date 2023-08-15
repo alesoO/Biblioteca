@@ -31,6 +31,14 @@ Route::get('/table_publisher', function(){
     return view(('table_publisher'));
 });
 
+Route::get('/table_student', function(){
+    return view(('table_student'));
+});
+
+Route::get('/table_book', function(){
+    return view(('table_book'));
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
