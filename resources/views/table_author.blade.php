@@ -31,8 +31,7 @@
                                         </svg></button>
                                     <div class="card-body p-5 text-center">
                                         <form action="/register_author" method="POST">
-                                            <input type="hidden" name="_token"
-                                                value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
+                                            @csrf
                                             <div class="mb-md-5 mt-md-4 pb-5">
                                                 <h2 class="fw-bold mb-2 text-uppercase">Novo Autor</h2>
                                                 <p class="text-white-50 mb-5">Por favor insira os dados do Autor!
@@ -115,14 +114,13 @@
                                                                                 fill="currentColor" class="bi bi-x-lg"
                                                                                 viewBox="0 0 16 16">
                                                                                 <path
-                                                                                    d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                                                                                ￼                                               d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                             </svg></button>
                                                                         <div class="card-body p-5 text-center">
                                                                             <form
                                                                                 action="{{ route('edit_author', ['author' => $author]) }}"
                                                                                 method="POST">
-                                                                                <input type="hidden" name="_token"
-                                                                                    value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
+                                                                                @csrf
                                                                                 <div class="mb-md-5 mt-md-4 pb-5">
                                                                                     <h2
                                                                                         class="fw-bold mb-2 text-uppercase">
@@ -165,9 +163,9 @@
                                                                             </form>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> <input type="hidden" name="_token"
+                                                                    value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
                                                             </div>
-                                                        </div>
                                                     </td>
                                                     <td>
                                                         <button type="submit" class="btn btn-danger btn-sm px-3"
@@ -214,6 +212,9 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="paginate">
+                                        {{ $authors->links() }}
+                                    </div>
                                 </div>
                             </div>
                         </div>

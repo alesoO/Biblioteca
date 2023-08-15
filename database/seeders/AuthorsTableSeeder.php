@@ -13,8 +13,6 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Author::created([
-            'name' => 'Jorge'
-        ]);
+        Author::factory()->count(50)->create();
     }
 }

@@ -11,6 +11,14 @@ use function Laravel\Prompts\error;
 class AuthorController extends Controller
 {
 
+    public function index()
+    {
+
+        $authors = Author::paginate(15);
+
+        return view('/table_author', ['authors' => $authors]);
+    }
+
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), ['name' => ['required'],]);
@@ -46,7 +54,7 @@ class AuthorController extends Controller
         }
 
         $fieldValues['name'] = strip_tags($fieldValues['name']);
-        
+
         try {
             $author->update($fieldValues);
         } catch (\Exception $e) {
@@ -57,9 +65,9 @@ class AuthorController extends Controller
     }
     public function destroy(Author $author)
     {
-        try{
+        try {
             $author->delete();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             $errormsg = $e->getMessage();
             return redirect('/')->with('error', $errormsg);
         }

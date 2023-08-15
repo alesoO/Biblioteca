@@ -25,17 +25,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/table_author', function () {
-    $authors = Author::all();
-    return view('table_author', ['authors' => $authors]);
-});
+Route::get('/table_author', [AuthorController::class, 'index']);
 
 Route::get('/table_publisher', function () {
     return view(('table_publisher'));
-});
-
-Route::get('/register_author', function () {
-    return view(('register_author'));
 });
 
 Route::post('/register_author', [AuthorController::class, 'create']);
