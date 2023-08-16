@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +33,9 @@ Route::get('/table_publisher', function(){
     return view(('table_publisher'));
 });
 
-Route::get('/table_student', function(){
-    return view(('table_student'));
-});
+Route::get('/table_student', [StudentController::class, 'index']);
+
+Route::post('/register_student', [StudentController::class, 'create']);
 
 Route::get('/table_book', function(){
     return view(('table_book'));
