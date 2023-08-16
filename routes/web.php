@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Author;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,23 +23,27 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/table_author', [AuthorController::class, 'index']);
+Route::get('/table_author', function(){
+    return view(('table_author'));
+});
 
-Route::get('/table_publisher', function () {
+Route::get('/table_publisher', function(){
     return view(('table_publisher'));
 });
 
-Route::post('/register_author', [AuthorController::class, 'create']);
+Route::get('/table_student', function(){
+    return view(('table_student'));
+});
 
-Route::post('/edit_author/{author}', [AuthorController::class, 'update'])->name('edit_author');
+Route::get('/table_book', function(){
+    return view(('table_book'));
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
 
 require __DIR__ . '/auth.php';
 
