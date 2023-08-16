@@ -19,7 +19,7 @@
                         </svg> Add Autor
                     </button>
                     <div class="modal fade" id="formNewAuthor" role="dialog" data-bs-backdrop="static"
-                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisherLabel" aria-hidden="true">
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewauthorLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="card bg-dark text-white m-0">
@@ -93,7 +93,7 @@
                                                         <div class="modal fade" id="formEditAuthor{{ $author->id }}"
                                                             tabindex="-1" aria-labelledby="formEditAuthorLabel"
                                                             aria-hidden="true">
-                                                            <div class="modal-dialog">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="card bg-dark text-white m-0">
                                                                         <button type="button"
@@ -103,52 +103,38 @@
                                                                                 width="16" height="16"
                                                                                 fill="currentColor" class="bi bi-x-lg"
                                                                                 viewBox="0 0 16 16">
-                                                                                <path ￼
+                                                                                <path
                                                                                     d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                             </svg></button>
-                                                                        <div class="card-body p-5 text-center">
+                                                                        <div class="card-body">
                                                                             <form
                                                                                 action="{{ route('edit_author', ['author' => $author]) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 <div class="mb-md-5 mt-md-4 pb-5">
-                                                                                    <h2
-                                                                                        class="fw-bold mb-2 text-uppercase">
+                                                                                    <h2 class="modal-title">
                                                                                         Editar Autor</h2>
                                                                                     <p class="text-white-50 mb-5">Por favor
-                                                                                        insira os dados do Autor!
-                                                                                    </p>
+                                                                                        insira os novos dados da editora</p>
 
                                                                                     <div
                                                                                         class="form-outline form-white mb-4">
                                                                                         <label
-                                                                                            class="form-label d-block text-start">Nome:</label>
+                                                                                            class="form-label">Nome:</label>
                                                                                         <input type="text"
                                                                                             id="name" name="name"
                                                                                             value="{{ $author->name }}"
-                                                                                            class="form-control form-control-lg">
-
+                                                                                            class="form-control">
                                                                                     </div>
 
-                                                                                    <button
-                                                                                        class="d-block btn btn-outline-light btn-lg mx-auto mt-4 px-5"
-                                                                                        type="submit">Editar</button>
-                                                                                    <button type="button"
-                                                                                        class="d-block btn btn-outline-light btn-lg mx-auto mt-2 px-5"
-                                                                                        data-bs-dismiss="modal">Cancelar</button>
-
-                                                                                    <div
-                                                                                        class="d-flex justify-content-center text-center mt-4 pt-1">
-                                                                                        <a href=""
-                                                                                            class="text-white"><i
-                                                                                                class="fab fa-facebook-f fa-lg"></i></a>
-                                                                                        <a href=""
-                                                                                            class="text-white"><i
-                                                                                                class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                                                                        <a href=""
-                                                                                            class="text-white"><i
-                                                                                                class="fab fa-google fa-lg"></i></a>
+                                                                                    <div class="modal-footer">
+                                                                                        <button class="btn btn-primary"
+                                                                                            type="submit">Editar</button>
+                                                                                        <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-bs-dismiss="modal">Cancelar</button>
                                                                                     </div>
+
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -156,6 +142,7 @@
                                                                 </div> <input type="hidden" name="_token"
                                                                     value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
                                                             </div>
+                                                        </div>
                                                     </td>
                                                     <td>
                                                         <button type="submit" class="btn btn-danger btn-sm px-3"
