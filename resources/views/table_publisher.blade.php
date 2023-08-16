@@ -3,6 +3,7 @@
 @section('title', 'Biblioteca - Editores')
 
 @section('content')
+
 <div class="p-3">
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
@@ -140,6 +141,9 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                <div class="paginate">
+                                    {{ $publishers->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
