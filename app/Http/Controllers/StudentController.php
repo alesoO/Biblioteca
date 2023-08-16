@@ -77,16 +77,48 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Student $student)
     {
-        //
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+            'school_year' => ['required'],
+            'registration' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')->with('error', 'Dados do post invalidos!');
+        } else {
+            $fieldValues = $request->validate([
+                'name' => ['required'],
+                'school_year' => ['required'],
+                'registration' => ['required']
+            ]);
+        }
+        $fieldValues['name'] = strip_tags($fieldValues['name']);
+        $fieldValues['school_year'] = strip_tags($fieldValues['school_year']);
+        $fieldValues['registration'] = strip_tags($fieldValues['registration']);
+
+        try {
+            $student->update($fieldValues);
+        } catch (\Exception $e) {
+            $errormsg = $e->getMessage();
+            return redirect('/')->with('error', $errormsg);
+        }
+        return redirect('/table_student');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Student $student)
     {
-        //
+        try {
+            $student->delete();
+        } catch (\Exception $e) {
+            $errormsg = $e->getMessage();
+            return redirect('/')->with('error', $errormsg);
+        }
+        return redirect('/table_student')->with('info', 'Autor deletado com sucesso !');
     }
 }

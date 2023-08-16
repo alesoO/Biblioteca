@@ -133,7 +133,8 @@
                                                                                     d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                             </svg></button>
                                                                         <div class="card-body">
-                                                                            <form action="{{-- {{ route('edit_student', ['student' => $student]) }} --}}"
+                                                                            <form
+                                                                                action="{{ route('edit_student', ['student' => $student]) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 <div class="mb-md-5 mt-md-4 pb-5">
@@ -145,11 +146,48 @@
                                                                                     <div
                                                                                         class="form-outline form-white mb-4">
                                                                                         <label
-                                                                                            class="form-label">Nome:</label>
+                                                                                            class="form-label d-block text-start">Nome:</label>
                                                                                         <input type="text"
                                                                                             id="name" name="name"
                                                                                             value="{{ $student->name }}"
-                                                                                            class="form-control">
+                                                                                            class="form-control form-control-lg">
+                                                                                    </div>
+
+                                                                                    <div
+                                                                                        class="form-outline form-white mb-4">
+                                                                                        <label
+                                                                                            class="form-label d-block text-start">Ano
+                                                                                            Escolar:</label>
+                                                                                        <select
+                                                                                            class="form-select form-control form-control-lg"
+                                                                                            name="school_year"
+                                                                                            id="school_year">
+                                                                                            <option disabled selected hidden
+                                                                                                value="{{ $student->school_year }}">
+                                                                                                {{ $student->school_year }}º
+                                                                                                Ano</option>
+                                                                                            <option value="1">1º Ano
+                                                                                            </option>
+                                                                                            <option value="2">2º Ano
+                                                                                            </option>
+                                                                                            <option value="3">3º Ano
+                                                                                            </option>
+                                                                                            <option value="4">4º Ano
+                                                                                            </option>
+                                                                                            <option value="5">5º Ano
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
+
+                                                                                    <div
+                                                                                        class="form-outline form-white mb-4">
+                                                                                        <label
+                                                                                            class="form-label d-block text-start">Matricula:</label>
+                                                                                        <input type="number"
+                                                                                            id="registration"
+                                                                                            name="registration"
+                                                                                            class="form-control form-control-lg"
+                                                                                            value="{{ $student->registration }}">
                                                                                     </div>
 
                                                                                     <div class="modal-footer">
@@ -159,74 +197,13 @@
                                                                                             class="btn btn-secondary"
                                                                                             data-bs-dismiss="modal">Cancelar</button>
                                                                                     </div>
-
                                                                                 </div>
                                                                             </form>
                                                                         </div>
                                                                     </div>
-                                                                </div> <input type="hidden" name="_token"
-                                                                    value="hpIe4JZpxSrgMF6JXdHlweq42JHBsdpdCrD0lWbm">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal fade" id="#formEditStudent{{ $student->id }}" role="dialog" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="#formEditStudent{{ $student->id }}Label" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="card bg-dark text-white m-0">
-                                                                    <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal"
-                                                                        aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                                            height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                                                            <path
-                                                                                d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                                                        </svg></button>
-                                                                    <div class="card-body p-4">
-                                                                        <form action="/register_student" method="POST">
-                                                                            @csrf
-                                                                            <div class="mb-md-5 mt-md-4 pb-5">
-                                                                                <h2 class="modal-title">Editar Estudante</h2>
-                                                                                <p class="text-white-50 mb-5">Por favor insira os dados do Estudante!
-                                                                                </p> <br>
-                                
-                                                                                <div class="form-outline form-white mb-4">
-                                                                                    <label class="form-label d-block text-start">Nome:</label>
-                                                                                    <input type="text" id="name" name="name"
-                                                                                       value="" class="form-control form-control-lg">
-                                                                                </div>
-                                
-                                                                                <div class="form-outline form-white mb-4">
-                                                                                    <label class="form-label d-block text-start">Ano Escolar:</label>
-                                                                                    <select class="form-select form-control form-control-lg"
-                                                                                        name="school_year" id="school_year">
-                                                                                        <option disabled selected hidden>Escolha...</option>
-                                                                                        <option value="1">1º Ano</option>
-                                                                                        <option value="2">2º Ano</option>
-                                                                                        <option value="3">3º Ano</option>
-                                                                                        <option value="4">4º Ano</option>
-                                                                                        <option value="5">5º Ano</option>
-                                                                                    </select>
-                                                                                </div>
-                                
-                                                                                <div class="form-outline form-white mb-4">
-                                                                                    <label class="form-label d-block text-start">Matricula:</label>
-                                                                                    <input type="number" id="registration" name="registration"
-                                                                                        class="form-control form-control-lg">
-                                                                                </div>
-                                
-                                
-                                                                                <div class="modal-footer">
-                                                                                    <button class="btn btn-primary" type="submit">Cadastrar</button>
-                                                                                    <button type="button" class="btn btn-secondary"
-                                                                                        data-bs-dismiss="modal">Cancelar</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
                                                     </td>
                                                     <td>
                                                         <button type="submit" class="btn btn-danger btn-sm px-3"
@@ -256,7 +233,8 @@
                                                                         <button type="button" class="btn btn-secondary"
                                                                             data-bs-dismiss="modal">Fechar</button>
 
-                                                                        <form action="{{-- {{ route('delete_student', ['student' => $student]) }} --}}"
+                                                                        <form
+                                                                            action="{{ route('delete_student', ['student' => $student]) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')
