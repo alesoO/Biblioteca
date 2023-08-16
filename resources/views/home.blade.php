@@ -3,32 +3,33 @@
 @section('title', 'Biblioteca - Home')
 
 @section('content')
+
 <main>
     <div class="px-4 py-5 text-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-        </svg>
-        <h1 class="display-5 fw-bold text-body-emphasis">Olá  - Bem-vindo a Biblioteca</h1>
+        <div class="margin" style="margin-top: 8em;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+            </svg><br><br>
+            <h1 class="display-5 fw-bold text-body-emphasis">Olá! Bem-vindo a Biblioteca</h1><br>
 
-        <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quam dignissimos,
-                fugiat quos quibusdam unde quidem temporibus nesciunt est cupiditate, voluptatibus amet doloribus
-                adipisci totam officiis qui inventore! Fuga, nemo.</p>
+            <div class="col-lg-6 mx-auto text-justify">
+                <p class="lead mb-4">O destino definitivo para os apaixonados por literatura e aprendizado. Aqui, as páginas ganham vida digitalmente, abrindo as portas para um vasto universo de conhecimento, imaginação e descobertas. Se você é um leitor ávido, estudante em busca de informações ou apenas alguém que busca inspiração nas palavras, você encontrará seu refúgio literário conosco.</p>
+            </div>
         </div>
     </div>
 
     @auth
-        <div class="dropdown display_desktop">
+    <div class="dropdown display_desktop">
 
-            <ul class="dropdown-menu">
+        <ul class="dropdown-menu">
+            @csrf
+            <form action="/logout" method="post">
                 @csrf
-                <form action="/logout" method="post">
-                    @csrf
-                    <li><button type="submit" class="dropdown-item">Sair</button></li>
-                    {{-- Botão de Logout --}}
-                </form>
-            </ul>
-        </div>
+                <li><button type="submit" class="dropdown-item">Sair</button></li>
+                {{-- Botão de Logout --}}
+            </form>
+        </ul>
+    </div>
 
     {{-- Fim do menu do usuario --}}
     @else
@@ -39,8 +40,7 @@
     </div>
     @endauth
 
-
-
+    @auth
     <div class="container mt-5">
         <h2 class=" pb-2 border-bottom">Administração</h2>
         <div class="mt-4 row">
@@ -114,8 +114,9 @@
             <!-- ./col -->
         </div>
     </div>
+    @endauth
 
-    <div class="container col-xxl-8 px-4 py-5" id="Sobre">
+    <div class="container  px-4 py-5" id="Sobre" style="margin-top: 10em;">
         <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
             <div class="col-10 col-sm-8 col-lg-6">
                 <img src="https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block mx-lg-auto img-fluid rounded-lg" alt="grupo-de-criancas-com-professora-caminhando-no-corredor-da-escola" width="350" height="300" loading="lazy">
@@ -123,31 +124,25 @@
             <div class="col-lg-6">
                 <h2 class="display-5 title lh-1 mb-3 ">Sobre nós
                 </h2>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint ullam praesentium
-                    ducimus repellendus in recusandae accusamus vero quae, nam corrupti, consequuntur totam dolore
-                    iusto delectus corporis animi, laboriosam eius dolor Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Nostrum accusantium ipsum earum blanditiis tenetur aliquid velit provident itaque,
-                    quisquam, saepe voluptate non voluptatum optio, pariatur ullam laboriosam facilis impedit ex?</p>
+                <p class="lead text-justify">Nossa plataforma é um tesouro virtual de conhecimento, cuidadosamente curado para oferecer a você uma experiência de biblioteca como nenhuma outra. Imagine ter acesso a um vasto e organizado repositório de informações sobre livros, autores e obras literárias, tudo a um clique de distância. Aqui, a riqueza do conhecimento literário encontra a conveniência de um banco de dados moderno.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     <button type="button" class="btn btn btn-warning btn-lg px-4 me-md-2">Saiba mais</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div><br><br>
 
     <div class="container px-4 py-5" id="Recursos">
         <h2 class=" pb-2 border-bottom">Recursos</h2>
         <div class="row g-5 pt-5 row-cols-1 row-cols-lg-3">
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-                        <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-                    </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+</svg>
                 </div>
-                <h3 class="fs-2 ">Livros de extrema qualidade</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptatem, aliquam soluta
-                    error maxime beatae. Sit ut in dicta ipsum odit quibusdam, blanditiis veritatis error
-                    distinctio, eos neque, minima veniam.</p>
+                <h3 class="fs-2 ">Catálogo Extenso </h3>
+                <p>Explore nosso catálogo abrangente de livros, contendo uma ampla gama de gêneros, desde clássicos atemporais até as mais recentes publicações. Encontre informações detalhadas sobre cada obra, incluindo sinopses envolventes e análises críticas.</p>
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
@@ -156,46 +151,38 @@
                         <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                     </svg>
                 </div>
-                <h3 class="fs-2 ">Grande variedade de generos para você</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ea libero quisquam facilis cumque
-                    voluptatum veniam, nisi provident iste. Libero ipsum tempora esse error beatae quam eos,
-                    repellendus assumenda. Tempore.</p>
+                <h3 class="fs-2 ">Perfis de Autores</h3>
+                <p>Mergulhe na vida e obra dos grandes autores. Nossa plataforma oferece perfis detalhados que traçam a jornada criativa de cada escritor, destacando suas contribuições para a literatura.</p>
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
-                            <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                            <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
                     </div>
                 </div>
-                <h3 class="fs-2 ">Suporte 24H</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat neque, impedit deserunt nisi
-                    maiores deleniti, voluptates ea ipsum doloremque nesciunt, ullam omnis non voluptatum maxime
-                    officia rerum quia. Ea, voluptatem!</p>
+                <h3 class="fs-2 ">Recursos de Pesquisa Avançados</h3>
+                <p>Acesse nosso mecanismo de pesquisa avançado para localizar rapidamente livros específicos, autores renomados ou tópicos de interesse literário. Otimize sua pesquisa com filtros e categorias intuitivas.</p>
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
-                        <path d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
-                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
                     </svg>
                 </div>
-                <h3 class="fs-2 ">Prazos de aluguel flexiveis</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem culpa sint aperiam laudantium
-                    minima doloremque commodi asperiores reiciendis deleniti, repellat adipisci nesciunt voluptates.
-                    Corporis odio eaque porro aspernatur, quas cum.</p>
+                <h3 class="fs-2 ">Análises Críticas</h3>
+                <p>Profundamente apreciado pelos acadêmicos, nossas análises críticas oferecem insights valiosos sobre as nuances das obras literárias. Aprofunde-se na interpretação de temas, simbolismo e contexto histórico.</p>
             </div>
             <div class="feature col">
                 <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
-                    <svg xmlns="" width="46" height="36">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+                        <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z" />
                     </svg>
                 </div>
-                <h3 class="fs-2">E muito mais...</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid nostrum laboriosam nam vel amet
-                    asperiores deserunt iure harum aperiam incidunt! Fugit fuga cumque debitis officiis dolores
-                    sapiente, ex molestiae impedit!</p>
+                <h3 class="fs-2">Ferramentas de Estudo</h3>
+                <p>Estudantes, pesquisadores e entusiastas da literatura apreciarão nossas ferramentas de estudo integradas. Crie anotações pessoais, marque trechos importantes e organize suas leituras de maneira eficaz.</p>
             </div>
         </div>
     </div>

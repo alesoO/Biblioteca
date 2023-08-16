@@ -51,7 +51,15 @@ Auth::routes();
 
 Route::get('/home', function () {
     return view('home');
-})/* ->name('home')->middleware('auth') */;
+});
+
+Route::get('/profile_user', function(){
+    return view('profile_user');
+}); 
+
+
+
+/* ->name('home')->middleware('auth') */
 
 /* Auth::routes();
 

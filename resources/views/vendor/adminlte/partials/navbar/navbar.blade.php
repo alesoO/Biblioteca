@@ -31,6 +31,7 @@
             </button>
             <ul class="dropdown-menu">
                 @csrf
+                <li><a href="/profile_user" class="dropdown-item">Meu Perfil</a></li>
                 <form action="/logout" method="post">
                     @csrf
                     <li><button type="submit" class="dropdown-item">Sair</button></li>
