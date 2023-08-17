@@ -75,7 +75,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="{{ auth()->user()->email }}" name="email">
+                                        <input type="email" class="form-control" value="{{ auth()->user()->email }}" name="email">
                                     </div>
                                 </div>
                                 <div class="row">
