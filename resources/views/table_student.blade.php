@@ -59,7 +59,7 @@
                                                 <div class="form-outline form-white mb-4">
                                                     <label class="form-label d-block text-start">Matricula:</label>
                                                     <input type="number" id="registration" name="registration"
-                                                        class="form-control form-control-lg">
+                                                        class="form-control form-control-lg" data-mask="000000">
                                                 </div>
 
 
@@ -187,7 +187,8 @@
                                                                                             id="registration"
                                                                                             name="registration"
                                                                                             class="form-control form-control-lg"
-                                                                                            value="{{ $student->registration }}">
+                                                                                            value="{{ $student->registration }}"
+                                                                                            data-mask="000000">
                                                                                     </div>
 
                                                                                     <div class="modal-footer">
