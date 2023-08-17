@@ -1,23 +1,22 @@
-  @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
-  .title {
-      color: #f7c66e;
-      font-family: 'Titillium Web', sans-serif;
-  }
-  .paginate svg{
+.title {
+    color: #f7c66e;
+    font-family: 'Titillium Web', sans-serif;
+}
+.paginate svg{
 
-    max-width: 2.5em;
-    max-height: 2.5em;
+  max-width: 2.5em;
+  max-height: 2.5em;
 
-  }
+}
 
-  .paginate .flex-1 {
+.paginate .flex-1 {
 
-    display: none;
-  }
-  .paginate p{
+  display: none;
+}
+.paginate p{
 
-    margin-top: 1.25em;
+  margin-top: 1.25em;
 
-  }
-  
+}

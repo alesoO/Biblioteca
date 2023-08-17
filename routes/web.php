@@ -27,13 +27,23 @@ Route::get('/dashboard', function () {
 
 Route::get('/table_author', [AuthorController::class, 'index']);
 
-Route::get('/table_publisher', function () {
-    return view(('table_publisher'));
-});
-
 Route::post('/register_author', [AuthorController::class, 'create']);
 
 Route::post('/edit_author/{author}', [AuthorController::class, 'update'])->name('edit_author');
+
+Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
+
+Route::get('/table_student', function () {
+    return view(('table_student'));
+});
+
+Route::get('/table_book', function () {
+    return view(('table_book'));
+});
+
+Route::get('/table_publisher', function () {
+    return view(('table_publisher'));
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,20 +51,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
-
 require __DIR__ . '/auth.php';
 
 Auth::routes();
 
 Route::get('/home', function () {
     return view('home');
-})/* ->name('home')->middleware('auth') */;
-
-/* Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
+});
