@@ -59,6 +59,7 @@ Route::get('/profile_user', function(){
 }); 
 Route::post('/update', [UserController::class, 'update'])->name('update');
 Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
+Route::post('/edit', [UserController::class, 'edit'])->name('edit');
 
 
 

@@ -91,7 +91,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="d-flex align-items-center mb-5 mt-2">Alterar senha</h3>
-                                    <form action="{{ route('update') }}" method="POST">
+                                    <form action="{{ route('edit') }}" method="POST">
                                         @csrf
                                         <div class="row mb-3">
                                             <div class="col-sm-3 d-flex align-items-center">
@@ -99,8 +99,8 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control" name="senha_atual" id="senhaAtual" placeholder="Insira sua senha atual">
-                                                    <button type="button" class="btn btn-outline-secondary mostrarSenhaBtn" data-target="#senhaAtual">
+                                                    <input type="password" class="form-control" name="current_password" id="currentAssword" placeholder="Insira sua senha atual">
+                                                    <button type="button" class="btn btn-outline-secondary showPasswordBtn" data-target="#currentAssword">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
@@ -112,8 +112,8 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control" name="nova_senha" id="novaSenha" placeholder="Insira sua nova senha">
-                                                    <button type="button" class="btn btn-outline-secondary mostrarSenhaBtn" data-target="#novaSenha">
+                                                    <input type="password" class="form-control" name="new_password" id="newPassword" placeholder="Insira sua nova senha">
+                                                    <button type="button" class="btn btn-outline-secondary showPasswordBtn" data-target="#newPassword">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
@@ -125,8 +125,8 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <div class="input-group">
-                                                    <input type="password" class="form-control" name="confirmar_senha" id="confirmarSenha" placeholder="Confirme a sua senha">
-                                                    <button type="button" class="btn btn-outline-secondary mostrarSenhaBtn" data-target="#confirmarSenha">
+                                                    <input type="password" class="form-control" name="new_password_confirmation" id="confirmPasswordConfirmation" placeholder="Confirme a sua senha">
+                                                    <button type="button" class="btn btn-outline-secondary showPasswordBtn" data-target="#confirmPasswordConfirmation">
                                                         <i class="fas fa-eye"></i>
                                                     </button>
                                                 </div>
@@ -135,7 +135,7 @@
 
                                         <div class="row">
                                             <div class="text-secondary d-flex justify-content-end col-sm-9 offset-sm-3">
-                                                <button type="submit" class="btn btn-primary">Salvar mudanças</button>
+                                                <button type="submit" class="btn btn-primary">Mudar senha</button>
                                             </div>
                                         </div>
                                     </form>
@@ -152,9 +152,9 @@
 
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
-                            const mostrarSenhaBtns = document.querySelectorAll('.mostrarSenhaBtn');
+                            const showPasswordBtns = document.querySelectorAll('.showPasswordBtn');
 
-                            mostrarSenhaBtns.forEach(function(btn) {
+                            showPasswordBtns.forEach(function(btn) {
                                 btn.addEventListener('click', function() {
                                     const targetInputId = btn.getAttribute('data-target');
                                     const senhaInput = document.querySelector(targetInputId);
