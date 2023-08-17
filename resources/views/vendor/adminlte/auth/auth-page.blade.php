@@ -39,7 +39,6 @@
                 {{-- Logo Label --}}
                 <h1 style="display: inline-block; vertical-align: top; margin-left: 10px; text-decoration: none;">Biblioteca
                 </h1>
-
             </div>
         </a>
 
@@ -66,9 +65,7 @@
                     @yield('auth_footer')
                 </div>
             @endif
-
         </div>
-
     </div>
 @stop
 

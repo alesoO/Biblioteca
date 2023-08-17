@@ -95,6 +95,8 @@
     @else
     <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-0LR9fsES8tUqLDoQlyZZvCmkN92P8SDNbsn3doWeh7kE1RAojYvVEK1Pj6E54Mq9DXDLdc1Fef5hLJoE9NkUdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     {{-- Extra Configured Plugins Scripts --}}
     @include('adminlte::plugins', ['type' => 'js'])
@@ -110,6 +112,28 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const showPasswordBtns = document.querySelectorAll('.showPasswordBtn');
+
+            showPasswordBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const targetInputId = btn.getAttribute('data-target');
+                    const senhaInput = document.querySelector(targetInputId);
+
+                    if (senhaInput.type === 'password') {
+                        senhaInput.type = 'text';
+                        btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
+                    } else {
+                        senhaInput.type = 'password';
+                        btn.innerHTML = '<i class="fas fa-eye"></i>';
+                    }
+                });
+            });
+        });
+    </script>
+
 
 </body>
 
