@@ -162,7 +162,7 @@
                                                                                             class="form-select form-control form-control-lg"
                                                                                             name="school_year"
                                                                                             id="school_year">
-                                                                                            <option disabled selected hidden
+                                                                                            <option selected hidden
                                                                                                 value="{{ $student->school_year }}">
                                                                                                 {{ $student->school_year }}º
                                                                                                 Ano</option>
