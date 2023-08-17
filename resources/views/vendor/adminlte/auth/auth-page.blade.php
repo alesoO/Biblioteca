@@ -16,11 +16,11 @@
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
 
 @section('body')
-<div class="{{ $auth_type ?? 'login' }}-box">
+<div class="{{ $auth_type ?? 'login' }}-box" >
 
     {{-- Logo --}}
     <div class="{{ $auth_type ?? 'login' }}-logo">
-        <a href="{{ $dashboard_url }}">
+        <a href="{{ $dashboard_url }}" >
 
             {{-- Logo Image --}}
             @if (config('adminlte.auth_logo.enabled', false))

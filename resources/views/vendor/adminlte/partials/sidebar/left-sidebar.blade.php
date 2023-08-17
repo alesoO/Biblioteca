@@ -5,7 +5,7 @@
         @include('adminlte::partials.common.brand-logo-xl')
     @else
     <a href="/" class="link-underline link-underline-opacity-0">
-        <div class="bg-secondary p-2 bg-opacity-25 d-flex text-white justify-content-center align-items-center pt-3">
+        <div class="bg-secondary p-2 bg-opacity-25 d-flex text-white justify-content-center align-items-center pt-0">
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-book me-3"
                 viewBox="0 0 16 16">
                 <path
