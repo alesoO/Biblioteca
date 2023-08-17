@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,9 @@ Route::get('/home', function () {
 Route::get('/profile_user', function(){
     return view('profile_user');
 }); 
+Route::post('/update', [UserController::class, 'update'])->name('update');
+Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
+
 
 
 
