@@ -312,11 +312,9 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'can'     => 'auth',
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'text'        => 'Home',
+            'url'         => '/home',
+            'icon'        => 'fas fa-fw fa-home', 
             'label_color' => 'success',
         ],
         ['header' => 'CONFIGURAÇÕES DE USUÁRIOS'],
@@ -335,7 +333,6 @@ return [
                     'url'  => '#',
                 ],
                 [
-                    'can'     => 'auth',
                     'text'    => 'level_one',
                     'url'     => '#',
                     'submenu' => [
@@ -365,27 +362,28 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels',
-        'can'     => 'auth'
+        ['header' => 'ADMINISTRAÇÃO',
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Autores',
+            'icon_color' => 'blue',
+            'url'        => 'table_author',
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'warning',
+            'text'       => 'Estudantes',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => 'table_student ',
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'Publicadora',
+            'icon_color' => 'green',
+            'url'        => 'table_publisher',
         ],
+        [
+            'text'       => 'Livros',
+            'icon_color' => 'red',
+            'url'        => 'table_book',
+        ]
     ],
 
     /*
