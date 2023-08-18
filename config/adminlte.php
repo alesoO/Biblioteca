@@ -312,13 +312,14 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'can'     => 'auth',
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configurações de usuário'],
         [
             'text' => 'Perfil',
             'url'  => '/profile_user',
@@ -334,6 +335,7 @@ return [
                     'url'  => '#',
                 ],
                 [
+                    'can'     => 'auth',
                     'text'    => 'level_one',
                     'url'     => '#',
                     'submenu' => [
@@ -363,18 +365,23 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'labels',
+        'can'     => 'auth'
+        ],
         [
+            'can'     => 'auth',
             'text'       => 'important',
             'icon_color' => 'red',
             'url'        => '#',
         ],
         [
+            'can'     => 'auth',
             'text'       => 'warning',
             'icon_color' => 'yellow',
             'url'        => '#',
         ],
         [
+            'can'     => 'auth',
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
