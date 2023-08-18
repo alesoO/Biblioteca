@@ -126,7 +126,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-
+                                                                Editora
                                                                 <form action="{{ route('delete_publisher', ['publisher' => $publisher]) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')

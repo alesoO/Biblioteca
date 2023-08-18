@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Biblioteca - Autores')
+@section('title', 'Biblioteca - Livros')
 
 @section('content')
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
             <div class="d-flex justify-content-between my-4">
-                <h2 class="">Autores</h2>
+                <h2 class="">Livros</h2>
                 <button type="button" class="btn btn-secondary btn-sm px-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -14,7 +14,7 @@
                             d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                         <path
                             d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                    </svg> Add Autor
+                    </svg> Add Livro
                 </button>
             </div>
             <div class="row justify-content-center">
@@ -25,7 +25,10 @@
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col">NOME</th>
+                                            <th scope="col">TITULO DO LIVRO</th>
+                                            <th scope="col">AUTOR</th>
+                                            <th scope="col">NUMERO DE PAGINAS</th>
+                                            <th scope="col">PUBLICADORA</th>
                                             <th scope="col">CRIADO EM</th>
                                             <th scope="col">EDITADO EM</th>
                                             <th scope="col">EDITAR</th>
@@ -35,6 +38,9 @@
                                     <tbody>
                                         <tr>
                                             <td>Tiger Nixon</td>
+                                            <td>Tiger Nixon</td>
+                                            <td>561</td>
+                                            <td>Aquela lá</td>
                                             <td>2023-08-10 13:38:15</td>
                                             <td>2023-08-10 13:38:15</td>
                                             <td>
