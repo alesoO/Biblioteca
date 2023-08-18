@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 use App\Models\Author;
 
 /*
@@ -33,9 +35,13 @@ Route::post('/edit_author/{author}', [AuthorController::class, 'update'])->name(
 
 Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
 
-Route::get('/table_student', function () {
-    return view(('table_student'));
-});
+Route::get('/table_student', [StudentController::class, 'index']);
+
+Route::post('/register_student', [StudentController::class, 'create']);
+
+Route::post('/edit_student/{student}', [StudentController::class, 'update'])->name('edit_student');
+
+Route::delete('/delete_student/{student}', [StudentController::class, 'destroy'])->name('delete_student');
 
 Route::get('/table_book', function () {
     return view(('table_book'));

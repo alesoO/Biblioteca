@@ -1,22 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
-.title {
+  .title {
     color: #f7c66e;
     font-family: 'Titillium Web', sans-serif;
-}
-.paginate svg{
+  }
 
-  max-width: 2.5em;
-  max-height: 2.5em;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-}
+  .paginate svg {
 
-.paginate .flex-1 {
+    max-width: 2.5em;
+    max-height: 2.5em;
 
-  display: none;
-}
-.paginate p{
+  }
 
-  margin-top: 1.25em;
+  .paginate .flex-1 {
 
-}
+    display: none;
+  }
+
+  .paginate p {
+
+    margin-top: 1.25em;
+
+  }
