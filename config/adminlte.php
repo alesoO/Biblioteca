@@ -319,7 +319,7 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'Configurações de usuário'],
+        ['header' => 'CONFIGURAÇÕES DE USUÁRIOS'],
         [
             'text' => 'Perfil',
             'url'  => '/profile_user',
