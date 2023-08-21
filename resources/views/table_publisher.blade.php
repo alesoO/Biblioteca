@@ -115,7 +115,7 @@
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header bg-danger text-white titulos">
-                                                                <h1 class="btn btn-danger" id="warningLabel">Aviso!
+                                                                <h1 class="modal-title fs-5 fw-bold" id="warningLabel">Aviso!
                                                                     -
                                                                     Essa ação não pode ser desfeita!
                                                                 </h1>
@@ -126,7 +126,6 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                                                Editora
                                                                 <form action="{{ route('delete_publisher', ['publisher' => $publisher]) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
