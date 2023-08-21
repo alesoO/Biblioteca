@@ -6,10 +6,10 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use App\Models\Student;
 use App\Models\Author;
 use App\Models\Publisher;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +54,15 @@ Route::get('/table_publisher', function () {
     return view(('table_publisher'));
 });
 
+Route::get('/table_student', function(){
+    return view(('table_student'));
+});
+
+Route::get('/table_book', function(){
+    return view(('table_book'));
+});
+>>>>>>>>> Temporary merge branch 2
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -76,3 +85,23 @@ Route::get('/register_publisher',function(){
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/profile_user', function(){
+    return view('profile_user');
+}); 
+Route::post('/update', [UserController::class, 'update'])->name('update');
+Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
+Route::post('/edit', [UserController::class, 'edit'])->name('edit');
+
+
+
+
+/* ->name('home')->middleware('auth') */
+
+/* Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */

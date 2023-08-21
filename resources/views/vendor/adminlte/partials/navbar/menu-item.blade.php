@@ -3,8 +3,7 @@
 @if ($navbarItemHelper->isSearch($item))
 
     {{-- Search form --}}
-    @include('adminlte::partials.navbar.menu-item-search-form')
-
+    
 @elseif ($navbarItemHelper->isNotification($item))
 
     {{-- Notification link --}}
@@ -20,7 +19,6 @@
         :dropdown-footer-label="$item['dropdown_flabel'] ?? null"
     />
 
-@elseif ($navbarItemHelper->isFullscreen($item))
 
     {{-- Fullscreen toggle widget --}}
     @include('adminlte::partials.navbar.menu-item-fullscreen-widget')
