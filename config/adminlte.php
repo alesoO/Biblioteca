@@ -319,6 +319,13 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        ['header' => 'PÁGINA INICIAL'],
+        [
+            'text' => 'Home',
+            'url'  => 'home',
+            'icon' => 'fa fa-home',
+
+        ],
         ['header' => 'CONFIGURAÇÕES DE USUÁRIOS'],
         [
             'text' => 'Perfil',
@@ -365,26 +372,27 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels',
-        'can'     => 'auth'
+        ['header' => 'ADMINISTRAÇÃO'
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'       => 'Autores',
+            'icon_color' => 'blue',
+            'url'        => 'table_author',
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'warning',
+            'text'       => 'Estudantes',
             'icon_color' => 'yellow',
-            'url'        => '#',
+            'url'        => 'table_student',
         ],
         [
-            'can'     => 'auth',
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'       => 'Editora',
+            'icon_color' => 'green',
+            'url'        => 'table_publisher',
+        ],
+        [
+            'text'       => 'Livros',
+            'icon_color' => 'red',
+            'url'        => 'table_book',
         ],
     ],
 
