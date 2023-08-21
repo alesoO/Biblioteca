@@ -7,15 +7,16 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    public function run():void
+    public function run(): void
     {
+        $this->call([PublisherSeeder::class]);
+
         $this->call([StudentsTableSeeder::class]);
-        
+
         $this->call([UserTableSeeder::class]);
 
-        $this->call(
-            AuthorsTableSeeder::class
-        );
+        $this->call([AuthorsTableSeeder::class]);
 
+        $this->call([BooksTableSeeder::class]);
     }
 }

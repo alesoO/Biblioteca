@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Models\Student;
 use App\Models\Author;
+use App\Models\Book;
 use App\Models\Publisher;
 
 /*
@@ -46,17 +48,13 @@ Route::post('/edit_student/{student}', [StudentController::class, 'update'])->na
 
 Route::delete('/delete_student/{student}', [StudentController::class, 'destroy'])->name('delete_student');
 
-Route::get('/table_book', function () {
-    return view(('table_book'));
-});
+Route::get('/table_book', [BookController::class, 'index']);
 
-Route::get('/table_publisher', function () {
-    return view(('table_publisher'));
-});
+Route::post('/register_book', [BookController::class, 'create']);
 
-Route::get('/table_book', function(){
-    return view(('table_book'));
-});
+Route::post('/edit_book/{book}', [BookController::class, 'update'])->name('edit_book');
+
+Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('delete_book');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -72,10 +70,6 @@ Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'
 Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
 Route::get('/table_publisher', [PublisherController::class, 'index']);
 Route::post('/register_publisher', [PublisherController::class, 'create']);
-
-Route::get('/register_publisher',function(){
-    return view(('register_publisher'));
-});
 
 Route::get('/home', function () {
     return view('home');
