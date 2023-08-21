@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
 use App\Models\Student;
 use App\Models\Author;
+use App\Models\Publisher;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +63,15 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 Auth::routes();
+
+Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
+Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
+Route::get('/table_publisher', [PublisherController::class, 'index']);
+Route::post('/register_publisher', [PublisherController::class, 'create']);
+
+Route::get('/register_publisher',function(){
+    return view(('register_publisher'));
+});
 
 Route::get('/home', function () {
     return view('home');

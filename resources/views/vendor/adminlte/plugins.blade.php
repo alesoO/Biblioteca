@@ -15,6 +15,7 @@
         @foreach($plugin['files'] as $file)
 
             {{-- Setup the file location --}}
+        
 
             @php
                 if (! empty($file['asset'])) {
