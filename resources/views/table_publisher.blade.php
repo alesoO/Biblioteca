@@ -109,34 +109,10 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="submit" class="btn btn-danger btn-sm px-3" data-bs-toggle="modal" data-bs-target="#warning{{ $publisher->id }}">
-                                                    <i class="fas fa-times"></i>
-                                                </button>
-                                                <div class="modal fade" id="warning{{ $publisher->id }}" tabindex="-1" aria-labelledby="warningLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header bg-danger text-white titulos">
-                                                                <h1 class="modal-title fs-5 fw-bold" id="warningLabel">Aviso!
-                                                                    -
-                                                                    Essa ação não pode ser desfeita!
-                                                                </h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Tem certza que deseja apagar a editora?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                                                <form action="{{ route('delete_publisher', ['publisher' => $publisher]) }}" method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-danger">Sim</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
+    <button type="button" class="btn btn-danger btn-sm px-3 deleteIcon" data-publisher-id="{{ $publisher->id }}">
+        <i class="fas fa-times"></i>
+    </button>
+</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -171,6 +147,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+
 <script>
     $(function() {
         $("#add_publisher_form").submit(function(e) {
@@ -205,5 +184,43 @@
 
     });
 
+    $(document).ready(function() {
+        $(document).on('click', '.deleteIcon', function(e) {
+            e.preventDefault();
+            let id = $(this).attr('data-publisher-id');
+            let csrf = '{{ csrf_token() }}';
+
+        Swal.fire({
+            title: 'Você tem certeza?',
+            text: 'Você não será capaz de reverter isso!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '{{ route('delete_publisher', ['publisher' => $publisher]) }}',
+                    method: 'delete',
+                    data: {
+                    id: id,
+                    _token: csrf
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        Swal.fire(
+                            'Deletado!',
+                            'A ficha do seu funcionário foi deletada',
+                            'success'
+                            ).then(() => {
+                            location.reload(); 
+                        });
+                    }
+                });
+            }
+        });
+    });
+});
 </script>
 @stop

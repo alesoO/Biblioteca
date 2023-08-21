@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
 use function Laravel\Prompts\error;
 
 class PublisherController extends Controller
@@ -24,20 +23,20 @@ class PublisherController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Dados do post inválidos!',
             ], 400);
         }
-    
+
         $fieldValues = $request->validate([
             'name' => ['required'],
         ]);
-    
+
         $fieldValues['name'] = strip_tags($fieldValues['name']);
-    
+
         try {
             Publisher::create($fieldValues);
         } catch (\Exception $e) {
@@ -47,13 +46,13 @@ class PublisherController extends Controller
                 'message' => 'Não foi possível cadastrar esta editora: ' . $errormsg,
             ], 500);
         }
-    
+
         return response()->json([
             'status' => 'success',
             'message' => 'Editora adicionada com sucesso!',
         ]);
     }
-    
+
 
     public function update(Publisher $publisher, Request $request)
     {
@@ -79,14 +78,21 @@ class PublisherController extends Controller
     }
 
 
-    public function destroy(Publisher $publisher)
+    public function delete_publisher(Request $request, Publisher $publisher)
     {
-        try{
-            $publisher->delete();
-        }catch (\Exception $e){
-            $errormsg = $e->getMessage();
-            return redirect('/')->with('error', $errormsg);
+        $id = $request->input('id');
+        $publisher = Publisher::find($id);
+
+        if (!$publisher) {
+            return response()->json(['message' => 'Editora não encontrada'], 404);
         }
-        return redirect('/table_publisher')->with('info', 'Editora deletado com sucesso !');
+
+        try {
+            $publisher->delete();
+            return response()->json(['message' => 'Editora deletada com sucesso']);
+        } catch (\Exception $e) {
+            $errormsg = $e->getMessage();
+            return response()->json(['error' => $errormsg], 500);
+        }
     }
 }

@@ -54,7 +54,7 @@ Route::get('/table_publisher', function () {
     return view(('table_publisher'));
 });
 
-Route::get('/table_book', function(){
+Route::get('/table_book', function () {
     return view(('table_book'));
 });
 
@@ -69,11 +69,11 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
-Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
+Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'delete_publisher'])->name('delete_publisher');
 Route::get('/table_publisher', [PublisherController::class, 'index']);
 Route::post('/register_publisher', [PublisherController::class, 'create'])->name('create_publisher');
 
-Route::get('/register_publisher',function(){
+Route::get('/register_publisher', function () {
     return view(('register_publisher'));
 });
 
@@ -81,9 +81,9 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/profile_user', function(){
+Route::get('/profile_user', function () {
     return view('profile_user');
-}); 
+});
 Route::post('/update', [UserController::class, 'update'])->name('update');
 Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
 Route::post('/edit', [UserController::class, 'edit'])->name('edit');
