@@ -97,6 +97,9 @@
     @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-0LR9fsES8tUqLDoQlyZZvCmkN92P8SDNbsn3doWeh7kE1RAojYvVEK1Pj6E54Mq9DXDLdc1Fef5hLJoE9NkUdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rZJOw5MTzS2GHYsH7tj5bmSTsM9+9JONUGw4aW+MvqStZ1GgFnEhXSKLsImUJZ6W" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1.0/dist/css/adminlte.min.css" integrity="sha384-MDEa+ODN4POF3n5F6BhCCDCBpvy4KAf5s+KskI9m9YO3p5UcMRyUEIv0Ub0yTm1X" crossorigin="anonymous">
+
 
     {{-- Extra Configured Plugins Scripts --}}
     @include('adminlte::plugins', ['type' => 'js'])
