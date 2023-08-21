@@ -83,7 +83,7 @@
                     <div class="inner">
                         <h3>44</h3>
 
-                        <p>Publicadora</p>
+                        <p>Editora</p>
                     </div>
                     <div class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">

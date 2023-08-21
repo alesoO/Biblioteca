@@ -24,7 +24,7 @@
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                     </svg></button>
                                 <div class="card-body p-4">
-                                    <form action="/register_publisher" method="POST">
+                                    <form action="/register_publisher" id="add_publisher_form" method="POST">
                                         @csrf
                                         <div class="mb-md-5 mt-md-4 pb-5">
                                             <h2 class="modal-title">Nova Editora</h2>
@@ -36,7 +36,7 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                                <button class="btn btn-primary" type="submit" id="add_publisher_btn">Cadastrar</button>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
@@ -167,4 +167,43 @@
     </div>
 </div>
 @endauth
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(function() {
+        $("#add_publisher_form").submit(function(e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            $("#add_publisher_btn").text('Adicionando...');
+            $.ajax({
+                url: '{{ route('create_publisher') }}',
+                method: 'post', 
+                data: fd,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status === 'success') {
+                        Swal.fire({
+                            title: 'Adicionado!',
+                            text: response.message,
+                            icon: 'success',
+                        }).then((result) => {
+                            if (result.isConfirmed) {}
+                            location.reload();
+                        });
+                    }
+                    $("#add_publisher_btn").text('Adicionar Editora');
+                    $("#add_publisher_form")[0].reset();
+                    $("#formNewPublisher").modal('hide');
+                }
+            });
+        });
+
+    });
+
+</script>
 @stop

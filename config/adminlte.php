@@ -372,8 +372,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ADMINISTRAÇÃO'
-        ],
+        ['header' => 'ADMINISTRAÇÃO'],
         [
             'text'       => 'Autores',
             'icon_color' => 'blue',

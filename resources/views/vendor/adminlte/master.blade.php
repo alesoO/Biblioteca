@@ -53,6 +53,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <script src="{{ asset('js/script.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- Favicon --}}
@@ -118,27 +120,6 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const showPasswordBtns = document.querySelectorAll('.showPasswordBtn');
-
-            showPasswordBtns.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    const targetInputId = btn.getAttribute('data-target');
-                    const senhaInput = document.querySelector(targetInputId);
-
-                    if (senhaInput.type === 'password') {
-                        senhaInput.type = 'text';
-                        btn.innerHTML = '<i class="fas fa-eye-slash"></i>';
-                    } else {
-                        senhaInput.type = 'password';
-                        btn.innerHTML = '<i class="fas fa-eye"></i>';
-                    }
-                });
-            });
-        });
-    </script>
 
 
 </body>

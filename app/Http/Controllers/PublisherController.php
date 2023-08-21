@@ -10,6 +10,7 @@ use function Laravel\Prompts\error;
 
 class PublisherController extends Controller
 {
+
     public function index()
     {
         $publishers = Publisher::paginate(15);
@@ -20,27 +21,39 @@ class PublisherController extends Controller
 
     public function create(Request $request)
     {
-        $validator = Validator::make($request->all(), ['name' => ['required'],]);
-
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+        ]);
+    
         if ($validator->fails()) {
-            return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-            ]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Dados do post inválidos!',
+            ], 400);
         }
-
+    
+        $fieldValues = $request->validate([
+            'name' => ['required'],
+        ]);
+    
         $fieldValues['name'] = strip_tags($fieldValues['name']);
-
+    
         try {
             Publisher::create($fieldValues);
         } catch (\Exception $e) {
             $errormsg = $e->getMessage();
-            return redirect('/')->with('error', $errormsg);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Não foi possível cadastrar esta editora: ' . $errormsg,
+            ], 500);
         }
-        return redirect('/table_publisher')->with('sucess');
+    
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Editora adicionada com sucesso!',
+        ]);
     }
-
+    
 
     public function update(Publisher $publisher, Request $request)
     {
@@ -55,7 +68,7 @@ class PublisherController extends Controller
         }
 
         $fieldValues['name'] = strip_tags($fieldValues['name']);
-        
+
         try {
             $publisher->update($fieldValues);
         } catch (\Exception $e) {

@@ -71,7 +71,7 @@ Auth::routes();
 Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
 Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'destroy'])->name('delete_publisher');
 Route::get('/table_publisher', [PublisherController::class, 'index']);
-Route::post('/register_publisher', [PublisherController::class, 'create']);
+Route::post('/register_publisher', [PublisherController::class, 'create'])->name('create_publisher');
 
 Route::get('/register_publisher',function(){
     return view(('register_publisher'));
