@@ -272,7 +272,7 @@
         </svg><br><br>
         <h1 class="display-5 fw-bold text-body-emphasis">Desculpe, mas você não tem acesso a esta página !</h1><br>
 
-        <div class="col-lg-6 mx-auto text-justify">
+        <div class="col-lg-6 mx-auto text-justify-center">
             <p class="lead mb-4">Para que você tenha acesso a essas e outras informações do nosso site, faça seu login na nossa plataforma para que consiga vizualizar esta grande biblioteca!</p>
         </div>
     </div>

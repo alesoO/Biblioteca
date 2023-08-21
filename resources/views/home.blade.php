@@ -12,7 +12,7 @@
             </svg><br><br>
             <h1 class="display-5 fw-bold text-body-emphasis">Olá! Bem-vindo a Biblioteca</h1><br>
 
-            <div class="col-lg-6 mx-auto text-justify">
+            <div class="col-lg-6 mx-auto text-justify-center">
                 <p class="lead mb-4">O destino definitivo para os apaixonados por literatura e aprendizado. Aqui, as páginas ganham vida digitalmente, abrindo as portas para um vasto universo de conhecimento, imaginação e descobertas. Se você é um leitor ávido, estudante em busca de informações ou apenas alguém que busca inspiração nas palavras, você encontrará seu refúgio literário conosco.</p>
             </div>
         </div>
