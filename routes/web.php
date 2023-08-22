@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookStudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
@@ -40,6 +41,8 @@ Route::post('/edit_author/{author}', [AuthorController::class, 'update'])->name(
 
 Route::delete('/delete_author/{author}', [AuthorController::class, 'destroy'])->name('delete_author');
 
+
+
 Route::get('/table_student', [StudentController::class, 'index']);
 
 Route::post('/register_student', [StudentController::class, 'create']);
@@ -48,6 +51,8 @@ Route::post('/edit_student/{student}', [StudentController::class, 'update'])->na
 
 Route::delete('/delete_student/{student}', [StudentController::class, 'destroy'])->name('delete_student');
 
+
+
 Route::get('/table_book', [BookController::class, 'index']);
 
 Route::post('/register_book', [BookController::class, 'create']);
@@ -55,6 +60,11 @@ Route::post('/register_book', [BookController::class, 'create']);
 Route::post('/edit_book/{book}', [BookController::class, 'update'])->name('edit_book');
 
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('delete_book');
+
+
+Route::get('/table_book_student', [BookStudentController::class, 'index']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,8 +77,11 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::post('/edit_publisher/{publisher}', [PublisherController::class, 'update'])->name('edit_publisher');
+
 Route::delete('/delete_publisher/{publisher}', [PublisherController::class, 'delete_publisher'])->name('delete_publisher');
+
 Route::get('/table_publisher', [PublisherController::class, 'index']);
+
 Route::post('/register_publisher', [PublisherController::class, 'create']);
 
 Route::get('/home', function () {
