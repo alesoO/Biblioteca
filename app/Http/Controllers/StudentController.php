@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
-
     public function index()
     {
         $students = Student::paginate(15);
@@ -16,9 +15,6 @@ class StudentController extends Controller
         return view('/table_student', ['students' => $students]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -29,13 +25,12 @@ class StudentController extends Controller
 
         if ($validator->fails()) {
             return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-                'school_year' => ['required'],
-                'registration' => ['required']
-            ]);
-        }
+        } 
+        $fieldValues = ([
+            'name' => $request->input('name'),
+            'school_year' => $request->input('school_year'),
+            'registration' => $request->input('registration')
+        ]);
 
         $fieldValues['name'] = strip_tags($fieldValues['name']);
         $fieldValues['school_year'] = strip_tags($fieldValues['school_year']);
@@ -50,33 +45,6 @@ class StudentController extends Controller
         return redirect('/table_student')->with('sucess');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Student $student)
     {
 
@@ -88,13 +56,13 @@ class StudentController extends Controller
 
         if ($validator->fails()) {
             return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-                'school_year' => ['required'],
-                'registration' => ['required']
-            ]);
         }
+        $fieldValues = ([
+            'name' => $request->input('name'),
+            'school_year' => $request->input('school_year'),
+            'registration' => $request->input('registration')
+        ]);
+
         $fieldValues['name'] = strip_tags($fieldValues['name']);
         $fieldValues['school_year'] = strip_tags($fieldValues['school_year']);
         $fieldValues['registration'] = strip_tags($fieldValues['registration']);
@@ -108,9 +76,6 @@ class StudentController extends Controller
         return redirect('/table_student');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Student $student)
     {
         try {

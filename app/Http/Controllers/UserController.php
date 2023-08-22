@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-
     /**
      * Update the specified resource in storage.
      */
@@ -24,12 +23,12 @@ class UserController extends Controller
 
         if ($validator->fails()) {
             return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-                'email' => ['required']
-            ]);
         }
+        $fieldValues = ([
+            'name' => $request->input('name'),
+            'email' => $request->input('email')
+        ]);
+
         $fieldValues['name'] = strip_tags($fieldValues['name']);
         $fieldValues['email'] = strip_tags($fieldValues['email']);
 
@@ -40,7 +39,6 @@ class UserController extends Controller
             return redirect('/')->with('error', $errormsg);
         }
         return redirect('/profile_user');
-
     }
 
     /**
@@ -49,7 +47,6 @@ class UserController extends Controller
     public function destroy()
     {
         $user = Auth::user();
-
 
         try {
             $user->delete();
@@ -61,17 +58,15 @@ class UserController extends Controller
         return (redirect('/')->with('info', 'Usuário apagado com sucesso'));
     }
 
-
-
     public function edit(Request $request)
     {
         $user = Auth::user();
-        
+
         $validator = Validator::make($request->all(), [
             'current_password' => ['required'],
             'new_password' => ['required', 'confirmed'],
         ]);
-    
+
         if ($validator->fails()) {
             return redirect('/')->with('erro', 'Dado inválido');
         } else {
@@ -80,7 +75,7 @@ class UserController extends Controller
                 'new_password' => ['required', 'confirmed'],
             ]);
         }
-    
+
         if ($user && Hash::check($request->current_password, $user->password)) {
             try {
                 $user->update([
@@ -95,6 +90,4 @@ class UserController extends Controller
             return redirect('/')->with('erro', 'Dado inválido');
         }
     }
-    
 }
-    

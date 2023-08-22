@@ -6,16 +6,12 @@ use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-use function Laravel\Prompts\error;
-
 class AuthorController extends Controller
 {
 
     public function index()
     {
-
         $authors = Author::paginate(15);
-
         return view('/table_author', ['authors' => $authors]);
     }
 
@@ -25,11 +21,10 @@ class AuthorController extends Controller
 
         if ($validator->fails()) {
             return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-            ]);
         }
+        $fieldValues = ([
+            'name' => $request->input('name')
+        ]);
 
         $fieldValues['name'] = strip_tags($fieldValues['name']);
 
@@ -41,17 +36,17 @@ class AuthorController extends Controller
         }
         return redirect('/table_author')->with('sucess');
     }
+
     public function update(Author $author, Request $request)
     {
         $validator = Validator::make($request->all(), ['name' => ['required'],]);
 
         if ($validator->fails()) {
             return redirect('/')->with('error', 'Dados do post invalidos!');
-        } else {
-            $fieldValues = $request->validate([
-                'name' => ['required'],
-            ]);
         }
+        $fieldValues = ([
+            'name' => $request->input('name')
+        ]);
 
         $fieldValues['name'] = strip_tags($fieldValues['name']);
 
@@ -63,6 +58,7 @@ class AuthorController extends Controller
         }
         return redirect('/table_author');
     }
+    
     public function destroy(Author $author)
     {
         try {

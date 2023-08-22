@@ -28,3 +28,20 @@
     margin-top: 1.25em;
 
   }
+  .paginate a {
+
+    text-decoration: none;
+    transition: background-color 300ms ease-out 10ms;
+
+  }
+  .paginate a:hover {
+
+    background-color: rgb(218, 218, 218) !important;
+
+  }
+
+  .paginate .cursor-default {
+
+    background-color: rgb(218, 218, 218) !important;
+
+  }

@@ -5,18 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use function Laravel\Prompts\error;
 
 class PublisherController extends Controller
 {
-
     public function index()
     {
         $publishers = Publisher::paginate(15);
 
         return view('/table_publisher', ['publishers' => $publishers]);
     }
-
 
     public function create(Request $request)
     {
@@ -53,7 +50,6 @@ class PublisherController extends Controller
         ]);
     }
 
-
     public function update(Publisher $publisher, Request $request)
     {
         $validator = Validator::make($request->all(), ['name' => ['required'],]);
@@ -76,7 +72,6 @@ class PublisherController extends Controller
         }
         return redirect('/table_publisher');
     }
-
 
     public function delete_publisher(Request $request, Publisher $publisher)
     {
