@@ -142,7 +142,7 @@
                                                                             </svg></button>
                                                                         <div class="card-body">
                                                                             <form
-                                                                                action="{{ route('edit_book', ['book' => $book]) }}"
+                                                                                action="{{ route('book.update', ['book' => $book]) }}"
                                                                                 method="POST">
                                                                                 @csrf
                                                                                 <div class="mb-md-5 mt-md-4 pb-5">
@@ -253,7 +253,7 @@
                                                                             data-bs-dismiss="modal">Fechar</button>
 
                                                                         <form
-                                                                            action="{{ route('delete_book', ['book' => $book]) }}"
+                                                                            action="{{ route('book.destroy', ['book' => $book]) }}"
                                                                             method="POST">
                                                                             @csrf
                                                                             @method('DELETE')

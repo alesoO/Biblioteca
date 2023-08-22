@@ -73,7 +73,7 @@ class PublisherController extends Controller
         return redirect('/table_publisher');
     }
 
-    public function delete_publisher(Request $request, Publisher $publisher)
+    public function destroy(Request $request, Publisher $publisher)
     {
         $id = $request->input('id');
         $publisher = Publisher::find($id);

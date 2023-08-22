@@ -24,7 +24,7 @@
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                     </svg></button>
                                 <div class="card-body p-4">
-                                    <form action="/register_publisher" id="add_publisher_form" method="POST">
+                                    <form action="publisher.create" id="add_publisher_form" method="POST">
                                         @csrf
                                         <div class="mb-md-5 mt-md-4 pb-5">
                                             <h2 class="modal-title">Nova Editora</h2>
@@ -83,7 +83,7 @@
                                                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                     </svg></button>
                                                                 <div class="card-body">
-                                                                    <form action="{{ route('edit_publisher', ['publisher' => $publisher]) }}" method="POST">
+                                                                    <form action="{{ route('publisher.update', ['publisher' => $publisher]) }}" method="POST">
                                                                         @csrf
                                                                         <div class="mb-md-5 mt-md-4 pb-5">
                                                                             <h2 class="modal-title">
@@ -157,7 +157,7 @@
             const fd = new FormData(this);
             $("#add_publisher_btn").text('Adicionando...');
             $.ajax({
-                url: '{{ route('create_publisher') }}',
+                url: '{{ route('publisher.create') }}',
                 method: 'post',
                 data: fd,
                 cache: false,
@@ -201,7 +201,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('delete_publisher', ['publisher' => $publisher]) }}',
+                        url: '{{ route('publisher.destroy', ['publisher' => $publisher]) }}',
                         method: 'delete',
                         data: {
                             id: id,
