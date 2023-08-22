@@ -96,6 +96,9 @@ Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
 Route::post('/edit', [UserController::class, 'edit'])->name('edit');
 
 
+Route::post('/register_book', [BookRegistrationController::class])->name('register_book');
+
+
 
 
 /* ->name('home')->middleware('auth') */

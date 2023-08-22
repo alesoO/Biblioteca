@@ -393,6 +393,19 @@ return [
             'icon_color' => 'red',
             'url'        => 'table_book',
         ],
+
+            ['header' => 'VÍNCULOS'],
+            [
+                'text'       => 'Empréstimo',
+                'icon' => 'fas fa-book-open ',
+                'url'        => 'table_book_student',
+            ],
+        [
+            'can'        => 'auth',
+            'text'       => 'Devolução',
+            'icon'       => 'fas fa-book',
+            'url'        => 'table_book_student',
+        ],
     ],
 
     /*

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Book_Student;
 use App\Models\Student;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 
 class BookStudentController extends Controller
@@ -16,4 +17,6 @@ class BookStudentController extends Controller
         $books = Book::all();
         return view('table_book_student', compact('bookStudents', 'students', 'books'));
     }
+
+
 }
