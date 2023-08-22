@@ -109,10 +109,10 @@
                                                 </div>
                                             </td>
                                             <td>
-    <button type="button" class="btn btn-danger btn-sm px-3 deleteIcon" data-publisher-id="{{ $publisher->id }}">
-        <i class="fas fa-times"></i>
-    </button>
-</td>
+                                                <button type="button" class="btn btn-danger btn-sm px-3 deleteIcon" data-publisher-id="{{ $publisher->id }}">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -158,7 +158,7 @@
             $("#add_publisher_btn").text('Adicionando...');
             $.ajax({
                 url: '{{ route('create_publisher') }}',
-                method: 'post', 
+                method: 'post',
                 data: fd,
                 cache: false,
                 contentType: false,
@@ -190,37 +190,37 @@
             let id = $(this).attr('data-publisher-id');
             let csrf = '{{ csrf_token() }}';
 
-        Swal.fire({
-            title: 'Você tem certeza?',
-            text: 'Você não será capaz de reverter isso!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sim, deletar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    url: '{{ route('delete_publisher', ['publisher' => $publisher]) }}',
-                    method: 'delete',
-                    data: {
-                    id: id,
-                    _token: csrf
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        Swal.fire(
-                            'Deletado!',
-                            'A ficha do seu funcionário foi deletada',
-                            'success'
+            Swal.fire({
+                title: 'Você tem certeza?',
+                text: 'Você não será capaz de reverter isso!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, deletar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '{{ route('delete_publisher', ['publisher' => $publisher]) }}',
+                        method: 'delete',
+                        data: {
+                            id: id,
+                            _token: csrf
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            Swal.fire(
+                                'Deletado!',
+                                'A ficha do seu funcionário foi deletada',
+                                'success'
                             ).then(() => {
-                            location.reload(); 
-                        });
-                    }
-                });
-            }
+                                location.reload();
+                            });
+                        }
+                    });
+                }
+            });
         });
     });
-});
 </script>
 @stop
