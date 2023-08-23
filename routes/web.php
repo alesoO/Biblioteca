@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+/* Rotas de Relatorios */
+Route::get('/generate_report_book', [ReportController::class, 'generateReportBooks'])->name('report.book');
+
 require __DIR__ . '/auth.php';
 
 Auth::routes();
