@@ -6,8 +6,10 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,7 @@ Route::get('/table_book', [BookController::class, 'index']);
 Route::post('/register_book', [BookController::class, 'create']);
 Route::post('/update_book/{book}', [BookController::class, 'update'])->name('book.update');
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('book.destroy');
+Route::get('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF'])->name('book.report');
 
 /* Rotas das editoras */
 Route::get('/table_publisher', [PublisherController::class, 'index']);

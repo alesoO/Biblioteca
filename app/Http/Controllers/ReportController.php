@@ -2,34 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Book;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 
 class ReportController extends Controller
 {
-    public function generateReportBooks()
+    public function generateBooksPDF()
     {
-        $data = Book::all();
-        $pdf = $this->generateTablePDF($data);
-
-        return $pdf->stream('table.pdf');
-    }
-
-    private function generateTablePDF($data)
-    {
-        $options = new Options();
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isRemoteEnabled', true);
-
-        $dompdf = new Dompdf($options);
-        $html = view('pdf.table', compact('data'))->render();
-
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape');
-
-        $dompdf->render();
-
-        return $dompdf;
+        $books = Book::all(); // Obtém os dados dos autores do banco de dados
+    
+        $pdf = PDF::loadView('pdf.books_report', compact('books'));
+    
+        return $pdf->stream('BooksPDF.pdf');
     }
 }
+

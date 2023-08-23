@@ -269,8 +269,164 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <div class="paginate">
+                                    <div class="paginate" style="min-width: 270px">
                                         {{ $books->links() }}
+                                    </div>
+                                    {{-- <a class="btn btn-secondary py-2" href="{{ route('book.report') }}">GeneratePDF</a> --}}
+                                </div>
+
+                                <div class="mt-5 accordion accordion-flush card shadow-2-strong shadow bg-body-tertiary rounded"
+                                    id="formReport">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                Gerar Relatorio
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse"
+                                            data-bs-parent="#formReport">
+                                            <div class="accordion-body">
+                                                <div class="container mt-4">
+                                                    <div class="">
+                                                        <h4 class="mb-3">Pesquisa Relatorio</h4>
+                                                        <form class="" action="" method="POST">
+                                                            <div class="row g-3">
+                                                                <div class="col-12">
+                                                                    <label for="firstName" class="form-label">Livro</label>
+                                                                    <select class="form-select form-control" name="book"
+                                                                        id="book">
+                                                                        <option disabled selected hidden>Escolha...</option>
+                                                                        @foreach ($books as $book)
+                                                                            <option value="{{ $book->id }}">
+                                                                                {{ $book->title }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <label for="lastName" class="form-label">Autor</label>
+                                                                    <select class="form-select form-control" name="book"
+                                                                        id="book">
+                                                                        <option disabled selected hidden>Escolha...</option>
+                                                                        @foreach ($authors as $author)
+                                                                            <option value="{{ $author->id }}">
+                                                                                {{ $author->name }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <label for="username" class="form-label">Editora</label>
+                                                                    <select class="form-select form-control" name="book"
+                                                                        id="book">
+                                                                        <option disabled selected hidden>Escolha...</option>
+                                                                        @foreach ($publishers as $publisher)
+                                                                            <option value="{{ $publisher->id }}">
+                                                                                {{ $publisher->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-4">
+                                                                    <label for="email" class="form-label">Paginas</label>
+                                                                    <input type="number" class="form-control" id="email"
+                                                                        placeholder="ex:123" data-mask="0000">
+                                                                </div>
+
+                                                                <div class="col-4">
+                                                                    <label for="address" class="form-label">Data de Cadastro
+                                                                        (De:)</label>
+                                                                    <input type="date" class="form-control"
+                                                                        id="address">
+                                                                </div>
+
+                                                                <div class="col-4">
+                                                                    <label for="address2" class="form-label">Data de Cadastro
+                                                                        (Até:)</label>
+                                                                    <input type="date" class="form-control"
+                                                                        id="address2">
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <label for="address" class="form-label">Data de
+                                                                        Atualização
+                                                                        (De:)</label>
+                                                                    <input type="date" class="form-control"
+                                                                        id="address">
+                                                                </div>
+
+                                                                <div class="col-6">
+                                                                    <label for="address2" class="form-label">Data de
+                                                                        Atualização
+                                                                        (Até:)</label>
+                                                                    <input type="date" class="form-control"
+                                                                        id="address2">
+                                                                </div>
+
+                                                                <hr class="mt-5 p-0">
+
+                                                                <h4 class="mb-3">Dados do Relatorio</h4>
+
+                                                                <div class="my-3 justify-content-between align-items-center">
+                                                                    <div class="d-flex justify-content-center">
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Titulo dos
+                                                                                Livros</label>
+                                                                        </div>
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Autores</label>
+                                                                        </div>
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Editoras</label>
+                                                                        </div>
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Numero de
+                                                                                Paginas</label>
+                                                                        </div>
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Data de Cadastro
+                                                                                do
+                                                                                Livro</label>
+                                                                        </div>
+                                                                        <div class="form-check form-switch form-check-inline">
+                                                                            <input class="form-check-input mt-1"
+                                                                                type="checkbox" role="switch"
+                                                                                id="flexSwitchCheckDefault">
+                                                                            <label class="form-check-label"
+                                                                                for="flexSwitchCheckDefault">Data de edição
+                                                                                Cadastro do Livro</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="w-75 mx-auto btn btn-primary btn-lg mb-2"
+                                                                    type="submit">Gerar Relatorio</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
