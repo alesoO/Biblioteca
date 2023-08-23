@@ -98,6 +98,8 @@ Route::post('/edit', [UserController::class, 'edit'])->name('edit');
 
 Route::post('/register_book', [BookRegistrationController::class])->name('register_book');
 
+Route::post('/register_book_student', [BookStudentController::class, 'create']);
+Route::post('/delete_book_student/{book_student}', [BookStudentController::class, 'destroy'])->name('delete_book_student');
 
 
 

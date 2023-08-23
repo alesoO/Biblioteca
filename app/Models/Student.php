@@ -14,4 +14,11 @@ class Student extends Model
         'school_year',
         'registration'
     ];
+
+    public function book(){
+        return $this->belongsToMany(Book::class, 'book_students', 'student_id', 'book_id')
+            ->withPivot('loan_date', 'delivery_date')
+            ->withTimestamps();
+    }
+    
 }
