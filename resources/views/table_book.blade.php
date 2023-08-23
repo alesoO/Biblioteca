@@ -331,8 +331,8 @@
                                                                 </div>
 
                                                                 <div class="col-4">
-                                                                    <label for="pages" class="form-label">Paginas</label>
-                                                                    <input type="number" class="form-control" name="pages" id="pages"
+                                                                    <label for="page" class="form-label">Paginas</label>
+                                                                    <input type="number" class="form-control" name="page" id="page"
                                                                         placeholder="ex:123" data-mask="0000">
                                                                 </div>
 
@@ -396,9 +396,9 @@
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="pages">
+                                                                                id="page_check">
                                                                             <label class="form-check-label"
-                                                                                for="pages">Numero de
+                                                                                for="page_check">Numero de
                                                                                 Paginas</label>
                                                                         </div>
                                                                         <div class="form-check form-switch form-check-inline">
