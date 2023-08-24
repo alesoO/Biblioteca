@@ -41,7 +41,7 @@
     @endauth
 
     @auth
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <h2 class=" pb-2 border-bottom">Administração</h2>
         <div class="mt-4 row">
             <div class="col-lg-3 col-6">
@@ -52,8 +52,8 @@
                         <p>Autores</p>
                     </div>
                     <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
-                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
+                            <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z" />
                         </svg>
                     </div>
                     <a href="/table_author" class="small-box-footer">Ver Mais... <i class="fas fa-arrow-circle-right"></i></a>
@@ -68,9 +68,9 @@
                         <p>Estudantes</p>
                     </div>
                     <div class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-person-vcard" viewBox="0 0 16 16">
-                            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z" />
-                            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
+                            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z" />
+                            <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z" />
                         </svg>
                     </div>
                     <a href="/table_student" class="small-box-footer">Ver Mais... <i class="fas fa-arrow-circle-right"></i></a>
@@ -111,81 +111,120 @@
                     <a href="/table_book" class="small-box-footer">Ver Mais... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
         </div>
-    </div>
-    @endauth
+    </div> <br>
 
-    <div class="container  px-4 py-5" id="Sobre" style="margin-top: 10em;">
-        <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block mx-lg-auto img-fluid rounded-lg" alt="grupo-de-criancas-com-professora-caminhando-no-corredor-da-escola" width="350" height="300" loading="lazy">
-            </div>
-            <div class="col-lg-6">
-                <h2 class="display-5 title lh-1 mb-3 ">Sobre nós
-                </h2>
-                <p class="lead text-justify">Nossa plataforma é um tesouro virtual de conhecimento, cuidadosamente curado para oferecer a você uma experiência de biblioteca como nenhuma outra. Imagine ter acesso a um vasto e organizado repositório de informações sobre livros, autores e obras literárias, tudo a um clique de distância. Aqui, a riqueza do conhecimento literário encontra a conveniência de um banco de dados moderno.</p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn btn-warning btn-lg px-4 me-md-2">Saiba mais</button>
-                </div>
-            </div>
-        </div>
-    </div><br><br>
-
-    <div class="container px-4 py-5" id="Recursos">
-        <h2 class=" pb-2 border-bottom">Recursos</h2>
-        <div class="row g-5 pt-5 row-cols-1 row-cols-lg-3">
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-</svg>
-                </div>
-                <h3 class="fs-2 ">Catálogo Extenso </h3>
-                <p>Explore nosso catálogo abrangente de livros, contendo uma ampla gama de gêneros, desde clássicos atemporais até as mais recentes publicações. Encontre informações detalhadas sobre cada obra, incluindo sinopses envolventes e análises críticas.</p>
-            </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
-                        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                        <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                    </svg>
-                </div>
-                <h3 class="fs-2 ">Perfis de Autores</h3>
-                <p>Mergulhe na vida e obra dos grandes autores. Nossa plataforma oferece perfis detalhados que traçam a jornada criativa de cada escritor, destacando suas contribuições para a literatura.</p>
-            </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+    <div class="container mt-5">
+        <h2 class=" pb-2 border-bottom">Procedimentos</h2>
+        <div class="mt-4 row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-pink">
+                    <div class="inner">
+                        <h3>150</h3>
+                        <p>Empréstimos</p>
+                    </div>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
                         </svg>
                     </div>
+                    <a href="/table_book_student" class="small-box-footer">Ver Mais... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <h3 class="fs-2 ">Recursos de Pesquisa Avançados</h3>
-                <p>Acesse nosso mecanismo de pesquisa avançado para localizar rapidamente livros específicos, autores renomados ou tópicos de interesse literário. Otimize sua pesquisa com filtros e categorias intuitivas.</p>
             </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
-                        <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
-                        <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
-                    </svg>
+
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-purple">
+                    <div class="inner">
+                        <h3>53</h3>
+                        <p>Histórico de relatórios</p>
+                    </div>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="70" fill="currentColor" class="bi bi-clock-history" viewBox="0 0 16 16">
+                            <path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z" />
+                            <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z" />
+                            <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+                        </svg>
+                    </div>
+                    <a href="/table_history_book_student" class="small-box-footer">Ver Mais... <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-                <h3 class="fs-2 ">Análises Críticas</h3>
-                <p>Profundamente apreciado pelos acadêmicos, nossas análises críticas oferecem insights valiosos sobre as nuances das obras literárias. Aprofunde-se na interpretação de temas, simbolismo e contexto histórico.</p>
-            </div>
-            <div class="feature col">
-                <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
-                        <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z" />
-                    </svg>
-                </div>
-                <h3 class="fs-2">Ferramentas de Estudo</h3>
-                <p>Estudantes, pesquisadores e entusiastas da literatura apreciarão nossas ferramentas de estudo integradas. Crie anotações pessoais, marque trechos importantes e organize suas leituras de maneira eficaz.</p>
             </div>
         </div>
-    </div>
+
+        @endauth
+
+        <div class="container  px-4 py-5" id="Sobre" style="margin-top: 10em;">
+            <div class="row flex-lg-row-reverse align-items-center g-5 pt-5">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block mx-lg-auto img-fluid rounded-lg" alt="grupo-de-criancas-com-professora-caminhando-no-corredor-da-escola" width="350" height="300" loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-5 title lh-1 mb-3 ">Sobre nós
+                    </h2>
+                    <p class="lead text-justify">Nossa plataforma é um tesouro virtual de conhecimento, cuidadosamente curado para oferecer a você uma experiência de biblioteca como nenhuma outra. Imagine ter acesso a um vasto e organizado repositório de informações sobre livros, autores e obras literárias, tudo a um clique de distância. Aqui, a riqueza do conhecimento literário encontra a conveniência de um banco de dados moderno.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button type="button" class="btn btn btn-warning btn-lg px-4 me-md-2">Saiba mais</button>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+
+        <div class="container px-4 py-5" id="Recursos">
+            <h2 class=" pb-2 border-bottom">Recursos</h2>
+            <div class="row g-5 pt-5 row-cols-1 row-cols-lg-3">
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
+                            <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                        </svg>
+                    </div>
+                    <h3 class="fs-2 ">Catálogo Extenso </h3>
+                    <p>Explore nosso catálogo abrangente de livros, contendo uma ampla gama de gêneros, desde clássicos atemporais até as mais recentes publicações. Encontre informações detalhadas sobre cada obra, incluindo sinopses envolventes e análises críticas.</p>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                            <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="fs-2 ">Perfis de Autores</h3>
+                    <p>Mergulhe na vida e obra dos grandes autores. Nossa plataforma oferece perfis detalhados que traçam a jornada criativa de cada escritor, destacando suas contribuições para a literatura.</p>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="fs-2 ">Recursos de Pesquisa Avançados</h3>
+                    <p>Acesse nosso mecanismo de pesquisa avançado para localizar rapidamente livros específicos, autores renomados ou tópicos de interesse literário. Otimize sua pesquisa com filtros e categorias intuitivas.</p>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z" />
+                            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
+                        </svg>
+                    </div>
+                    <h3 class="fs-2 ">Análises Críticas</h3>
+                    <p>Profundamente apreciado pelos acadêmicos, nossas análises críticas oferecem insights valiosos sobre as nuances das obras literárias. Aprofunde-se na interpretação de temas, simbolismo e contexto histórico.</p>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+                            <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z" />
+                        </svg>
+                    </div>
+                    <h3 class="fs-2">Ferramentas de Estudo</h3>
+                    <p>Estudantes, pesquisadores e entusiastas da literatura apreciarão nossas ferramentas de estudo integradas. Crie anotações pessoais, marque trechos importantes e organize suas leituras de maneira eficaz.</p>
+                </div>
+            </div>
+        </div>
 </main>
 @stop
 
