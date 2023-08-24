@@ -32,14 +32,14 @@
                             </button>
                             <div class="card-body">
                                 <div class="mb-md-5 mt-md-1 pb-5">
-                                    <h2 class="modal-title mb-4 ms-3">Novo Empréstimo</h2>
+                                    <h2 class="modal-title mb-2 ms-3">Novo Empréstimo</h2>
                                     <p class="text-white-50 mb-5 ms-3 me-3 text-justify">Por favor, preencha os dados do estudante com atenção para efetuar o empréstimo do livro. Garanta que todas as informações estejam corretas, a fim de evitar quaisquer inconvenientes durante o processo de retirada.</p>
-
+                                    <br>
                                     <form action="/register_book_student" method="POST">
                                         @csrf
 
                                         <div class="row mb-3">
-                                            <div class="col">
+                                            <div class="col ms-3">
                                                 <div class="form-outline form-white mb-4">
                                                     <label class="form-label d-block text-start">Selecionar Estudante:</label>
                                                     <select class="form-select form-control form-control-lg" name="student_id" id="student_id">
@@ -51,7 +51,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col">
+                                            <div class="col me-3">
                                                 <div class="form-outline form-white mb-4">
                                                     <label class="form-label d-block text-start">Selecionar Livro:</label>
                                                     <select class="form-select form-control form-control-lg" name="book_id" id="book_id">
@@ -66,11 +66,11 @@
 
 
                                         <div class="row mb-5 mt-4">
-                                            <div class="col">
+                                            <div class="col ms-3">
                                                 <label for="date_loan"><b>Data de Empréstimo:</b></label>
                                                 <input type="date" name="date_loan" id="date_loan" class="form-control" required>
                                             </div>
-                                            <div class="col">
+                                            <div class="col me-3">
                                                 <label for="date_loan"><b>Previsão de entrega:</b></label>
                                                 <input type="date" name="date_loan" id="date_loan" class="form-control" required>
                                             </div>
