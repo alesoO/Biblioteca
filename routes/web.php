@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryBookStudentController;
 use App\Models\Student;
 use App\Models\Author;
 use App\Models\Book;
@@ -62,8 +63,6 @@ Route::post('/edit_book/{book}', [BookController::class, 'update'])->name('edit_
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('delete_book');
 
 
-Route::get('/table_book_student', [BookStudentController::class, 'index']);
-
 
 
 Route::middleware('auth')->group(function () {
@@ -98,9 +97,12 @@ Route::post('/edit', [UserController::class, 'edit'])->name('edit');
 
 Route::post('/register_book', [BookRegistrationController::class])->name('register_book');
 
+Route::get('/table_book_student', [BookStudentController::class, 'index']);
 Route::post('/register_book_student', [BookStudentController::class, 'create']);
 Route::post('/delete_book_student/{book_student}', [BookStudentController::class, 'destroy'])->name('delete_book_student');
 Route::post('/edit_book_student/{book_student}', [BookStudentController::class  , 'update'])->name('edit_book_student');
+
+Route::get('/table_history_book_student', [HistoryBookStudentController::class, 'index']);
 
 
 /* ->name('home')->middleware('auth') */

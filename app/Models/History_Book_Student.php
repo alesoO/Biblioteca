@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book_Student extends Model
+class History_Book_Student extends Model
 {
     use HasFactory;
     protected $fillable = [
         'student_id',
-        'book_id',
-        'delivery_date',
-        'loan_date'
+        'book_id'     ,
+        'school_year' ,
+        'registration',
+        'loan_date',
+        'delivery_date'
     ];
 
     public function student()
@@ -23,4 +25,4 @@ class Book_Student extends Model
     {
         return $this->belongsTo(Book::class, 'book_id');
     }
-}
+    }

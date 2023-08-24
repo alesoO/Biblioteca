@@ -18,9 +18,7 @@
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg> Add Empréstimo
                 </button>
-
             </div>
-
             <div class="modal fade" id="formNewLoanLabel" tabindex="-1" aria-labelledby="formNewLoanLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -32,7 +30,7 @@
                             </button>
                             <div class="card-body">
                                 <div class="mb-md-5 mt-md-1 pb-5">
-                                    <h2 class="modal-title mb-2 ms-3">Novo Empréstimo</h2>
+                                    <h2 class="modal-title mb-2 ms-3 ">Novo Empréstimo</h2>
                                     <p class="text-white-50 mb-5 ms-3 me-3 text-justify">Por favor, preencha os dados do estudante com atenção para efetuar o empréstimo do livro. Garanta que todas as informações estejam corretas, a fim de evitar quaisquer inconvenientes durante o processo de retirada.</p>
                                     <br>
                                     <form action="/register_book_student" method="POST">
@@ -63,8 +61,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <div class="row mb-5 mt-4">
                                             <div class="col ms-3">
                                                 <label for="date_loan"><b>Data de Empréstimo:</b></label>
@@ -82,65 +78,6 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Devolução de Livros -->
-            <div class="modal fade" id="formNewDelivery" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewDelivery" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="card bg-dark text-white m-0">
-                            <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                </svg></button>
-                            <div class="card-body p-4">
-                                <form action="/delete_book_student" method="POST">
-                                    @csrf
-                                    <div class="mb-md-5 mt-md-1 pb-5">
-                                        <h2 class="modal-title">Nova Devolução</h2>
-                                        <p class="text-white-50 mb-5">Por favor insira os dados do estudante que fará a devolução!</p>
-
-                                        <form action="/register_book_student" method="POST">
-                                            @csrf
-
-                                            <div class="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Estudante:</label>
-                                                <select class="form-select form-control form-control-lg" name="student_id" id="student_id">
-                                                    <option disabled selected hidden>Nome do estudante...</option>
-                                                    @foreach ($students as $student)
-                                                    <option value="{{ $student->id }}">{{ $student->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div cl ass="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Livro:</label>
-                                                <select class="form-select form-control form-control-lg" name="book_id" id="book_id">
-                                                    <option disabled selected hidden>Nome do livro...</option>
-                                                    @foreach ($book_students as $book_student)
-                                                    <option value="{{ $book_student->book->id }}">{{ $book_student->book->title }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-
-                                            <div class="row mb-5 mt-4">
-                                                <div class="col">
-                                                    <label for="date_loan"><b>Data de Entrega :</b></label>
-                                                    <input type="date" name="date_loan" id="date_loan" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit">Dar baixa</button>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -181,51 +118,63 @@
                                                 </svg>
                                             </button>
                                             <div class="modal fade" id="formEditBookStudent{{ $book_student->id }}" tabindex="-1" aria-labelledby="formEditBookStudentLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="card bg-dark text-white m-0">
-                                                            <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                            <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                                                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                                                </svg></button>
+                                                                </svg>
+                                                            </button>
                                                             <div class="card-body">
-                                                                <form action="{{ route('edit_book_student', ['book_student' => $book_student]) }}" method="POST">
-                                                                    @csrf
-                                                                    <div class="mb-md-5 mt-md-1 pb-5">
-                                                                        <h2 class="modal-title">Nova Devolução</h2>
-                                                                        <p class="text-white-50 mb-5">Por favor insira os dados do estudante que fará a devolução!</p>
-                                                                        <div class="form-outline form-white mb-4">
-                                                                            <label class="form-label d-block text-start">Estudante:</label>
-                                                                            <select class="form-select form-control form-control-lg" name="student_id" id="student_id">
-                                                                                <option disabled selected hidden>Nome do estudante...</option>
-                                                                                @foreach ($students as $student)
-                                                                                <option value="{{ $student->id }}">{{ $student->name }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
+                                                                <div class="mb-md-5 mt-md-1 pb-5">
+                                                                    <h2 class="modal-title mb-2 ms-3 text-left">Editar empréstimo</h2>
+                                                                    <p class="text-white-50 mb-5 ms-3 me-3 text-justify">Por favor, preencha os dados do estudante com atenção para efetuar o empréstimo do livro. Garanta que todas as informações estejam corretas, a fim de evitar quaisquer inconvenientes durante o processo de retirada.</p>
+                                                                    <br>
+                                                                    <form action="{{ route('edit_book_student', ['book_student' => $book_student]) }}" method="POST">
+                                                                        @csrf
 
-                                                                        <div cl ass="form-outline form-white mb-4">
-                                                                            <label class="form-label d-block text-start">Livro:</label>
-                                                                            <select class="form-select form-control form-control-lg" name="book_id" id="book_id">
-                                                                                <option disabled selected hidden>Nome do livro...</option>
-                                                                                @foreach ($books as $book)
-                                                                                <option value="{{ $book->id }}">{{ $book->title }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
+                                                                        <div class="row mb-3">
+                                                                            <div class="col ms-3">
+                                                                                <div class="form-outline form-white mb-4">
+                                                                                    <label class="form-label d-block text-start">Selecionar Estudante:</label>
+                                                                                    <select class="form-select form-control form-control-lg" name="student_id" id="student_id">
+                                                                                        <option disabled selected hidden>Escolha o estudante...</option>
+                                                                                        @foreach ($students as $student)
+                                                                                        <option value="{{ $student->id }}">{{ $student->name }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
 
-                                                                        <div class="row mb-5 mt-4">
-                                                                            <div class="col">
-                                                                                <label for="date_loan"><b>Data de Retirada:</b></label>
-                                                                                <input type="date" name="date_loan" id="date_loan" class="form-control" required>
+                                                                            <div class="col me-3">
+                                                                                <div class="form-outline form-white mb-4">
+                                                                                    <label class="form-label d-block text-start">Selecionar Livro:</label>
+                                                                                    <select class="form-select form-control form-control-lg" name="book_id" id="book_id">
+                                                                                        <option disabled selected hidden>Escolha o livro...</option>
+                                                                                        @foreach ($books as $book)
+                                                                                        <option value="{{ $book->id }}">{{ $book->title }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
-
+                                                                        <div class="row mb-5 mt-4 text-left">
+                                                                            <div class="col ms-3">
+                                                                                <label for="date_loan"><b>Data de Empréstimo:</b></label>
+                                                                                <input type="date" name="date_loan" id="date_loan" class="form-control">
+                                                                            </div>
+                                                                            <div class="col me-3">
+                                                                                <label for="date_loan"><b>Previsão de entrega:</b></label>
+                                                                                <input type="date" name="date_loan" id="date_loan" class="form-control">
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="modal-footer">
-                                                                            <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                                                            <button class="btn btn-primary" type="submit">Finalizar</button>
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                         </div>
-                                                                    </div>
-                                                                </form>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -241,29 +190,36 @@
                                             <div class="modal fade" id="warning{{ $book_student->id }}" tabindex="-1" aria-labelledby="warningLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
-                                                        <div class="modal-header bg-success text-white titulos">
-                                                            <h1 class="modal-title fs-5 fw-bold" id="warningLabel">Realizar baixa no registro selecionado!</h1>
+                                                        <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
+                                                            <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">
+                                                                <h3>Finalizar registro selecionado!</h3>
+                                                            </h3>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            Por gentileza, certifique-se de avaliar se o(a) estudante "{{$book_student->student->name}}" fez a devolução do livro em condições satisfatórias e se ele(a) está em conformidade com as diretrizes da biblioteca.
+                                                        <div class="modal-body mt-4 ms-3 me-3">
+                                                            <h4 class="mb-2">Devolução do livro de <b>{{$book_student->student->name}}</b></h4>
+                                                            Por gentileza, certifique-se de avaliar se o(a) estudante <b>{{$book_student->student->name}}</b> com a matrícula <b>{{$book_student->student->registration}}</b>, fez a devolução do livro em condições satisfatórias e se ele(a) está em conformidade com as diretrizes da biblioteca.
                                                             <br><br>
-                                                            dsdsds
-
+                                                            <div class="row mt-3">
+                                                                <div class="col mt-1">
+                                                                    <label for="date_loan mt-4"><b>Data na qual o estudante entregou o livro:</b></label>
+                                                                </div>
+                                                                <div class="col mb-4">
+                                                                    <input type="date" name="date_loan" id="date_loan" class="form-control bg-secondary" required>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                             <form action="{{ route('delete_book_student', ['book_student' => $book_student->id]) }}" method="POST">
                                                                 @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn btn-success">Sim</button>
+                                                                <button type="submit" class="btn btn-success">Concluir</button>
                                                             </form>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -274,18 +230,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="paginate">
-            </div>
         </div>
     </div>
 </div>
-</div>
-</div>
 
-</div>
-
-</div>
 
 @else
 <div class="px-4 py-5 text-center">
