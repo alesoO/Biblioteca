@@ -100,7 +100,7 @@ Route::post('/register_book', [BookRegistrationController::class])->name('regist
 
 Route::post('/register_book_student', [BookStudentController::class, 'create']);
 Route::post('/delete_book_student/{book_student}', [BookStudentController::class, 'destroy'])->name('delete_book_student');
-
+Route::post('/edit_book_student/{book_student}', [BookStudentController::class  , 'update'])->name('edit_book_student');
 
 
 /* ->name('home')->middleware('auth') */

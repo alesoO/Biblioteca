@@ -21,7 +21,6 @@ class BookController extends Controller
         $publishers = Publisher::all();
         return view('table_book', compact('books', 'authors', 'publishers'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

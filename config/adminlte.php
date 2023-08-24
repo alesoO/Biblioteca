@@ -397,7 +397,12 @@ return [
             ['header' => 'VÍNCULOS'],
             [
                 'text'       => 'Empréstimo',
-                'icon' => 'fas fa-book-open ',
+                'icon'       => 'fas fa-book-open ',
+                'url'        => 'table_book_student',
+            ],
+            [
+                'text'       => 'Histórico',
+                'icon'       => 'fas fa-book-open ',
                 'url'        => 'table_book_student',
             ],
         [

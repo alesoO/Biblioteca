@@ -90,7 +90,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h3 class="d-flex align-items-center mb-5 mt-2">Alterar senha</h3>
+                                    <h3 class="d-flex align-items-center mb-5 mt-2">Alterar a senha</h3>
                                     <form action="{{ route('edit') }}" method="POST">
                                         @csrf
                                         <div class="row mb-3">
