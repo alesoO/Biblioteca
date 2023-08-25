@@ -291,25 +291,26 @@
                                                 <div class="container mt-4">
                                                     <div class="">
                                                         <h4 class="mb-3">Pesquisa Relatorio</h4>
-                                                        <form class="" action="" method="POST">
+                                                        <form action="/generate_Book_PDF" method="POST">
+                                                            @csrf
                                                             <div class="row g-3">
                                                                 <div class="col-12">
                                                                     <label for="title" class="form-label">Livro</label>
-                                                                    <select class="form-select form-control" name="title"
-                                                                        id="title">
-                                                                        <option disabled selected hidden>Escolha...</option>
-                                                                        @foreach ($books as $book)
-                                                                            <option value="{{ $book->id }}">
+                                                                    <select class="form-select form-control select-search" name="title"
+                                                                        id="title_select">
+                                                                        <option value="all" selected>Todos...</option>
+                                                                        @foreach ($books_select as $book)
+                                                                            <option value="{{ $book->title }}">
                                                                                 {{ $book->title }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
 
                                                                 <div class="col-sm-6">
-                                                                    <label for="author" class="form-label">Autor</label>
-                                                                    <select class="form-select form-control" name="author"
-                                                                        id="author">
-                                                                        <option disabled selected hidden>Escolha...</option>
+                                                                    <label for="author_id" class="form-label">Autor</label>
+                                                                    <select class="form-select form-control select-search" name="author_id"
+                                                                        id="author_id_select">
+                                                                        <option value="all" selected>Todos...</option>
                                                                         @foreach ($authors as $author)
                                                                             <option value="{{ $author->id }}">
                                                                                 {{ $author->name }}
@@ -319,10 +320,10 @@
                                                                 </div>
 
                                                                 <div class="col-sm-6">
-                                                                    <label for="publisher" class="form-label">Editora</label>
-                                                                    <select class="form-select form-control" name="publisher"
-                                                                        id="publisher">
-                                                                        <option disabled selected hidden>Escolha...</option>
+                                                                    <label for="publisher_id" class="form-label">Editora</label>
+                                                                    <select class="form-select form-control select-search" name="publisher_id"
+                                                                        id="publisher_id_select">
+                                                                        <option value="all" selected>Todos...</option>
                                                                         @foreach ($publishers as $publisher)
                                                                             <option value="{{ $publisher->id }}">
                                                                                 {{ $publisher->name }}</option>
@@ -332,37 +333,39 @@
 
                                                                 <div class="col-4">
                                                                     <label for="page" class="form-label">Paginas</label>
-                                                                    <input type="number" class="form-control" name="page" id="page"
-                                                                        placeholder="ex:123" data-mask="0000">
+                                                                    <input type="number" class="form-control" name="page"
+                                                                        id="page" placeholder="ex:123" data-mask="0000">
                                                                 </div>
 
                                                                 <div class="col-4">
-                                                                    <label for="created_at_min" class="form-label">Data de Cadastro
+                                                                    <label for="created_at_min" class="form-label">Data de
+                                                                        Cadastro
                                                                         (De:)</label>
-                                                                    <input type="date" name="created_at_min" class="form-control"
-                                                                        id="created_at_min">
+                                                                    <input type="date" name="created_at_min"
+                                                                        class="form-control" id="created_at_min">
                                                                 </div>
 
                                                                 <div class="col-4">
-                                                                    <label for="created_at_max" class="form-label">Data de Cadastro
+                                                                    <label for="created_at_max" class="form-label">Data de
+                                                                        Cadastro
                                                                         (Até:)</label>
-                                                                    <input type="date" class="form-control" name="created_at_max"
-                                                                        id="created_at_max">
+                                                                    <input type="date" class="form-control"
+                                                                        name="created_at_max" id="created_at_max">
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <label for="updated_at_min" class="form-label">Data de
                                                                         Atualização
                                                                         (De:)</label>
-                                                                    <input type="date" class="form-control" name = "updated_at_min"
-                                                                        id="updated_at_min">
+                                                                    <input type="date" class="form-control"
+                                                                        name="updated_at_min" id="updated_at_min">
                                                                 </div>
 
                                                                 <div class="col-6">
                                                                     <label for="updated_at_max" class="form-label">Data de
                                                                         Atualização
                                                                         (Até:)</label>
-                                                                    <input type="date" class="form-control" name="updated_at_max"
-                                                                        id="updated_at_max">
+                                                                    <input type="date" class="form-control"
+                                                                        name="updated_at_max" id="updated_at_max">
                                                                 </div>
 
                                                                 <hr class="mt-5 p-0">
@@ -374,7 +377,7 @@
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="title_check">
+                                                                                id="title_check" name="title_check">
                                                                             <label class="form-check-label"
                                                                                 for="title_check">Titulo dos
                                                                                 Livros</label>
@@ -382,21 +385,21 @@
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="author_check">
+                                                                                id="author_check" name="author_check">
                                                                             <label class="form-check-label"
                                                                                 for="author_check">Autores</label>
                                                                         </div>
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="publisher_check">
+                                                                                id="publisher_check" name="publisher_check">
                                                                             <label class="form-check-label"
                                                                                 for="publisher_check">Editoras</label>
                                                                         </div>
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="page_check">
+                                                                                id="page_check" name="page_check">
                                                                             <label class="form-check-label"
                                                                                 for="page_check">Numero de
                                                                                 Paginas</label>
@@ -404,7 +407,7 @@
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="created_at_check">
+                                                                                id="created_at_check" name="created_at_check">
                                                                             <label class="form-check-label"
                                                                                 for="created_at_check">Data de Cadastro
                                                                                 do
@@ -413,7 +416,7 @@
                                                                         <div class="form-check form-switch form-check-inline">
                                                                             <input class="form-check-input mt-1"
                                                                                 type="checkbox" role="switch"
-                                                                                id="updated_at_check">
+                                                                                id="updated_at_check" name="updated_at_check">
                                                                             <label class="form-check-label"
                                                                                 for="updated_at_check">Data de edição
                                                                                 Cadastro do Livro</label>

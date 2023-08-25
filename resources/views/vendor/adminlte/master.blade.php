@@ -54,7 +54,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    <script src="{{ asset('js/script.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- Favicon --}}
@@ -101,9 +102,7 @@
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-        integrity="sha512-0LR9fsES8tUqLDoQlyZZvCmkN92P8SDNbsn3doWeh7kE1RAojYvVEK1Pj6E54Mq9DXDLdc1Fef5hLJoE9NkUdg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
 
     {{-- Extra Configured Plugins Scripts --}}
@@ -118,6 +117,8 @@
         @endif
     @endif
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 

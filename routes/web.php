@@ -9,7 +9,6 @@ use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +43,11 @@ Route::get('/table_book', [BookController::class, 'index']);
 Route::post('/register_book', [BookController::class, 'create']);
 Route::post('/update_book/{book}', [BookController::class, 'update'])->name('book.update');
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('book.destroy');
-Route::get('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF'])->name('book.report');
+
+/* Rotas de Relatorios */
+Route::post('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF']);
+Route::get('/get_Updated_Options_Books', [ReportController::class, 'getUpdatedOptionsBooks']);
+Route::get('/get_Updated_Options_Authors', [ReportController::class, 'getUpdatedOptionsAuthors']);
 
 /* Rotas das editoras */
 Route::get('/table_publisher', [PublisherController::class, 'index']);
@@ -57,9 +60,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-/* Rotas de Relatorios */
-Route::get('/generate_report_book', [ReportController::class, 'generateReportBooks'])->name('report.book');
 
 require __DIR__ . '/auth.php';
 
