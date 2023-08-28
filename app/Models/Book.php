@@ -28,4 +28,6 @@ class Book extends Model
             ->withPivot('loan_date', 'delivery_date')
             ->withTimestamps();
     }
+
+    
 }

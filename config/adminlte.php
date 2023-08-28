@@ -342,7 +342,6 @@ return [
                     'url'  => '#',
                 ],
                 [
-                    'can'     => 'auth',
                     'text'    => 'level_one',
                     'url'     => '#',
                     'submenu' => [
@@ -372,7 +371,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'ADMINISTRAÇÃO'],
+            ['header' => 'ADMINISTRAÇÃO',],
         [
             'text'       => 'Autores',
             'icon_color' => 'blue',
@@ -394,23 +393,18 @@ return [
             'url'        => 'table_book',
         ],
 
-            ['header' => 'VÍNCULOS'],
+            ['header' => 'ATIVIDADES'],
             [
                 'text'       => 'Empréstimo',
                 'icon'       => 'fas fa-book-open ',
                 'url'        => 'table_book_student',
             ],
             [
-                'text'       => 'Histórico',
-                'icon'       => 'fas fa-book-open ',
-                'url'        => 'table_book_student',
+                'text'       => 'Histórico de empréstimos',
+                'icon'       => 'fas fa-history ', 
+                'url'        => 'table_history_book_student',
             ],
-        [
-            'can'        => 'auth',
-            'text'       => 'Devolução',
-            'icon'       => 'fas fa-book',
-            'url'        => 'table_book_student',
-        ],
+
     ],
 
     /*

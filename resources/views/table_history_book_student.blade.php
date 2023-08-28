@@ -15,7 +15,7 @@
                 <div class="card shadow-2-strong">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-borderless mb-1">
+                            <table class="table table-borderless mb-1" id="completedLoanTable">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="text-center">ALUNOS</th>
@@ -24,8 +24,22 @@
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
                                         <th scope="col" class="text-center">DEVOLUÇÃO</th>
+                                        <th scope="col" class="d-flex justify-content-center">ENTREGA</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    @foreach ($history_book_students as $history)
+                                    <tr>
+                                        <td>{{ $history->student->name }}</td>
+                                        <td>{{ $history->book->title }}</td>
+                                        <td class="text-center">{{ $history->student->school_year }}° ano</td>
+                                        <td class="text-center">{{ $history->student->registration }}</td>
+                                        <td class="text-center">{{ $history->loan_date }}</td>
+                                        <td class="text-center">{{ $history->delivery_date }}</td>
+                                        <td class="text-center">{{ $history->return_date }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                             <div class="paginate">
                             </div>

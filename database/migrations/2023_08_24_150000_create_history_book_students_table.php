@@ -9,22 +9,19 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('history_book_students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained();
-            $table->foreignId('book_id')->constrained();
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('book_id');
             $table->date('loan_date');
-            $table->date('delivery_date')-> nullable();
+            $table->date('delivery_date');
+            $table->date('return_date');
             $table->timestamps();
+    
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('book_id')->references('id')->on('books');
         });
-    }
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('history_book_students');
     }
 };

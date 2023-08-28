@@ -1,3 +1,5 @@
+/* show password code */
+
 document.addEventListener('DOMContentLoaded', function() {
     const showPasswordBtns = document.querySelectorAll('.showPasswordBtn');
 
@@ -17,5 +19,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    const loanTable = document.getElementById("loanTable");
+    const completedLoanTable = document.getElementById("completedLoanTable");
+    const completeButtons = document.querySelectorAll(".complete-button");
+
+    completeButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const row = this.closest("tr");
+            const clone = row.cloneNode(true);
+            
+            completedLoanTable.querySelector("tbody").appendChild(clone);
+            row.remove();
+        });
+    });
+});
 
 

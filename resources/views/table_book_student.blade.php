@@ -63,12 +63,12 @@
                                         </div>
                                         <div class="row mb-5 mt-4">
                                             <div class="col ms-3">
-                                                <label for="date_loan"><b>Data de Empréstimo:</b></label>
-                                                <input type="date" name="date_loan" id="date_loan" class="form-control" required>
+                                                <label for="loan_date"><b>Data de Empréstimo:</b></label>
+                                                <input type="date" name="loan_date" id="loan_date" class="form-control" required>
                                             </div>
                                             <div class="col me-3">
-                                                <label for="date_loan"><b>Previsão de entrega:</b></label>
-                                                <input type="date" name="date_loan" id="date_loan" class="form-control" required>
+                                                <label for="date_delivery"><b>Previsão de entrega:</b></label>
+                                                <input type="date" name="delivery_date" id="date_delivery" class="form-control" required>
                                             </div>
                                         </div>
 
@@ -97,6 +97,7 @@
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
+                                        <th scope="col" class="text-center">DEVOLUÇÃO</th>
                                         <th scope="col" class="text-center">EDIÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">DEVOLUÇÃO</th>
                                     </tr>
@@ -109,6 +110,7 @@
                                         <td class="text-center">{{ $book_student->student->school_year }}° ano</td>
                                         <td class="text-center">{{ $book_student->student->registration }}</td>
                                         <td class="text-center">{{ $book_student->loan_date }}</td>
+                                        <td class="text-center">{{ $book_student->delivery_date }}</td>
 
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBookStudent{{ $book_student->id }}">
@@ -139,7 +141,7 @@
                                                                                 <div class="form-outline form-white mb-4">
                                                                                     <label class="form-label d-block text-start">Selecionar Estudante:</label>
                                                                                     <select class="form-select form-control form-control-lg" name="student_id" id="student_id">
-                                                                                        <option disabled selected hidden>Escolha o estudante...</option>
+                                                                                        <option selected value="{{ $student->id }}"> {{$book_student->student->name}}</option>
                                                                                         @foreach ($students as $student)
                                                                                         <option value="{{ $student->id }}">{{ $student->name }}</option>
                                                                                         @endforeach
@@ -151,7 +153,7 @@
                                                                                 <div class="form-outline form-white mb-4">
                                                                                     <label class="form-label d-block text-start">Selecionar Livro:</label>
                                                                                     <select class="form-select form-control form-control-lg" name="book_id" id="book_id">
-                                                                                        <option disabled selected hidden>Escolha o livro...</option>
+                                                                                        <option selected value="{{ $book->id }}">{{$book_student->book->title}}</option>
                                                                                         @foreach ($books as $book)
                                                                                         <option value="{{ $book->id }}">{{ $book->title }}</option>
                                                                                         @endforeach
@@ -161,12 +163,12 @@
                                                                         </div>
                                                                         <div class="row mb-5 mt-4 text-left">
                                                                             <div class="col ms-3">
-                                                                                <label for="date_loan"><b>Data de Empréstimo:</b></label>
-                                                                                <input type="date" name="date_loan" id="date_loan" class="form-control">
+                                                                                <label for="loan_date"><b>Data de Empréstimo:</b></label>
+                                                                                <input type="date" name="loan_date" id="loan_date" class="form-control" value="{{ $book_student->loan_date }}">
                                                                             </div>
                                                                             <div class="col me-3">
-                                                                                <label for="date_loan"><b>Previsão de entrega:</b></label>
-                                                                                <input type="date" name="date_loan" id="date_loan" class="form-control">
+                                                                                <label for="loan_date"><b>Previsão de entrega:</b></label>
+                                                                                <input type="date" name="delivery_date" id="delivery_date" class="form-control" value="{{ $book_student->delivery_date }}">
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -190,35 +192,51 @@
                                             <div class="modal fade" id="warning{{ $book_student->id }}" tabindex="-1" aria-labelledby="warningLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
-                                                        <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
-                                                            <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">
-                                                                <h3>Finalizar registro selecionado!</h3>
-                                                            </h3>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body mt-4 ms-3 me-3">
-                                                            <h4 class="mb-2">Devolução do livro de <b>{{$book_student->student->name}}</b></h4>
-                                                            Por gentileza, certifique-se de avaliar se o(a) estudante <b>{{$book_student->student->name}}</b> com a matrícula <b>{{$book_student->student->registration}}</b>, fez a devolução do livro em condições satisfatórias e se ele(a) está em conformidade com as diretrizes da biblioteca.
-                                                            <br><br>
-                                                            <div class="row mt-3">
-                                                                <div class="col mt-1">
-                                                                    <label for="date_loan mt-4"><b>Data na qual o estudante entregou o livro:</b></label>
-                                                                </div>
-                                                                <div class="col mb-4">
-                                                                    <input type="date" name="date_loan" id="date_loan" class="form-control bg-secondary" required>
+                                                        <form action="{{route('register_history_book_student')}}" method="POST">
+                                                            <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
+                                                                <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">
+                                                                    <h3>Finalizar registro selecionado!</h3>
+                                                                </h3>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body mt-4 ms-3 me-3">
+                                                                <h4 class="mb-2">Devolução do livro de <b>{{$book_student->student->name}}</b></h4>
+                                                                Por gentileza, certifique-se de avaliar se o(a) estudante <b>{{$book_student->student->name}}</b> com a matrícula <b>{{$book_student->student->registration}}</b>, fez a devolução do livro em condições satisfatórias e se ele(a) está em conformidade com as diretrizes da biblioteca.
+                                                                <br><br>
+                                                                <div class="row mt-3">
+                                                                    <div class="col mt-1">
+                                                                        <label for="loan_date"><b>Confirmar data de empréstimo:</b></label>
+                                                                        <label for="delivery_date" class="mt-4"><b>Confirmar data de devolução:</b></label><br>
+                                                                        <label for="return_date" class="mt-4"><b>Data em que o livro está sendo entregue:</b></label>
+                                                                    </div>
+                                                                    <div class="col mb-4">
+                                                                        <input type="hidden" value="{{$book_student->student->id}}" name="student_id" id="student_id">
+                                                                        <input type="hidden" value="{{$book_student->book->id}}" name="book_id" id="book_id">
+                                                                        <input type="date" value="{{$book_student->loan_date}}" class="form-control" name="loan_date" id="loan_date" readonly>
+                                                                        <input type="date" value="{{$book_student->delivery_date }}" class="form-control  mt-3" name="delivery_date" id="delivery_date" readonly>
+                                                                        <input type="date" name="return_date" id="return_date" class="form-control mt-3" required>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                                            <form action="{{ route('delete_book_student', ['book_student' => $book_student->id]) }}" method="POST">
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-success">Concluir</button>
-                                                            </form>
-                                                        </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('delete_book_student', ['book_student' => $book_student]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm px-3">
+                                                    <i class="fas fa-times">
+                                                    </i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

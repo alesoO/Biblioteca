@@ -7,22 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class History_Book_Student extends Model
 {
-    use HasFactory;
     protected $fillable = [
-        'student_id',
-        'book_id'     ,
-        'school_year' ,
-        'registration',
+        'student_id', 
+        'book_id', 
         'loan_date',
-        'delivery_date'
+        'delivery_date',
+        'return_date'
     ];
 
     public function student()
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class);
     }
+
     public function book()
     {
-        return $this->belongsTo(Book::class, 'book_id');
+        return $this->belongsTo(Book::class);
     }
-    }
+}
+            

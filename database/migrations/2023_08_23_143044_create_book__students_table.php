@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('student_id')->constrained();
             $table->foreignId('book_id')->constrained();
             $table->date('loan_date');
-            $table->date('delivery_date')-> nullable();
+            $table->date('delivery_date');
             $table->timestamps();
         });
     }
