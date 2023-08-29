@@ -9,8 +9,8 @@
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
             <div class="d-flex justify-content-between my-4">
-                <h2 class="">Editora</h2>
-                <button type="button" class="btn btn-secondary btn-sm mb-4 py-2" data-bs-toggle="modal" data-bs-target="#formNewPublisher">
+                <h2 class=""><b>Editora</b></h2>
+                <button type="button" class="btn btn-primary btn-sm mb-4 py-2" data-bs-toggle="modal" data-bs-target="#formNewPublisher">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
                         <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -49,26 +49,26 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                    <div class="card shadow-2-strong">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
                                             <th scope="col">NOME</th>
-                                            <th scope="col">CRIADO EM</th>
-                                            <th scope="col">EDITADO EM</th>
-                                            <th scope="col">EDITAR</th>
-                                            <th scope="col">EXCLUIR</th>
+                                            <th scope="col" class="text-center">CRIADO EM</th>
+                                            <th scope="col" class="text-center">EDITADO EM</th>
+                                            <th scope="col" class="text-center">EDITAR</th>
+                                            <th scope="col" class="text-center">EXCLUIR</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($publishers as $publisher)
                                         <tr>
                                             <td>{{ $publisher->name }}</td>
-                                            <td>{{ $publisher->created_at->format('d/m/Y H:i:s') }}</td>
-                                            <td>{{ $publisher->updated_at->format('d/m/Y H:i:s') }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $publisher->created_at->format('d/m/Y H:i:s') }}</td>
+                                            <td class="text-center">{{ $publisher->updated_at->format('d/m/Y H:i:s') }}</td>
+                                            <td class="text-center">
                                                 <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditPublisher{{ $publisher->id }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -108,7 +108,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="text-center">
                                                 <button type="button" class="btn btn-danger btn-sm px-3 deleteIcon" data-publisher-id="{{ $publisher->id }}">
                                                     <i class="fas fa-times"></i>
                                                 </button>
