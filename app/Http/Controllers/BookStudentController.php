@@ -78,13 +78,13 @@ class BookStudentController extends Controller
         return redirect('/table_book_student');
     }
 
-    public function destroy(Book_Student $book_Student)
+    public function destroy(Book_Student $book_student)
     {
         try {
-            $book_Student->delete();
+            $book_student->delete();
         } catch (\Exception $e) {
             $errormsg = $e->getMessage();
-            echo $errormsg;
+            return response()->json(['error' => $errormsg], 500);
         }
         return redirect('/table_book_student')->with('info', 'Registro deletado com sucesso !');
     }

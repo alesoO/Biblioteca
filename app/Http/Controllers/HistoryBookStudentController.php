@@ -46,18 +46,19 @@ class HistoryBookStudentController extends Controller
         ];
 
         try {
+            DB::beginTransaction();
             History_Book_Student::create($fieldValues);
             $BookStudentController = new BookStudentController();
+        
             $BookStudentController->destroy($book_student);
-
             DB::commit();
 
+            
             return redirect()->route('table_history_book_student')
                 ->with('success', 'Registro criado com sucesso e destruído pelo método destroy.');
         } catch (\Exception $e) {
             $errormsg = $e->getMessage();
             echo $errormsg;
         }
-
     }
 }

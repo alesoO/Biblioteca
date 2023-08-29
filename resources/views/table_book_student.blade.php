@@ -192,7 +192,9 @@
                                             <div class="modal fade" id="warning{{ $book_student->id }}" tabindex="-1" aria-labelledby="warningLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
-                                                        <form action="{{route('register_history_book_student')}}" method="POST">
+
+                                                    
+                                                        <form action="{{route('register_history_book_student', ['book_student' => $book_student]) }}" method="POST">
                                                             <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
                                                                 <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">
                                                                     <h3>Finalizar registro selecionado!</h3>
@@ -224,12 +226,14 @@
                                                                 <button type="submit" class="btn btn-success">Concluir</button>
                                                             </div>
                                                         </form>
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <form action="{{ route('delete_book_student', ['book_student' => $book_student]) }}" method="post">
+                                            <form action="{{ route('delete_book_student', ['book_student' => $book_student]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm px-3">
