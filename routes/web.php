@@ -105,7 +105,7 @@ Route::post('/edit_book_student/{book_student}', [BookStudentController::class, 
 
 
 Route::get('/table_history_book_student', [HistoryBookStudentController::class, 'index'])->name('table_history_book_student');
-Route::post('/register_history_book_student', [HistoryBookStudentController::class, 'create'])->name('register_history_book_student');
+Route::post('/register_history_book_student/{book_student}', [HistoryBookStudentController::class, 'create'])->name('register_history_book_student');
 
 
 
