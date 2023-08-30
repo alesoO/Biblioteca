@@ -24,12 +24,8 @@ class ReportController extends Controller
 
     public function generateBooksPDF(Request $request)
     {
-        $fieldValues = ([
-            /*'created_at_min' => $request->input('created_at_min'),
-            'created_at_max' => $request->input('created_at_max'),
-            'updated_at_min' => $request->input('updated_at_min'),
-            'updated_at_max' => $request->input('updated_at_max') */
-        ]);
+        $DatesValues = ([]);
+        $fieldValues = ([]);
 
         if ($request->input('title') !== 'all') {
             $fieldValues['title'] = $request->input('title');
@@ -40,8 +36,20 @@ class ReportController extends Controller
         if ($request->input('publisher_id') !== 'all') {
             $fieldValues['publisher_id'] = $request->input('publisher_id');
         }
-        if(!empty($request->input('pages'))){
-            $fieldValues['page'] = $request->input('pages');
+        if (!empty($request->input('pages'))) {
+            $maxPage = $request->input('pages');
+        }
+        if (!empty($request->input('created_at_min'))) {
+            $DatesValues['created_at_min'] = $request->input('created_at_min');
+        }
+        if (!empty($request->input('created_at_max'))) {
+            $DatesValues['created_at_max'] = $request->input('created_at_max');
+        }
+        if (!empty($request->input('updated_at_min'))) {
+            $DatesValues['updated_at_min'] = $request->input('updated_at_min');
+        }
+        if (!empty($request->input('updated_at_max'))) {
+            $DatesValues['updated_at_max'] = $request->input('updated_at_max');
         }
 
         $checkValues = ([
@@ -55,13 +63,33 @@ class ReportController extends Controller
 
         $query = Book::query();
 
+        if (!empty($maxPage)) {
+            $query->where('page', '<=', $maxPage); // Filtra por número de páginas
+        }
+        if (!empty($DatesValues['created_at_min'])) {
+            $query->whereDate('created_at', '>=', $DatesValues['created_at_min']);
+        }
+        if (!empty($DatesValues['created_at_max'])) {
+            $query->whereDate('created_at', '<=', $DatesValues['created_at_max']);
+        }
+        if (!empty($DatesValues['updated_at_min'])) {
+            $query->whereDate('updated_at', '>=', $DatesValues['updated_at_min']);
+        }
+        if (!empty($DatesValues['updated_at_max'])) {
+            $query->whereDate('updated_at', '<=', $DatesValues['updated_at_max']);
+        }
+
         foreach ($fieldValues as $field => $value) {
             if (!empty($value)) {
                 $query->where($field, $value);
             }
         }
 
-        if (array_key_exists('title', $fieldValues) || array_key_exists('author_id', $fieldValues) || array_key_exists('publisher_id', $fieldValues) || !empty($maxPage)) {
+        if (
+            array_key_exists('title', $fieldValues) || array_key_exists('author_id', $fieldValues) || array_key_exists('publisher_id', $fieldValues)
+            || !empty($maxPage) ||  array_key_exists('created_at_min', $DatesValues) ||  array_key_exists('created_at_max', $DatesValues)
+            || array_key_exists('updated_at_min', $DatesValues) ||  array_key_exists('updated_at_max', $DatesValues)
+        ) {
             $filteredData = $query->get();
         } else {
             $filteredData = Book::all();
@@ -79,6 +107,13 @@ class ReportController extends Controller
         $publisherId = $request->input('publisher_id');
         $maxPage = $request->input('pages');
 
+        $DatesValues = ([
+            'created_at_min' => $request->input('created_at_min'),
+            'created_at_max' => $request->input('created_at_max'),
+            'updated_at_min' => $request->input('updated_at_min'),
+            'updated_at_max' => $request->input('updated_at_max')
+        ]);
+
         $query = Book::query();
 
         if ($title !== 'all') {
@@ -94,6 +129,18 @@ class ReportController extends Controller
         }
         if (!empty($maxPage)) {
             $query->where('page', '<=', $maxPage);
+        }
+        if (!empty($DatesValues['created_at_min'])) {
+            $query->whereDate('created_at', '>=', $DatesValues['created_at_min']);
+        }
+        if (!empty($DatesValues['created_at_max'])) {
+            $query->whereDate('created_at', '<=', $DatesValues['created_at_max']);
+        }
+        if (!empty($DatesValues['updated_at_min'])) {
+            $query->whereDate('updated_at', '>=', $DatesValues['updated_at_min']);
+        }
+        if (!empty($DatesValues['updated_at_max'])) {
+            $query->whereDate('updated_at', '<=', $DatesValues['updated_at_max']);
         }
 
         Paginator::currentPathResolver(function () {
