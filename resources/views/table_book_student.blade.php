@@ -232,16 +232,6 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <form action="{{ route('delete_book_student', ['book_student' => $book_student]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm px-3">
-                                                    <i class="fas fa-times">
-                                                    </i>
-                                                </button>
-                                            </form>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
