@@ -6,7 +6,7 @@
 
     <div class="mask d-flex align-items-center h-100">
         <div class="container">
-            <div class="d-flex justify-content-between my-4">
+            <div class="d-flex justify-content-between mt-4">
                 <h2 class="">Gerar Relatorios</h2>
             </div>
             <div class="row justify-content-center">
@@ -66,9 +66,9 @@
                                                     </div>
 
                                                     <div class="col-4">
-                                                        <label for="page" class="form-label">Paginas(Até:)</label>
-                                                        <input type="number" class="form-control" value="" name="page"
-                                                            id="page" placeholder="Ate: nº paginas" data-mask="0000">
+                                                        <label for="pages" class="form-label">Paginas(Até:)</label>
+                                                        <input type="number" class="form-control" value="" name="pages"
+                                                            id="pages" placeholder="Ate: nº paginas" data-mask="0000">
                                                     </div>
 
                                                     <div class="col-4">
@@ -165,7 +165,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                        <div class="card shadow-2-strong">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <div

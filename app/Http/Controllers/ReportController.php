@@ -24,9 +24,7 @@ class ReportController extends Controller
 
     public function generateBooksPDF(Request $request)
     {
-
         $fieldValues = ([
-            'page' => $request->input('page'),
             /*'created_at_min' => $request->input('created_at_min'),
             'created_at_max' => $request->input('created_at_max'),
             'updated_at_min' => $request->input('updated_at_min'),
@@ -41,6 +39,9 @@ class ReportController extends Controller
         }
         if ($request->input('publisher_id') !== 'all') {
             $fieldValues['publisher_id'] = $request->input('publisher_id');
+        }
+        if(!empty($request->input('pages'))){
+            $fieldValues['page'] = $request->input('pages');
         }
 
         $checkValues = ([
@@ -60,7 +61,7 @@ class ReportController extends Controller
             }
         }
 
-        if (array_key_exists('title', $fieldValues) || array_key_exists('author_id', $fieldValues) || array_key_exists('publisher_id', $fieldValues)) {
+        if (array_key_exists('title', $fieldValues) || array_key_exists('author_id', $fieldValues) || array_key_exists('publisher_id', $fieldValues) || !empty($maxPage)) {
             $filteredData = $query->get();
         } else {
             $filteredData = Book::all();
@@ -76,6 +77,7 @@ class ReportController extends Controller
         $title = $request->input('title');
         $authorId = $request->input('author_id');
         $publisherId = $request->input('publisher_id');
+        $maxPage = $request->input('pages');
 
         $query = Book::query();
 
@@ -90,12 +92,19 @@ class ReportController extends Controller
         if ($publisherId !== 'all') {
             $query->where('publisher_id', $publisherId);
         }
+        if (!empty($maxPage)) {
+            $query->where('page', '<=', $maxPage);
+        }
 
         Paginator::currentPathResolver(function () {
             return url('/book_Report');
         });
-
-        $results = $query->paginate(20);
+        try {
+            $results = $query->paginate(20);
+            $errormsg = Null;
+        } catch (\Exception $e) {
+            $errormsg = $e->getMessage();
+        }
 
         $formattedResults = [];
         foreach ($results as $result) {
@@ -112,7 +121,8 @@ class ReportController extends Controller
 
         return response()->json([
             'data' => $formattedResults,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'error' => $errormsg
         ]);
     }
     public function getUpdatedOptionsBooks(Request $request)

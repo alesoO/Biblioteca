@@ -41,8 +41,6 @@ $(document).ready(function () {
             success: function (response) {
                 $('#reportTable thead').empty();
 
-                console.log("Success! Response data:", response);
-
                 var row = '<tr>';
 
                 if (document.getElementById('title_check').checked) {
