@@ -45,9 +45,10 @@ Route::post('/update_book/{book}', [BookController::class, 'update'])->name('boo
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('book.destroy');
 
 /* Rotas de Relatorios */
+Route::get('/book_Report', [ReportController::class, 'index']);
 Route::post('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF']);
+Route::get('/generate_Book_Table', [ReportController::class, 'generateBookTable']);
 Route::get('/get_Updated_Options_Books', [ReportController::class, 'getUpdatedOptionsBooks']);
-Route::get('/get_Updated_Options_Authors', [ReportController::class, 'getUpdatedOptionsAuthors']);
 
 /* Rotas das editoras */
 Route::get('/table_publisher', [PublisherController::class, 'index']);
