@@ -16,33 +16,28 @@
                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg> Add Editora
                 </button>
-                <div class="modal fade" id="formNewPublisher" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewPublisherLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal fade" id="formNewPublisher" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewauthorLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="card bg-dark text-white m-0">
-                                <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                    </svg></button>
-                                <div class="card-body p-4">
-                                    <form action="publisher.create" id="add_publisher_form" method="POST">
-                                        @csrf
-                                        <div class="mb-md-5 mt-md-4 pb-5">
-                                            <h2 class="modal-title">Nova Editora</h2>
-                                            <p class="text-white-50 mb-5">Por favor insira os dados da editora!</p> <br>
-
-                                            <div class="form-outline form-white mb-4">
-                                                <label class="form-label">Nome:</label>
-                                                <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da editora">
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit" id="add_publisher_btn">Cadastrar</button>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="formNewauthorLabel">
+                                    <h3><b>Nova Editora</b></h3>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form action="publisher.create" method="POST" class="p-4 bg-light" id="add_publisher_form">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label">Nome:</label>
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Digite o nome da editora">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@
                                 <form action="/register_book" method="POST">
                                     @csrf
                                     <div class="mb-md-5 mt-md-4 pb-5">
-                                        <h2 class="modal-title">Novo Livro</h2>
+                                        <h2 class="modal-title"><b>Novo Livro</b></h2>
                                         <p class="text-white-50 mb-5">Por favor insira os dados do Livro!
                                         </p> <br>
 

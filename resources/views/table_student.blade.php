@@ -16,54 +16,48 @@
                     </svg> Add Estudante
                 </button>
                 <div class="modal fade" id="formNewStudent" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="formNewStudentLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="card bg-dark text-white m-0">
-                                <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                    </svg>
-                                </button>
-                                <div class="card-body p-4">
-                                    <form action="/register_student" method="POST" class="form-container">
-                                        @csrf
-                                        <div class="mb-md-5 ">
-                                            <h2 class="modal-title">Novo Estudante</h2>
-                                            <p class="text-white-50 mb-5">Por favor insira os dados do Estudante!</p>
-
-                                            <div class="form-group">
-                                                <label class="form-label d-block text-start" for="name">Nome:</label>
-                                                <input type="text" id="name" name="name" class="form-control form-control-lg">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label d-block text-start" for="school_year">Ano Escolar:</label>
-                                                <select class="form-select form-control form-control-lg" name="school_year" id="school_year">
-                                                    <option disabled selected hidden>Escolha...</option>
-                                                    <option value="1">1º Ano</option>
-                                                    <option value="2">2º Ano</option>
-                                                    <option value="3">3º Ano</option>
-                                                    <option value="4">4º Ano</option>
-                                                    <option value="5">5º Ano</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label d-block text-start" for="registration">Matricula:</label>
-                                                <input type="number" id="registration" name="registration" class="form-control form-control-lg" data-mask="000000">
-                                            </div>
-
-                                            <div class="mt-5">
-                                                <button class="btn btn-primary" type="submit">Cadastrar</button>
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="formNewStudentLabel">
+                                    <h3><b>Novo Estudante</b></h3>
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form action="/register_student" method="POST" class="p-4 bg-light form-container">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label class="form-label d-block text-start" for="name">Nome:</label>
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Insira o nome do estudante">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label d-block text-start" for="school_year">Ano Escolar:</label>
+                                        <select class="form-select form-control" name="school_year" id="school_year">
+                                            <option disabled selected hidden>Escolha...</option>
+                                            <option value="1">1º Ano</option>
+                                            <option value="2">2º Ano</option>
+                                            <option value="3">3º Ano</option>
+                                            <option value="4">4º Ano</option>
+                                            <option value="5">5º Ano</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label d-block text-start" for="registration">Matricula:</label>
+                                        <input type="number" id="registration" name="registration" class="form-control" data-mask="000000" placeholder="Insira a matrícula do estudante">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
 
             </div>
             <div class="row justify-content-center">
