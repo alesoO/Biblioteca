@@ -19,24 +19,25 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="card bg-dark text-white m-0">
-                                <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <button type="button" class="btn btn-dark ms-auto m-3 p-2" data-bs-dismiss="modal" aria-label="Close">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                                    </svg></button>
+                                    </svg>
+                                </button>
                                 <div class="card-body p-4">
-                                    <form action="/register_student" method="POST">
+                                    <form action="/register_student" method="POST" class="form-container">
                                         @csrf
-                                        <div class="mb-md-5 mt-md-4 pb-5">
+                                        <div class="mb-md-5 ">
                                             <h2 class="modal-title">Novo Estudante</h2>
-                                            <p class="text-white-50 mb-5">Por favor insira os dados do Estudante!
-                                            </p> <br>
+                                            <p class="text-white-50 mb-5">Por favor insira os dados do Estudante!</p>
 
-                                            <div class="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Nome:</label>
+                                            <div class="form-group">
+                                                <label class="form-label d-block text-start" for="name">Nome:</label>
                                                 <input type="text" id="name" name="name" class="form-control form-control-lg">
                                             </div>
 
-                                            <div class="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Ano Escolar:</label>
+                                            <div class="form-group">
+                                                <label class="form-label d-block text-start" for="school_year">Ano Escolar:</label>
                                                 <select class="form-select form-control form-control-lg" name="school_year" id="school_year">
                                                     <option disabled selected hidden>Escolha...</option>
                                                     <option value="1">1º Ano</option>
@@ -47,13 +48,12 @@
                                                 </select>
                                             </div>
 
-                                            <div class="form-outline form-white mb-4">
-                                                <label class="form-label d-block text-start">Matricula:</label>
+                                            <div class="form-group">
+                                                <label class="form-label d-block text-start" for="registration">Matricula:</label>
                                                 <input type="number" id="registration" name="registration" class="form-control form-control-lg" data-mask="000000">
                                             </div>
 
-
-                                            <div class="modal-footer">
+                                            <div class="mt-5">
                                                 <button class="btn btn-primary" type="submit">Cadastrar</button>
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                             </div>
@@ -64,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="row justify-content-center">
                 <div class="col-12">
