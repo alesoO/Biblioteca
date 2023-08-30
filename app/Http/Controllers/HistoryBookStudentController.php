@@ -16,7 +16,7 @@ class HistoryBookStudentController extends Controller
     public function index()
     {
         $students = Student::all()->sortBy('name');
-        $books = Book::all()->sortBy('name');
+        $books    = Book::all()->sortBy('name');
         $history_book_students = History_Book_Student::with('student', 'book')->get();
         return view('table_history_book_student', compact('students', 'books', 'history_book_students'));
     }
@@ -40,9 +40,9 @@ class HistoryBookStudentController extends Controller
         $fieldValues = [
             'student_id'        => $request->input('student_id'),
             'book_id'           => $request->input('book_id'),
-            'loan_date'         => Carbon::createFromFormat('Y-m-d', $request->input('loan_date')),
-            'delivery_date'     => Carbon::createFromFormat('Y-m-d', $request->input('delivery_date')),
-            'return_date'       => Carbon::createFromFormat('Y-m-d', $request->input('return_date'))
+            'loan_date'         => Carbon::createFromFormat('d-m-Y', $request->input('loan_date')),
+            'delivery_date'     => Carbon::createFromFormat('d-m-Y', $request->input('delivery_date')),
+            'return_date'       => Carbon::createFromFormat('d-m-Y', $request->input('return_date'))
         ];
 
         try {

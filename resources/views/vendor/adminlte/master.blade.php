@@ -105,7 +105,7 @@
         integrity="sha512-0LR9fsES8tUqLDoQlyZZvCmkN92P8SDNbsn3doWeh7kE1RAojYvVEK1Pj6E54Mq9DXDLdc1Fef5hLJoE9NkUdg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-mask-plugin@1.14.16/dist/jquery.mask.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     {{-- Extra Configured Plugins Scripts --}}
     @include('adminlte::plugins', ['type' => 'js'])
 

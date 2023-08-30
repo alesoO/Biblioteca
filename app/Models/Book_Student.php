@@ -15,6 +15,11 @@ class Book_Student extends Model
         'loan_date'
     ];
 
+    protected $dates = [
+        'loan_date',
+        'delivery_date',
+    ];
+    
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');

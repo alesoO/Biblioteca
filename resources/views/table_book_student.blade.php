@@ -64,7 +64,7 @@
                                         <div class="row mb-5 mt-4">
                                             <div class="col ms-3">
                                                 <label for="loan_date"><b>Data de Empréstimo:</b></label>
-                                                <input type="date" name="loan_date" id="loan_date" class="form-control" required>
+                                                <input type="date" name="loan_date" id="loan_date" class="form-control " required>
                                             </div>
                                             <div class="col me-3">
                                                 <label for="date_delivery"><b>Previsão de entrega:</b></label>
@@ -92,8 +92,8 @@
                             <table class="table table-borderless mb-1">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">ALUNOS</th>
-                                        <th scope="col" class="text-center">LIVROS EMPRESTADOS</th>
+                                        <th scope="col">ALUNOS</th>
+                                        <th scope="col">LIVROS EMPRESTADOS</th>
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
@@ -103,15 +103,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($book_students as $book_student)
                                     <tr>
                                         <td>{{ $book_student->student->name }}</td>
                                         <td>{{ $book_student->book->title }}</td>
                                         <td class="text-center">{{ $book_student->student->school_year }}° ano</td>
                                         <td class="text-center">{{ $book_student->student->registration }}</td>
-                                        <td class="text-center">{{ $book_student->loan_date }}</td>
-                                        <td class="text-center">{{ $book_student->delivery_date }}</td>
-
+                                        <td class="text-center">{{ $book_student->loan_date->format('d-m-Y') }}</td>
+                                        <td class="text-center">{{ $book_student->delivery_date->format('d-m-Y') }}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBookStudent{{ $book_student->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -164,13 +164,14 @@
                                                                         <div class="row mb-5 mt-4 text-left">
                                                                             <div class="col ms-3">
                                                                                 <label for="loan_date"><b>Data de Empréstimo:</b></label>
-                                                                                <input type="date" name="loan_date" id="loan_date" class="form-control" value="{{ $book_student->loan_date }}">
+                                                                                <input type="DateTime" name="loan_date" id="loan_date" class="form-control" value="{{ $book_student->loan_date }}">
                                                                             </div>
                                                                             <div class="col me-3">
                                                                                 <label for="loan_date"><b>Previsão de entrega:</b></label>
-                                                                                <input type="date" name="delivery_date" id="delivery_date" class="form-control" value="{{ $book_student->delivery_date }}">
+                                                                                <input type="DateTime" name="delivery_date" id="delivery_date" class="form-control" value="{{ $book_student->delivery_date }}">
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="modal-footer">
                                                                             <button class="btn btn-primary" type="submit">Finalizar</button>
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -193,7 +194,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
 
-                                                    
+
                                                         <form action="{{route('register_history_book_student', ['book_student' => $book_student]) }}" method="POST">
                                                             <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
                                                                 <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">

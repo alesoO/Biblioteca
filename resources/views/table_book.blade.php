@@ -7,8 +7,8 @@
 <div class="mask d-flex align-items-center h-100">
     <div class="container">
         <div class="d-flex justify-content-between my-4">
-            <h2 class="">Livros</h2>
-            <button type="button" class="btn btn-secondary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formNewBook">
+            <h2 class=""><b>Livros</b></h2>
+            <button type="button" class="btn btn-primary btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formNewBook">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
                     <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -25,7 +25,7 @@
                                 <form action="/register_book" method="POST">
                                     @csrf
                                     <div class="mb-md-5 mt-md-4 pb-5">
-                                        <h2 class="modal-title">Novo Livro</h2>
+                                        <h2 class="modal-title"><b>Novo Livro</b></h2>
                                         <p class="text-white-50 mb-5">Por favor insira os dados do Livro!
                                         </p> <br>
 
@@ -71,22 +71,22 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center px-5">
             <div class="col-12">
-                <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                <div class="card shadow-2-strong">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-borderless mb-0">
+                            <table class="table table-borderless mb-0 ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">TITULO DO LIVRO</th>
-                                        <th scope="col">AUTOR</th>
-                                        <th scope="col">EDITORA</th>
-                                        <th scope="col">NUMERO DE PAGINAS</th>
-                                        <th scope="col">CRIADO EM</th>
-                                        <th scope="col">EDITADO EM</th>
-                                        <th scope="col">EDITAR</th>
-                                        <th scope="col">EXCLUIR</th>
+                                        <th scope="col" class="text-center">TITULO DO LIVRO</th>
+                                        <th scope="col" class="text-center">AUTOR</th>
+                                        <th scope="col" class="text-center">EDITORA</th>
+                                        <th scope="col" class="text-center">N° PAGINAS</th>
+                                        <th scope="col" class="text-center">CRIADO EM</th>
+                                        <th scope="col" class="text-center">EDITADO EM</th>
+                                        <th scope="col" class="text-center">EDITAR</th>
+                                        <th scope="col" class="text-center">EXCLUIR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,10 +95,10 @@
                                         <td>{{ $book->title }}</td>
                                         <td>{{ $book->author->name }}</td>
                                         <td>{{ $book->publisher->name }}</td>
-                                        <td>{{ $book->page }}</td>
-                                        <td>{{ $book->created_at->format('d/m/Y H:i:s') }}</td>
-                                        <td>{{ $book->updated_at->format('d/m/Y H:i:s') }}</td>
-                                        <td>
+                                        <td class="text-center">{{ $book->page }}</td>
+                                        <td class="text-center">{{ $book->created_at->format('d/m/Y H:i:s') }}</td>
+                                        <td class="text-center">{{ $book->updated_at->format('d/m/Y H:i:s') }}</td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBook{{ $book->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -113,7 +113,7 @@
                                                                     <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                                                                 </svg></button>
                                                             <div class="card-body">
-                                                                <form action="{{ route('edit_book', ['book' => $book]) }}" method="POST">
+                                                                <form action="{{ route('book.update', ['book' => $book]) }}" method="POST">
                                                                     @csrf
                                                                     <div class="mb-md-5 mt-md-4 pb-5">
                                                                         <h2 class="modal-title">Novo Livro</h2>
@@ -172,7 +172,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-danger btn-sm px-3" data-bs-toggle="modal" data-bs-target="#warning{{ $book->id }}">
                                                 <i class="fas fa-times"></i>
                                             </button>
@@ -192,7 +192,7 @@
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
 
-                                                            <form action="{{ route('delete_book', ['book' => $book]) }}" method="POST">
+                                                            <form action="{{ route('book.destroy', ['book' => $book]) }}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn btn-danger">Sim</button>
