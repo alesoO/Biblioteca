@@ -50,9 +50,9 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                        <button class="btn btn-primary" type="submit">Cadastrar</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    </div>
+                                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-center">NOME DO ALUNO</th>
+                                            <th scope="col">NOME DO ALUNO</th>
                                             <th scope="col" class="text-center">ANO ESCOLAR</th>
                                             <th scope="col" class="text-center">MATRICULA</th>
                                             <th scope="col" class="text-center">CRIADO EM</th>
