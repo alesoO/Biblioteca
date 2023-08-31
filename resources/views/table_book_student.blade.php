@@ -234,12 +234,13 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="justify-content-center {{ Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast() ? 'text-danger' : '' }}">
+                                        <td class="text-center {{ Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isFuture() ? 'text-warning' : (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast() ? 'text-danger' : '') }}">
                                             {{ $book_student->formattedDeliveryDate }}
-                                            @if (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast())
-                                            <span class="badge bg-danger text-light">Em atraso</span>
+                                            @if (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isFuture())
+                                            <span class="badge bg-success text-dark">A entregar</span>
+                                            @elseif (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast())
+                                            <span class="badge bg-danger text-white">Atrasado</span>
                                             @endif
-
                                         </td>
                                     </tr>
                                     @endforeach

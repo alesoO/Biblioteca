@@ -38,7 +38,6 @@ class HistoryBookStudentController extends Controller
         }
 
 
-
         $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
         $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
         $return_date =   date('d-m-Y', strtotime($request->input('return_date')));
