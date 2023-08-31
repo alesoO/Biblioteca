@@ -6,7 +6,7 @@
 
     <main>
         <div class="px-4 py-5 text-center">
-            <div class="margin" style="margin-top: 8em;">
+            <div class="mt-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-book"
                     viewBox="0 0 16 16">
                     <path
