@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
@@ -21,8 +22,9 @@ use App\Http\Controllers\UserController;
 */
 /* Rotas de paginas */
 
-Route::view('/', 'home');
-Route::view('/home', 'home');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+
 Route::view('/profile_user', 'profile_user');
 
 /* Rotas dos Autores */
