@@ -37,16 +37,18 @@ class HistoryBookStudentController extends Controller
                 ->withInput();
         }
 
-        $loan_date     = Carbon::createFromFormat('Y-m-d', $request->input('loan_date'));
-        $delivery_date = Carbon::createFromFormat('Y-m-d', $request->input('delivery_date'));
-        $return_date   = Carbon::createFromFormat('Y-m-d', $request->input('return_date'));
+
+
+        $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
+        $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
+        $return_date =   date('d-m-Y', strtotime($request->input('return_date')));
 
         $fieldValues = [
-            'student_id'        => $request->input('student_id'),
-            'book_id'           => $request->input('book_id'),
-            'loan_date'         => $loan_date,
-            'delivery_date'     => $delivery_date,
-            'return_date'       => $return_date
+            'student_id'    => $request->input('student_id'),
+            'book_id'       => $request->input('book_id'),
+            'loan_date'     => $loan_date,
+            'delivery_date' => $delivery_date,
+            'return_date'   => $return_date
         ];
 
         try {

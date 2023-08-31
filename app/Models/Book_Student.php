@@ -30,6 +30,7 @@ class Book_Student extends Model
     }
 
     
+    
     public function setLoanDateAttribute($value)
     {
         $this->attributes['loan_date'] = \Carbon\Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
@@ -40,6 +41,8 @@ class Book_Student extends Model
         $this->attributes['delivery_date'] = \Carbon\Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
     }
 
+
+
     public function getLoanDateAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d-m-Y');
@@ -49,4 +52,10 @@ class Book_Student extends Model
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d-m-Y');
     }
+
+    public function isDeliveryLate()
+    {
+        return $this->delivery_date->isPast();
+    }
+    
 }

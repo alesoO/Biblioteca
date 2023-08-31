@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class History_Book_Student extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'student_id', 
         'book_id', 
@@ -15,16 +16,23 @@ class History_Book_Student extends Model
         'return_date'
     ];
 
+    protected $dates = [
+        'loan_date',
+        'delivery_date',
+    ];
+
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'student_id');
     }
-
     public function book()
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(Book::class, 'book_id');
     }
  
+
+
+
 
     public function setLoanDateAttribute($value)
     {
@@ -41,6 +49,9 @@ class History_Book_Student extends Model
         $this->attributes['return_date'] = \Carbon\Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
     }
 
+
+
+
     public function getLoanDateAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d-m-Y');
@@ -50,6 +61,7 @@ class History_Book_Student extends Model
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d-m-Y');
     }
+
     public function getReturnDateAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('Y-m-d', $value)->format('d-m-Y');

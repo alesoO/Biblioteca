@@ -100,6 +100,8 @@
                                         <th scope="col" class="text-center">DEVOLUÇÃO</th>
                                         <th scope="col" class="text-center">EDIÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">DEVOLUÇÃO</th>
+                                        <th scope="col" class="text-center">STATUS</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,8 +112,8 @@
                                         <td>{{ $book_student->book->title }}</td>
                                         <td class="text-center">{{ $book_student->student->school_year }}° ano</td>
                                         <td class="text-center">{{ $book_student->student->registration }}</td>
-                                        <td class="text-center">{{ $book_student->loan_date }}</td>
-                                        <td class="text-center">{{ $book_student->delivery_date }}</td>
+                                        <td class="text-center">{{ $book_student->loan_date}}</td>
+                                        <td class="text-center">{{ $book_student->delivery_date}}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBookStudent{{ $book_student->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -213,12 +215,13 @@
                                                                         <label for="return_date" class="mt-4"><b>Data em que o livro está sendo entregue:</b></label>
                                                                     </div>
                                                                     <div class="col mb-4">
-                                                                        <input type="hidden" value="{{$book_student->student->id}}" name="student_id" id="student_id">
-                                                                        <input type="hidden" value="{{$book_student->book->id}}" name="book_id" id="book_id">
-                                                                        <input type="date" value="{{$book_student->loan_date}}" class="form-control" name="loan_date" id="loan_date" readonly>
-                                                                        <input type="date" value="{{$book_student->delivery_date }}" class="form-control  mt-3" name="delivery_date" id="delivery_date" readonly>
+                                                                        <input type="hidden" value="{{ $book_student->student->id }}" name="student_id" id="student_id">
+                                                                        <input type="hidden" value="{{ $book_student->book->id }}" name="book_id" id="book_id">
+                                                                        <input type="text" value="{{ $book_student->loan_date }}" class="form-control" name="loan_date" id="loan_date" readonly>
+                                                                        <input type="text" value="{{ $book_student->delivery_date}}" class="form-control mt-3" name="delivery_date" id="delivery_date" readonly>
                                                                         <input type="date" name="return_date" id="return_date" class="form-control mt-3" required>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -227,11 +230,16 @@
                                                                 <button type="submit" class="btn btn-success">Concluir</button>
                                                             </div>
                                                         </form>
-
-
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="justify-content-center {{ Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast() ? 'text-danger' : '' }}">
+                                            {{ $book_student->formattedDeliveryDate }}
+                                            @if (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast())
+                                            <span class="badge bg-danger text-light">Em atraso</span>
+                                            @endif
+
                                         </td>
                                     </tr>
                                     @endforeach
