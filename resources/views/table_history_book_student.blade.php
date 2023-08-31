@@ -23,7 +23,7 @@
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
-                                        <th scope="col" class="text-center"> PRAZO DE DEVOLUÇÃO</th>
+                                        <th scope="col" class="text-center"> PRAZO DE  DEVOLUÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">ENTREGA</th>
                                     </tr>
                                 </thead>

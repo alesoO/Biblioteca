@@ -28,12 +28,13 @@ class BookStudentController extends Controller
             'delivery_date' => ['required']
         ]);
 
+
         if ($validator->fails()) {
             return redirect()->back()->with('error', 'Dados do post inválidos!');
         }
         
-        $loan_date     = Carbon::createFromFormat('Y-m-d', $request->input('loan_date'))->format('d-m-Y');
-        $delivery_date = Carbon::createFromFormat('Y-m-d', $request->input('delivery_date'))->format('d-m-Y');;
+        $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
+        $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
 
         $fieldValues = [    
             'student_id'     => $request->input('student_id'),
@@ -42,7 +43,6 @@ class BookStudentController extends Controller
             'delivery_date'  => $delivery_date
         ];
 
-        dd($fieldValues);
 
         try {
             Book_Student::create($fieldValues);

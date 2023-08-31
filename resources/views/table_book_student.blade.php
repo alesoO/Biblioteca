@@ -110,8 +110,8 @@
                                         <td>{{ $book_student->book->title }}</td>
                                         <td class="text-center">{{ $book_student->student->school_year }}° ano</td>
                                         <td class="text-center">{{ $book_student->student->registration }}</td>
-                                        <td class="text-center">{{ $book_student->loan_date->format('d-m-Y') }}</td>
-                                        <td class="text-center">{{ $book_student->delivery_date->format('d-m-Y') }}</td>
+                                        <td class="text-center">{{ $book_student->loan_date }}</td>
+                                        <td class="text-center">{{ $book_student->delivery_date }}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBookStudent{{ $book_student->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

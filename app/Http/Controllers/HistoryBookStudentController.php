@@ -37,12 +37,16 @@ class HistoryBookStudentController extends Controller
                 ->withInput();
         }
 
+        $loan_date     = Carbon::createFromFormat('Y-m-d', $request->input('loan_date'));
+        $delivery_date = Carbon::createFromFormat('Y-m-d', $request->input('delivery_date'));
+        $return_date   = Carbon::createFromFormat('Y-m-d', $request->input('return_date'));
+
         $fieldValues = [
             'student_id'        => $request->input('student_id'),
             'book_id'           => $request->input('book_id'),
-            'loan_date'         => Carbon::createFromFormat('d-m-Y', $request->input('loan_date')),
-            'delivery_date'     => Carbon::createFromFormat('d-m-Y', $request->input('delivery_date')),
-            'return_date'       => Carbon::createFromFormat('d-m-Y', $request->input('return_date'))
+            'loan_date'         => $loan_date,
+            'delivery_date'     => $delivery_date,
+            'return_date'       => $return_date
         ];
 
         try {
@@ -51,7 +55,6 @@ class HistoryBookStudentController extends Controller
             $BookStudentController = new BookStudentController();
             $BookStudentController->destroy($book_student);
             DB::commit();
-
 
             return redirect()->route('table_history_book_student')
                 ->with('success', 'Registro criado com sucesso e destruído pelo método destroy.');
