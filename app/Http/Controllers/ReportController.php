@@ -148,7 +148,6 @@ class ReportController extends Controller
         });
         try {
             $results = $query->paginate(20);
-            $errormsg = Null;
         } catch (\Exception $e) {
             $errormsg = $e->getMessage();
         }
@@ -169,52 +168,63 @@ class ReportController extends Controller
         return response()->json([
             'data' => $formattedResults,
             'pagination' => $pagination,
-            'error' => $errormsg
-        ]);
-    }
-    public function getUpdatedOptionsBooks(Request $request)
-    {
-        $bookTitle = $request->input('bookTitle');
-        if ($bookTitle === 'all') {
-            $authors = Author::all()->sortBy('name');
-            $publishers = Publisher::all()->sortBy('name');
-
-            $authors->prepend(['id' => 'all', 'name' => 'Todos...']);
-            $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
-        } else {
-            $book = Book::where('title', $bookTitle)->first();
-            $authors = Author::where('id', $book->author_id)->get();
-            $publishers = Publisher::where('id', $book->publisher_id)->get();
-        }
-        return response()->json([
-            'authorOptions' => $authors,
-            'publisherOptions' => $publishers,
         ]);
     }
 
     public function getUpdatedOptionsAuthors(Request $request)
     {
-        $authorId = $request->input('authorId');
+        $bookTitle = $request->input('bookTitle');
 
-        if ($authorId === 'all') {
-            $books = Book::all()->sortBy('title');
-            $publishers = Publisher::all()->sortBy('name');
-
-            $books->prepend(['title' => 'Todos...', 'id' => 'all']);
-            $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
+        if ($bookTitle === 'all') {
+            $authors = Author::all()->sortBy('name');
+            $authors->prepend(['id' => 'all', 'name' => 'Todos...']);
         } else {
-            $books = Book::where('author_id', $authorId)->get();
-
-            $bookIds = $books->pluck('id'); // Obtenha os IDs dos livros do autor
-            $publishers = Publisher::whereIn('id', function ($query) use ($bookIds) {
-                $query->select('publisher_id')
-                    ->from('books')
-                    ->whereIn('id', $bookIds);
-            })->get();
+            $books = Book::where('title', $bookTitle)->get();
+            $authorIds = $books->pluck('author_id'); // Obtenha os IDs dos autores dos livros
+            $authors = Author::whereIn('id', $authorIds)->get();
+            $authors->prepend(['id' => 'all', 'name' => 'Todos...']);
         }
 
         return response()->json([
-            'bookOptions' => $books,
+            'authorOptions' => $authors,
+        ]);
+    }
+
+    public function getUpdatedOptionsPublisher(Request $request)
+    {
+        $bookTitle = $request->input('bookTitle');
+
+        if ($bookTitle === 'all') {
+            $publishers = Publisher::all()->sortBy('name');
+            $publishers->prepend(['id' => 'all', 'name' => 'Todos...']);
+        } else {
+            $books = Book::where('title', $bookTitle)->get();
+            $publisherIds = $books->pluck('publisher_id'); // Obtenha os IDs dos autores dos livros
+            $publishers = Publisher::whereIn('id', $publisherIds)->get();
+            $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
+        }
+
+        return response()->json([
+            'publisherOptions' => $publishers,
+        ]);
+    }
+
+    public function getEditorOptionsByAuthorAndTitle(Request $request)
+    {
+        $title = $request->input('title');
+        $authorId = $request->input('authorId');
+
+        $query = Book::where('author_id', $authorId);
+
+        if ($title !== 'all') {
+            $query->where('title', $title);
+        }
+
+        $publisherIds = $query->pluck('publisher_id')->toArray();
+        $publishers = Publisher::whereIn('id', $publisherIds)->get();
+
+        $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
+        return response()->json([
             'publisherOptions' => $publishers,
         ]);
     }

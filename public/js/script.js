@@ -31,6 +31,88 @@ $(document).ready(function () {
         updateTable(page);
     });
 
+    $('#title_select').on('change', function () {
+        const selectedTitle = $(this).val();
+        getAuthorOptions(selectedTitle, function (authorOptions) {
+            updateSelectOptions($('#author_id_select'), authorOptions);
+        });
+
+        getPublisherOptions(selectedTitle, function (publisherOptions) {
+            updateSelectOptions($('#publisher_id_select'), publisherOptions);
+        });
+    });
+
+    $('#author_id_select').on('change', function () {
+        const selectedAuthor = $(this).val();
+        const selectedTitle = $('#title_select').val();
+
+        getEditorOptionsByAuthorAndTitle(selectedAuthor, selectedTitle, function (publisherOptions) {
+            updateSelectOptions($('#publisher_id_select'), publisherOptions);
+        });
+    });
+
+    function getAuthorOptions(bookTitle, callback) {
+        $.ajax({
+            url: '/get_Updated_Options_Author',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                bookTitle: bookTitle,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.authorOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function getPublisherOptions(bookTitle, callback) {
+        $.ajax({
+            url: '/get_Updated_Options_Publisher',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                bookTitle: bookTitle,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.publisherOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function getEditorOptionsByAuthorAndTitle(authorId, title, callback) {
+        $.ajax({
+            url: '/get_Publisher_Options_By_Author_And_Title',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                authorId: authorId,
+                title: title,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.publisherOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function updateSelectOptions(selectElement, options) {
+        selectElement.empty();
+        options.forEach(option => {
+            selectElement.append($('<option>', {
+                value: option.id,
+                text: option.name || option.title
+            }));
+        });
+    }
+
     function updateTable(page) {
         var formData = $('#formReportBook').serialize() + "&page=" + page;
         // Enviar solicitação Ajax para obter os resultados
@@ -42,6 +124,8 @@ $(document).ready(function () {
                 $('#reportTable thead').empty();
 
                 var row = '<tr>';
+
+                console.log(response);
 
                 if (document.getElementById('title_check').checked) {
                     row += '<th scope="col">TITULO DO LIVRO</th>';
