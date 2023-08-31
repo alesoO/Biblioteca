@@ -49,7 +49,7 @@
                                 <table class="table table-borderless mb-0">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-center">NOME</th>
+                                            <th scope="col">NOME</th>
                                             <th scope="col" class="text-center">CRIADO EM</th>
                                             <th scope="col" class="text-center">EDITADO EM</th>
                                             <th scope="col" class="text-center">EDITAR</th>

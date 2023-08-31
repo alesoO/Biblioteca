@@ -79,7 +79,7 @@
                             <table class="table table-borderless mb-0 ">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">TITULO DO LIVRO</th>
+                                        <th scope="col">TITULO DO LIVRO</th>
                                         <th scope="col" class="text-center">AUTOR</th>
                                         <th scope="col" class="text-center">EDITORA</th>
                                         <th scope="col" class="text-center">N° PAGINAS</th>
