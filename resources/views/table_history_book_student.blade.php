@@ -23,7 +23,7 @@
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
-                                        <th scope="col" class="text-center"> PRAZO DE  DEVOLUÇÃO</th>
+                                        <th scope="col" class="text-center"> PRAZO DE DEVOLUÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">ENTREGA</th>
                                     </tr>
                                 </thead>
@@ -45,8 +45,15 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-end">
+            <div class="paginate" style="min-width: 270px">
+                {{ $books->links() }}
+            </div>
+            <a class="btn btn-secondary py-2" href="/book_Report">Gerar Relatorios</a>
         </div>
     </div>
 </div>
