@@ -20,15 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
 $(document).ready(function () {
     $('.select-search').select2();
 
-    $('#formReportBookButton').on("click", function (e) {
-        e.preventDefault(); // Evitar o envio padrão do formulário
-        updateTable();
-    });
-
-    $(document).on("click", ".paginate a", function (e) {
+    $(document).on("click", "#paginationContainer a", function (e) {
         e.preventDefault();
         var page = $(this).attr("href").split("page=")[1];
         updateTable(page);
+    });
+
+    $('#formReportBookButton').on("click", function (e) {
+        e.preventDefault(); // Evitar o envio padrão do formulário
+        updateTable();
     });
 
     $('#title_select').on('change', function () {
@@ -69,7 +69,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#button_clean').on('click', function(e){
+    $('#button_clean').on('click', function (e) {
         e.preventDefault();
         $('input[type="number"]').val('');
         $('input[type="date"]').val('');
