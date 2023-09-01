@@ -34,8 +34,8 @@
                                                             name="title" id="title_select">
                                                             <option value="all" selected>Todos...</option>
                                                             @foreach ($books_select as $book)
-                                                                <option value="{{ $book->title }}">
-                                                                    {{ $book->title }}</option>
+                                                                <option value="{{ $book }}">
+                                                                    {{ $book }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -57,7 +57,7 @@
                                                         <label for="publisher_id" class="form-label">Editora</label>
                                                         <select class="form-select form-control select-search"
                                                             name="publisher_id" id="publisher_id_select">
-                                                            <option value="all" selected>Todos...</option>
+                                                            <option value="all" selected>Todas...</option>
                                                             @foreach ($publishers as $publisher)
                                                                 <option value="{{ $publisher->id }}">
                                                                     {{ $publisher->name }}</option>
@@ -67,8 +67,9 @@
 
                                                     <div class="col-4">
                                                         <label for="pages" class="form-label">Paginas(Até:)</label>
-                                                        <input type="number" class="form-control" value="" name="pages"
-                                                            id="pages" placeholder="Ate: nº paginas" data-mask="0000">
+                                                        <input type="number" class="form-control" value=""
+                                                            name="pages" id="pages" placeholder="Ate: nº paginas"
+                                                            data-mask="0000">
                                                     </div>
 
                                                     <div class="col-4">
@@ -101,6 +102,10 @@
                                                         <input type="date" class="form-control" name="updated_at_max"
                                                             id="updated_at_max">
                                                     </div>
+                                                    <div class="col-3">
+                                                        <button class="btn btn-outline-secondary px-4" id="button_clean"
+                                                            type="button"><i class="fas fa-eraser"></i> Limpar</button>
+                                                    </div>
 
                                                     <hr class="mt-5 p-0">
 
@@ -111,7 +116,8 @@
                                                             <div class="form-check form-switch form-check-inline">
                                                                 <input class="form-check-input mt-1" type="checkbox"
                                                                     role="switch" id="title_check" name="title_check">
-                                                                <label class="form-check-label" for="title_check">Titulo dos
+                                                                <label class="form-check-label" for="title_check">Titulo
+                                                                    dos
                                                                     Livros</label>
                                                             </div>
                                                             <div class="form-check form-switch form-check-inline">
@@ -181,7 +187,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="d-flex mt-4 mb-4 justify-content-between border-top border-secondary border-opacity-25">
+                                <div
+                                    class="d-flex mt-4 mb-4 justify-content-between border-top border-secondary border-opacity-25">
                                     <div id="paginationContainer" class="paginate" style="min-width: 270px">
                                     </div>
                                     <div id="genPDF" class="d-flex align-items-end">

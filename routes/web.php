@@ -48,9 +48,16 @@ Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('
 Route::get('/book_Report', [ReportController::class, 'index']);
 Route::post('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF']);
 Route::get('/generate_Book_Table', [ReportController::class, 'generateBookTable']);
-Route::post('/get_Updated_Options_Author', [ReportController::class, 'getUpdatedOptionsAuthors']);
-Route::post('/get_Updated_Options_Publisher', [ReportController::class, 'getUpdatedOptionsPublisher']);
-Route::post('/get_Publisher_Options_By_Author_And_Title', [ReportController::class, 'getEditorOptionsByAuthorAndTitle']);
+
+Route::post('/get_Author_Options_By_Book', [ReportController::class, 'getAuthorOptionsByBook']);
+Route::post('/get_Publisher_Options_By_Book', [ReportController::class, 'getPublisherOptionsByBook']);
+
+Route::post('/get_Publisher_Options_By_Author_And_Title', [ReportController::class, 'getPublisherOptionsByAuthorAndTitle']);
+Route::post('/get_Book_Options_By_Author', [ReportController::class, 'getBookOptionsByAuthor']);
+
+Route::post('/get_Author_Options_By_Publisher_And_Title', [ReportController::class, 'getAuthorOptionsByPublisherAndTitle']);
+Route::post('/get_Book_Options_By_Publisher', [ReportController::class, 'getBookOptionsByPublisher']);
+
 
 /* Rotas das editoras */
 Route::get('/table_publisher', [PublisherController::class, 'index']);

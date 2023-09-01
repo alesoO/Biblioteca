@@ -33,11 +33,11 @@ $(document).ready(function () {
 
     $('#title_select').on('change', function () {
         const selectedTitle = $(this).val();
-        getAuthorOptions(selectedTitle, function (authorOptions) {
+        getAuthorOptionsByBook(selectedTitle, function (authorOptions) {
             updateSelectOptions($('#author_id_select'), authorOptions);
         });
 
-        getPublisherOptions(selectedTitle, function (publisherOptions) {
+        getPublisherOptionsByBook(selectedTitle, function (publisherOptions) {
             updateSelectOptions($('#publisher_id_select'), publisherOptions);
         });
     });
@@ -46,14 +46,39 @@ $(document).ready(function () {
         const selectedAuthor = $(this).val();
         const selectedTitle = $('#title_select').val();
 
-        getEditorOptionsByAuthorAndTitle(selectedAuthor, selectedTitle, function (publisherOptions) {
+        getBookOptionsByAuthor(selectedAuthor, function (bookOptions) {
+            console.log(bookOptions);
+            updateSelectOptions($('#title_select'), bookOptions);
+        });
+
+        getPublisherOptionsByAuthorAndTitle(selectedAuthor, selectedTitle, function (publisherOptions) {
             updateSelectOptions($('#publisher_id_select'), publisherOptions);
         });
     });
 
-    function getAuthorOptions(bookTitle, callback) {
+    $('#publisher_id_select').on('change', function () {
+        const selectedPublisher = $(this).val();
+        const selectedTitle = $('#title_select').val();
+
+        getBookOptionsByPublisher(selectedPublisher, function (bookOptions) {
+            updateSelectOptions($('#title_select'), bookOptions);
+        });
+
+        getAuthorOptionsByPublisherAndTitle(selectedPublisher, selectedTitle, function (authorOptions) {
+            updateSelectOptions($('#author_id_select'), authorOptions);
+        });
+    });
+
+    $('#button_clean').on('click', function(e){
+        e.preventDefault();
+        $('input[type="number"]').val('');
+        $('input[type="date"]').val('');
+        $('select').val('all').trigger('change');
+    });
+
+    function getAuthorOptionsByBook(bookTitle, callback) {
         $.ajax({
-            url: '/get_Updated_Options_Author',
+            url: '/get_Author_Options_By_Book',
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
                 bookTitle: bookTitle,
@@ -68,9 +93,27 @@ $(document).ready(function () {
         });
     }
 
-    function getPublisherOptions(bookTitle, callback) {
+    function getAuthorOptionsByPublisherAndTitle(publisherId, title, callback) {
         $.ajax({
-            url: '/get_Updated_Options_Publisher',
+            url: '/get_Author_Options_By_Publisher_And_Title',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                publisherId: publisherId,
+                title: title,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.authorOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function getPublisherOptionsByBook(bookTitle, callback) {
+        $.ajax({
+            url: '/get_Publisher_Options_By_Book',
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
                 bookTitle: bookTitle,
@@ -85,7 +128,7 @@ $(document).ready(function () {
         });
     }
 
-    function getEditorOptionsByAuthorAndTitle(authorId, title, callback) {
+    function getPublisherOptionsByAuthorAndTitle(authorId, title, callback) {
         $.ajax({
             url: '/get_Publisher_Options_By_Author_And_Title',
             data: {
@@ -96,6 +139,40 @@ $(document).ready(function () {
             type: "POST",
             success: function (response) {
                 callback(response.publisherOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function getBookOptionsByAuthor(authorId, callback) {
+        $.ajax({
+            url: '/get_Book_Options_By_Author',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                authorId: authorId,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.bookOptions);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    function getBookOptionsByPublisher(publisherId, callback) {
+        $.ajax({
+            url: '/get_Book_Options_By_Publisher',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                publisherId: publisherId,
+            },
+            type: "POST",
+            success: function (response) {
+                callback(response.bookOptions);
             },
             error: function (error) {
                 console.error(error);

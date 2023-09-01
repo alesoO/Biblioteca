@@ -14,7 +14,7 @@ class ReportController extends Controller
     public function index()
     {
         $books = Book::paginate(15);
-        $books_select = Book::all()->sortBy('title');
+        $books_select = Book::distinct()->pluck('title')->sort();
 
         $authors = Author::all()->sortBy('name');
 
@@ -171,7 +171,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function getUpdatedOptionsAuthors(Request $request)
+    public function getAuthorOptionsByBook(Request $request)
     {
         $bookTitle = $request->input('bookTitle');
 
@@ -190,13 +190,13 @@ class ReportController extends Controller
         ]);
     }
 
-    public function getUpdatedOptionsPublisher(Request $request)
+    public function getPublisherOptionsByBook(Request $request)
     {
         $bookTitle = $request->input('bookTitle');
 
         if ($bookTitle === 'all') {
             $publishers = Publisher::all()->sortBy('name');
-            $publishers->prepend(['id' => 'all', 'name' => 'Todos...']);
+            $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
         } else {
             $books = Book::where('title', $bookTitle)->get();
             $publisherIds = $books->pluck('publisher_id'); // Obtenha os IDs dos autores dos livros
@@ -209,7 +209,7 @@ class ReportController extends Controller
         ]);
     }
 
-    public function getEditorOptionsByAuthorAndTitle(Request $request)
+    public function getPublisherOptionsByAuthorAndTitle(Request $request)
     {
         $title = $request->input('title');
         $authorId = $request->input('authorId');
@@ -226,6 +226,58 @@ class ReportController extends Controller
         $publishers->prepend(['id' => 'all', 'name' => 'Todas...']);
         return response()->json([
             'publisherOptions' => $publishers,
+        ]);
+    }
+
+    public function getBookOptionsByAuthor(Request $request)
+    {
+        $authorId = $request->input('authorId');
+
+        if ($authorId === 'all') {
+            $books = Book::all()->sortBy('title');
+            $books->prepend(['id' => 'all', 'name' => 'Todos...']);
+        } else {
+            $books = Book::where('author_id', $authorId)->get();
+            $books->prepend(['id' => 'all', 'name' => 'Todos...']);
+        }
+        return response()->json([
+            'bookOptions' => $books,
+        ]);
+    }
+
+    public function getBookOptionsByPublisher(Request $request)
+    {
+        $publisherId = $request->input('publisherId');
+
+        if ($publisherId === 'all') {
+            $books = Book::all()->sortBy('title');
+            $books->prepend(['id' => 'all', 'name' => 'Todos...']);
+        } else {
+            $books = Book::where('publisher_id', $publisherId)->get();
+            $books->prepend(['id' => 'all', 'name' => 'Todos...']);
+        }
+        return response()->json([
+            'bookOptions' => $books,
+        ]);
+    }
+
+    public function getAuthorOptionsByPublisherAndTitle(Request $request)
+    {
+        $title = $request->input('title');
+        $publisherId = $request->input('publisherId');
+
+        $query = Book::where('publisher_id', $publisherId);
+
+        if ($title !== 'all'){
+            $query->where('title', $title);
+        }
+
+        $authorId = $query->pluck('author_id')->toArray();
+        $authors = Author::whereIn('id', $authorId)->get();
+
+        $authors->prepend(['id' => 'all', 'name' => 'Todos...']);
+        return response()->json([
+            'authorOptions' => $authors,
         ]);
     }
 }
