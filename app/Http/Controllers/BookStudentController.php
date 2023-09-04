@@ -22,21 +22,25 @@ class BookStudentController extends Controller
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'student_id'        => ['required'],
-            'book_id'           => ['required'],
-            'loan_date'         => ['required'],
-            'delivery_date'     => ['required']
+            'student_id'    => ['required'],
+            'book_id'       => ['required'],
+            'loan_date'     => ['required'],
+            'delivery_date' => ['required']
         ]);
+
 
         if ($validator->fails()) {
             return redirect()->back()->with('error', 'Dados do post inválidos!');
         }
-
-        $fieldValues = [
-            'student_id'        => $request->input('student_id'),
-            'book_id'           => $request->input('book_id'),
-            'loan_date'         => Carbon::createFromFormat('Y-m-d', $request->input('loan_date')),
-            'delivery_date'     => Carbon::createFromFormat('Y-m-d', $request->input('delivery_date'))
+        
+        $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
+        $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
+        
+        $fieldValues = [    
+            'student_id'     => $request->input('student_id'),
+            'book_id'        => $request->input('book_id'),
+            'loan_date'      => $loan_date,
+            'delivery_date'  => $delivery_date
         ];
 
         try {
@@ -62,11 +66,14 @@ class BookStudentController extends Controller
             return redirect('/')->with('error', 'Dados do post invalidos!');
         }
 
+        $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
+        $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
+
         $fieldValues = [
             'student_id'        => $request->input('student_id'),
             'book_id'           => $request->input('book_id'),
-            'loan_date'         => Carbon::createFromFormat('Y-m-d', $request->input('loan_date')),
-            'delivery_date'     => Carbon::createFromFormat('Y-m-d', $request->input('delivery_date')),
+            'loan_date'      => $loan_date,
+            'delivery_date'  => $delivery_date
         ];
 
         try {
