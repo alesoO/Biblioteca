@@ -22,4 +22,12 @@ class Book extends Model
     public function publisher(){
         return $this->belongsTo(Publisher::class, 'publisher_id');
     }
+
+    public function student(){
+        return $this->belongsToMany(Student::class, 'book_students', 'book_id', 'student_id')
+            ->withPivot('loan_date', 'delivery_date')
+            ->withTimestamps();
+    }
+
+    
 }

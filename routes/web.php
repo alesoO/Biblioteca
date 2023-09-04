@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PublisherController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\BookStudentController;
+use App\Http\Controllers\HistoryBookStudentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,3 +84,28 @@ Route::post('/update', [UserController::class, 'update'])->name('update');
 Route::delete('/destroy', [UserController::class, 'destroy'])->name('destroy');
 
 Route::post('/edit', [UserController::class, 'edit'])->name('edit');
+
+
+Route::post('/register_book', [BookRegistrationController::class])->name('register_book');
+
+Route::get('/table_book_student', [BookStudentController::class, 'index']);
+Route::post('/register_book_student', [BookStudentController::class, 'create']);
+Route::delete('/delete_book_student/{book_student}', [BookStudentController::class, 'destroy'])->name('delete_book_student');
+
+Route::post('/edit_book_student/{book_student}', [BookStudentController::class, 'update'])->name('edit_book_student');
+
+
+Route::get('/table_history_book_student', [HistoryBookStudentController::class, 'index'])->name('table_history_book_student');
+Route::post('/register_history_book_student/{book_student}', [HistoryBookStudentController::class, 'create'])->name('register_history_book_student');
+
+
+
+/* ->name('home')->middleware('auth') */
+
+/* Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */

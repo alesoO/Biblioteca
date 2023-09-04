@@ -26,8 +26,8 @@ input::-webkit-inner-spin-button {
 .paginate p {
 
   margin-top: 1.25em;
-
 }
+
 
 .paginate a {
 
@@ -109,3 +109,11 @@ input::-webkit-inner-spin-button {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   margin-right: 1em;
 }
+
+  #date_delivery, #date_loan {
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 15px;
+  }

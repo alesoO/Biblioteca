@@ -21,6 +21,9 @@ class BookController extends Controller
         return view('table_book', compact('books', 'authors', 'publishers', 'books_select'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [

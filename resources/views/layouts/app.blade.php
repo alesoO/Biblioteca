@@ -41,6 +41,7 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
+                </div>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -57,6 +58,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav me-auto">
 
                     </ul>
@@ -94,6 +96,8 @@
                                     </form>
                                 </div>
                             </li>
+
+
                         @endguest
                     </ul>
                 </div>
