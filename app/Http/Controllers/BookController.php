@@ -13,10 +13,12 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::paginate(15);
+        $books_select = Book::all()->sortBy('title');
 
-        $authors = Author::all();
-        $publishers = Publisher::all();
-        return view('table_book', compact('books', 'authors', 'publishers'));
+        $authors = Author::all()->sortBy('name');
+
+        $publishers = Publisher::all()->sortBy('name');
+        return view('table_book', compact('books', 'authors', 'publishers', 'books_select'));
     }
 
     public function create(Request $request)

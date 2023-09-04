@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 
@@ -44,6 +45,21 @@ Route::get('/table_book', [BookController::class, 'index']);
 Route::post('/register_book', [BookController::class, 'create']);
 Route::post('/update_book/{book}', [BookController::class, 'update'])->name('book.update');
 Route::delete('/delete_book/{book}', [BookController::class, 'destroy'])->name('book.destroy');
+
+/* Rotas de Relatorios */
+Route::get('/book_Report', [ReportController::class, 'index']);
+Route::post('/generate_Book_PDF', [ReportController::class, 'generateBooksPDF']);
+Route::get('/generate_Book_Table', [ReportController::class, 'generateBookTable']);
+
+Route::post('/get_Author_Options_By_Book', [ReportController::class, 'getAuthorOptionsByBook']);
+Route::post('/get_Publisher_Options_By_Book', [ReportController::class, 'getPublisherOptionsByBook']);
+
+Route::post('/get_Publisher_Options_By_Author_And_Title', [ReportController::class, 'getPublisherOptionsByAuthorAndTitle']);
+Route::post('/get_Book_Options_By_Author', [ReportController::class, 'getBookOptionsByAuthor']);
+
+Route::post('/get_Author_Options_By_Publisher_And_Title', [ReportController::class, 'getAuthorOptionsByPublisherAndTitle']);
+Route::post('/get_Book_Options_By_Publisher', [ReportController::class, 'getBookOptionsByPublisher']);
+
 
 /* Rotas das editoras */
 Route::get('/table_publisher', [PublisherController::class, 'index']);

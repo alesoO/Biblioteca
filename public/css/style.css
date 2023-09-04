@@ -1,47 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
 
-  .title {
-    color: #f7c66e;
-    font-family: 'Titillium Web', sans-serif;
-  }
+.title {
+  color: #f7c66e;
+  font-family: 'Titillium Web', sans-serif;
+}
 
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
-  .paginate svg {
+.paginate svg {
 
-    max-width: 2.5em;
-    max-height: 2.5em;
+  max-width: 2.5em;
+  max-height: 2.5em;
 
-  }
+}
 
-  .paginate .flex-1 {
+.paginate .flex-1 {
 
-    display: none;
-  }
+  display: none;
+}
 
-  .paginate p {
+.paginate p {
 
-    margin-top: 1.25em;
+  margin-top: 1.25em;
 
-  }
-  .paginate a {
+}
 
-    text-decoration: none;
-    transition: background-color 300ms ease-out 10ms;
+.paginate a {
 
-  }
-  .paginate a:hover {
+  text-decoration: none;
+  transition: background-color 300ms ease-out 10ms;
 
-    background-color: rgb(218, 218, 218) !important;
+}
 
-  }
+.paginate a:hover {
 
-  .paginate .cursor-default {
+  background-color: rgb(218, 218, 218) !important;
 
-    background-color: rgb(218, 218, 218) !important;
+}
 
-  }
+.paginate .cursor-default {
+
+  background-color: rgb(218, 218, 218) !important;
+
+}
+
+.select2-container {
+  display: block;
+  padding: .375rem 2.25rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.select2-container .select2-selection--single {
+  border: none !important;
+  outline: none !important;
+  padding: 0;
+  max-height: 26px;
+}
+.select2-container .select2-selection--single:focus {
+  outline: none !important;
+}
+
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding: 0;
+  max-height: 20px;
+  margin-top: 1px;
+}
+
+.select2-search__field {
+  --bs-form-select-bg-img: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+  display: block;
+  width: 100%;
+  padding: .375rem 2.25rem .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 16px 12px;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  margin-right: 1em;
+}
