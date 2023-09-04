@@ -140,7 +140,7 @@
                         <!-- small box -->
                         <div class="small-box bg-pink">
                             <div class="inner">
-                                <h3>150</h3>
+                                <h3>{{ $bookStudent }}</h3>
                                 <p>Empréstimos</p>
                             </div>
                             <div class="icon">
@@ -161,7 +161,7 @@
                         <!-- small box -->
                         <div class="small-box bg-purple">
                             <div class="inner">
-                                <h3>53</h3>
+                                <h3>{{ $historyBookStudent }}</h3>
                                 <p>Histórico de relatórios</p>
                             </div>
                             <div class="icon">
