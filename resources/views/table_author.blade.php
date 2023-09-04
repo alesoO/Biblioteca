@@ -9,7 +9,7 @@
                 <div class="container">
                     <div class="d-flex justify-content-between my-4">
                         <h2 class="">Autores</h2>
-                        <button type="button" class="btn btn-secondary btn-sm mb-4 py-2" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-primary btn-sm mb-4 py-2" data-bs-toggle="modal"
                             data-bs-target="#formNewAuthor">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-square" viewBox="0 0 16 16">
