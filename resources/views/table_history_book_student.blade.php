@@ -51,9 +51,8 @@
         </div>
         <div class="d-flex justify-content-between align-items-end">
             <div class="paginate" style="min-width: 270px">
-                {{ $books->links() }}
             </div>
-            <a class="btn btn-secondary py-2" href="/book_Report">Gerar Relatorios</a>
+            <a class="btn btn-primary py-2" href="/history_report">Gerar Relatorios</a>
         </div>
     </div>
 </div>

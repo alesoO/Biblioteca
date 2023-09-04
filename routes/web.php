@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportHistoryController;
 use App\Http\Controllers\HistoryBookStudentController;
 use App\Models\Student;
 use App\Models\Author;
@@ -83,6 +84,8 @@ Route::get('/table_publisher', [PublisherController::class, 'index']);
 
 Route::post('/register_publisher', [PublisherController::class, 'create']);
 
+Route::post('/create_publisher', [PublisherController::class, 'create_publisher'])->name('create_publisher');
+
 Route::get('/home', function () {
     return view('home');
 });
@@ -103,13 +106,15 @@ Route::delete('/delete_book_student/{book_student}', [BookStudentController::cla
 
 Route::post('/edit_book_student/{book_student}', [BookStudentController::class, 'update'])->name('edit_book_student');
 
-
 Route::get('/table_history_book_student', [HistoryBookStudentController::class, 'index'])->name('table_history_book_student');
 Route::post('/register_history_book_student/{book_student}', [HistoryBookStudentController::class, 'create'])->name('register_history_book_student');
 
 
 
-/* ->name('home')->middleware('auth') */
+/* Rotas de Relatorios History*/
+Route::get('/history_report', [ReportHistoryController::class, 'index']);
+Route::post('/generate_History_PDF', [ReportHistoryController::class, 'generateHistorysPDF']);
+Route::get('/generate_History_Table', [ReportHistoryController::class, 'generateHistoryTable']);
 
 /* Auth::routes();
 
