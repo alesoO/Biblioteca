@@ -228,7 +228,7 @@ class ReportController extends Controller
             'publisherOptions' => $publishers,
         ]);
     }
-
+/* 
     public function getBookOptionsByAuthor(Request $request)
     {
         $authorId = $request->input('authorId');
@@ -268,7 +268,7 @@ class ReportController extends Controller
 
         $query = Book::where('publisher_id', $publisherId);
 
-        if ($title !== 'all'){
+        if ($title !== 'all') {
             $query->where('title', $title);
         }
 
@@ -280,4 +280,18 @@ class ReportController extends Controller
             'authorOptions' => $authors,
         ]);
     }
+
+    public function getAllByAuthor(Request $request)
+    {
+        $bookTitle = $request->input('bookTitle');
+        $authorId = $request->input('authorId');
+        $publisherId = $request->input('publisherId');
+
+        $query = Author::query();
+
+        $query->select('id', 'name')
+            ->when($bookTitle !== 'all', function ($query, $bookTitle) {
+                return $query->whereHas('book.author');
+            });
+    } */
 }

@@ -46,10 +46,10 @@ $(document).ready(function () {
         const selectedAuthor = $(this).val();
         const selectedTitle = $('#title_select').val();
 
-        getBookOptionsByAuthor(selectedAuthor, function (bookOptions) {
+        /* getBookOptionsByAuthor(selectedAuthor, function (bookOptions) {
             console.log(bookOptions);
             updateSelectOptions($('#title_select'), bookOptions);
-        });
+        }); */
 
         getPublisherOptionsByAuthorAndTitle(selectedAuthor, selectedTitle, function (publisherOptions) {
             updateSelectOptions($('#publisher_id_select'), publisherOptions);
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
 
     $('#publisher_id_select').on('change', function () {
-        const selectedPublisher = $(this).val();
+/*         const selectedPublisher = $(this).val();
         const selectedTitle = $('#title_select').val();
 
         getBookOptionsByPublisher(selectedPublisher, function (bookOptions) {
@@ -66,7 +66,7 @@ $(document).ready(function () {
 
         getAuthorOptionsByPublisherAndTitle(selectedPublisher, selectedTitle, function (authorOptions) {
             updateSelectOptions($('#author_id_select'), authorOptions);
-        });
+        }); */
     });
 
     $('#button_clean').on('click', function (e) {
@@ -93,7 +93,7 @@ $(document).ready(function () {
         });
     }
 
-    function getAuthorOptionsByPublisherAndTitle(publisherId, title, callback) {
+ /*    function getAuthorOptionsByPublisherAndTitle(publisherId, title, callback) {
         $.ajax({
             url: '/get_Author_Options_By_Publisher_And_Title',
             data: {
@@ -109,7 +109,7 @@ $(document).ready(function () {
                 console.error(error);
             }
         });
-    }
+    } */
 
     function getPublisherOptionsByBook(bookTitle, callback) {
         $.ajax({
@@ -146,7 +146,7 @@ $(document).ready(function () {
         });
     }
 
-    function getBookOptionsByAuthor(authorId, callback) {
+/*     function getBookOptionsByAuthor(authorId, callback) {
         $.ajax({
             url: '/get_Book_Options_By_Author',
             data: {
@@ -179,7 +179,7 @@ $(document).ready(function () {
             }
         });
     }
-
+ */
     function updateSelectOptions(selectElement, options) {
         selectElement.empty();
         options.forEach(option => {
