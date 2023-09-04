@@ -16,7 +16,7 @@ class HistoryBookStudentController extends Controller
     public function index()
     {
         $students = Student::all()->sortBy('name');
-        $books = Book::all()->sortBy('name');
+        $books    = Book::all()->sortBy('name');
         $history_book_students = History_Book_Student::with('student', 'book')->get();
         return view('table_history_book_student', compact('students', 'books', 'history_book_students'));
     }
@@ -37,12 +37,17 @@ class HistoryBookStudentController extends Controller
                 ->withInput();
         }
 
+
+        $loan_date     = date('d-m-Y', strtotime($request->input('loan_date')));
+        $delivery_date = date('d-m-Y', strtotime($request->input('delivery_date')));
+        $return_date =   date('d-m-Y', strtotime($request->input('return_date')));
+
         $fieldValues = [
-            'student_id'        => $request->input('student_id'),
-            'book_id'           => $request->input('book_id'),
-            'loan_date'         => Carbon::createFromFormat('Y-m-d', $request->input('loan_date')),
-            'delivery_date'     => Carbon::createFromFormat('Y-m-d', $request->input('delivery_date')),
-            'return_date'       => Carbon::createFromFormat('Y-m-d', $request->input('return_date'))
+            'student_id'    => $request->input('student_id'),
+            'book_id'       => $request->input('book_id'),
+            'loan_date'     => $loan_date,
+            'delivery_date' => $delivery_date,
+            'return_date'   => $return_date
         ];
 
         try {
@@ -51,7 +56,6 @@ class HistoryBookStudentController extends Controller
             $BookStudentController = new BookStudentController();
             $BookStudentController->destroy($book_student);
             DB::commit();
-
 
             return redirect()->route('table_history_book_student')
                 ->with('success', 'Registro criado com sucesso e destruído pelo método destroy.');

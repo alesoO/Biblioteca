@@ -71,19 +71,20 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="card shadow-2-strong">
+                <div class="card shadow-2-strong">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-borderless mb-0">
+                            <table class="table table-borderless mb-0 ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">TITULO DO LIVRO</th>
-                                        <th scope="col">AUTOR</th>
-                                        <th scope="col">EDITORA</th>
-                                        <th scope="col">NUMERO DE PAGINAS</th>
-                                        <th scope="col">CRIADO EM</th>
-                                        <th scope="col">EDITADO EM</th>
-                                        <th scope="col">EDITAR</th>
-                                        <th scope="col">EXCLUIR</th>
+                                        <th scope="col" class="text-center">TITULO DO LIVRO</th>
+                                        <th scope="col" class="text-center">AUTOR</th>
+                                        <th scope="col" class="text-center">EDITORA</th>
+                                        <th scope="col" class="text-center">N° PAGINAS</th>
+                                        <th scope="col" class="text-center">CRIADO EM</th>
+                                        <th scope="col" class="text-center">EDITADO EM</th>
+                                        <th scope="col" class="text-center">EDITAR</th>
+                                        <th scope="col" class="text-center">EXCLUIR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,10 +93,10 @@
                                         <td>{{ $book->title }}</td>
                                         <td>{{ $book->author->name }}</td>
                                         <td>{{ $book->publisher->name }}</td>
-                                        <td>{{ $book->page }}</td>
-                                        <td>{{ $book->created_at->format('d/m/Y H:i:s') }}</td>
-                                        <td>{{ $book->updated_at->format('d/m/Y H:i:s') }}</td>
-                                        <td>
+                                        <td class="text-center">{{ $book->page }}</td>
+                                        <td class="text-center">{{ $book->created_at->format('d/m/Y H:i:s') }}</td>
+                                        <td class="text-center">{{ $book->updated_at->format('d/m/Y H:i:s') }}</td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBook{{ $book->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />

@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const loanTable = document.getElementById("loanTable");
     const completedLoanTable = document.getElementById("completedLoanTable");
@@ -27,24 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             const row = this.closest("tr");
             const clone = row.cloneNode(true);
-            
+
             completedLoanTable.querySelector("tbody").appendChild(clone);
             row.remove();
         });
     });
 })
+
+
 $(document).ready(function () {
     $('.select-search').select2();
 
     $(document).on("click", "#paginationContainer a", function (e) {
         e.preventDefault();
         var page = $(this).attr("href").split("page=")[1];
-        updateTable(page);
+        updateTableBook(page);
     });
 
     $('#formReportBookButton').on("click", function (e) {
         e.preventDefault(); // Evitar o envio padrão do formulário
-        updateTable();
+        updateTableBook();
     });
 
     $('#title_select').on('change', function () {
@@ -73,16 +74,16 @@ $(document).ready(function () {
     });
 
     $('#publisher_id_select').on('change', function () {
-/*         const selectedPublisher = $(this).val();
-        const selectedTitle = $('#title_select').val();
-
-        getBookOptionsByPublisher(selectedPublisher, function (bookOptions) {
-            updateSelectOptions($('#title_select'), bookOptions);
-        });
-
-        getAuthorOptionsByPublisherAndTitle(selectedPublisher, selectedTitle, function (authorOptions) {
-            updateSelectOptions($('#author_id_select'), authorOptions);
-        }); */
+        /*         const selectedPublisher = $(this).val();
+                const selectedTitle = $('#title_select').val();
+        
+                getBookOptionsByPublisher(selectedPublisher, function (bookOptions) {
+                    updateSelectOptions($('#title_select'), bookOptions);
+                });
+        
+                getAuthorOptionsByPublisherAndTitle(selectedPublisher, selectedTitle, function (authorOptions) {
+                    updateSelectOptions($('#author_id_select'), authorOptions);
+                }); */
     });
 
     $('#button_clean').on('click', function (e) {
@@ -109,23 +110,23 @@ $(document).ready(function () {
         });
     }
 
- /*    function getAuthorOptionsByPublisherAndTitle(publisherId, title, callback) {
-        $.ajax({
-            url: '/get_Author_Options_By_Publisher_And_Title',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                publisherId: publisherId,
-                title: title,
-            },
-            type: "POST",
-            success: function (response) {
-                callback(response.authorOptions);
-            },
-            error: function (error) {
-                console.error(error);
-            }
-        });
-    } */
+    /*    function getAuthorOptionsByPublisherAndTitle(publisherId, title, callback) {
+           $.ajax({
+               url: '/get_Author_Options_By_Publisher_And_Title',
+               data: {
+                   _token: $('meta[name="csrf-token"]').attr('content'),
+                   publisherId: publisherId,
+                   title: title,
+               },
+               type: "POST",
+               success: function (response) {
+                   callback(response.authorOptions);
+               },
+               error: function (error) {
+                   console.error(error);
+               }
+           });
+       } */
 
     function getPublisherOptionsByBook(bookTitle, callback) {
         $.ajax({
@@ -162,40 +163,40 @@ $(document).ready(function () {
         });
     }
 
-/*     function getBookOptionsByAuthor(authorId, callback) {
-        $.ajax({
-            url: '/get_Book_Options_By_Author',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                authorId: authorId,
-            },
-            type: "POST",
-            success: function (response) {
-                callback(response.bookOptions);
-            },
-            error: function (error) {
-                console.error(error);
-            }
-        });
-    }
-
-    function getBookOptionsByPublisher(publisherId, callback) {
-        $.ajax({
-            url: '/get_Book_Options_By_Publisher',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                publisherId: publisherId,
-            },
-            type: "POST",
-            success: function (response) {
-                callback(response.bookOptions);
-            },
-            error: function (error) {
-                console.error(error);
-            }
-        });
-    }
- */
+    /*     function getBookOptionsByAuthor(authorId, callback) {
+            $.ajax({
+                url: '/get_Book_Options_By_Author',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    authorId: authorId,
+                },
+                type: "POST",
+                success: function (response) {
+                    callback(response.bookOptions);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+    
+        function getBookOptionsByPublisher(publisherId, callback) {
+            $.ajax({
+                url: '/get_Book_Options_By_Publisher',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    publisherId: publisherId,
+                },
+                type: "POST",
+                success: function (response) {
+                    callback(response.bookOptions);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+     */
     function updateSelectOptions(selectElement, options) {
         selectElement.empty();
         options.forEach(option => {
@@ -206,7 +207,7 @@ $(document).ready(function () {
         });
     }
 
-    function updateTable(page) {
+    function updateTableBook(page) {
         var formData = $('#formReportBook').serialize() + "&page=" + page;
         // Enviar solicitação Ajax para obter os resultados
         $.ajax({
@@ -288,3 +289,82 @@ $(document).ready(function () {
     }
 });
 
+$(document).ready(function () {
+    $('#formReportHistoryButton').on("click", function (e) {
+        e.preventDefault(); // Evitar o envio padrão do formulário
+        updateTableHistory();
+    });
+});
+
+function updateTableHistory(page) {
+    var formData = $('#formReportHistory').serialize() + "&page=" + page;
+    // Enviar solicitação Ajax para obter os resultados
+    $.ajax({
+        type: "GET",
+        url: "/generate_History_Table", // Substitua pela sua URL
+        data: formData,
+        success: function (response) {
+            $('#reportTable thead').empty();
+
+            var row = '<tr>';
+
+            console.log(response);
+
+            if (document.getElementById('student_check').checked) {
+                row += '<th scope="col">ESTUDANTE</th>';
+            }
+
+            if (document.getElementById('title_check').checked) {
+                row += '<th scope="col">TITULO DO LIVRO</th>';
+            }
+
+            if (document.getElementById('school_year_check').checked) {
+                row += '<th scope="col">ANO ESCOLAR</th>';
+            }
+
+            if (document.getElementById('registration_check').checked) {
+                row += '<th scope="col">MATRÍCULA</th>';
+            }
+
+            if (document.getElementById('created_at_check').checked) {
+                row += '<th scope="col">CRIADO EM</th>';
+            }
+
+            row += '</tr>';
+            $('#reportTable thead').append(row);
+
+            // Limpar a tabela de resultados
+            $('#reportTable tbody').empty();
+
+            // Adicionar resultados à tabela
+            response.data.forEach(function (result) {
+                var row = '<tr>';
+
+                if (document.getElementById('student_check').checked) {
+                    row += '<td>' + result.student + '</td>';
+                }
+
+                if (document.getElementById('title_check').checked) {
+                    row += '<td>' + result.title + '</td>';
+                }
+
+                if (document.getElementById('school_year_check').checked) {
+                    row += '<td>' + result.school_year + '°ano' + '</td>';
+                }
+
+                if (document.getElementById('registration_check').checked) {
+                    row += '<td>' + result.registration_id + '</td>';
+                }
+
+                if (document.getElementById('created_at_check').checked) {
+                    row += '<td>' + result.created_at + '</td>';
+                }
+
+                row += '</tr>';
+                $('#reportTable tbody').append(row);
+            });
+            $('#paginationContainer').html(response.pagination);
+            $('#genPDF').html('<button class="btn btn-secondary" type="submit"><i class="fas fa-print"></i> Imprimir</button>');
+        }
+    });
+}

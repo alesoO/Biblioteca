@@ -64,7 +64,7 @@
                                         <div class="row mb-5 mt-4">
                                             <div class="col ms-3">
                                                 <label for="loan_date"><b>Data de Empréstimo:</b></label>
-                                                <input type="date" name="loan_date" id="loan_date" class="form-control" required>
+                                                <input type="date" name="loan_date" id="loan_date" class="form-control " required>
                                             </div>
                                             <div class="col me-3">
                                                 <label for="date_delivery"><b>Previsão de entrega:</b></label>
@@ -92,26 +92,28 @@
                             <table class="table table-borderless mb-1">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">ALUNOS</th>
-                                        <th scope="col" class="text-center">LIVROS EMPRESTADOS</th>
+                                        <th scope="col">ALUNOS</th>
+                                        <th scope="col">LIVROS EMPRESTADOS</th>
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
                                         <th scope="col" class="text-center">DEVOLUÇÃO</th>
                                         <th scope="col" class="text-center">EDIÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">DEVOLUÇÃO</th>
+                                        <th scope="col" class="text-center">STATUS</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @foreach ($book_students as $book_student)
                                     <tr>
                                         <td>{{ $book_student->student->name }}</td>
                                         <td>{{ $book_student->book->title }}</td>
                                         <td class="text-center">{{ $book_student->student->school_year }}° ano</td>
                                         <td class="text-center">{{ $book_student->student->registration }}</td>
-                                        <td class="text-center">{{ $book_student->loan_date }}</td>
-                                        <td class="text-center">{{ $book_student->delivery_date }}</td>
-
+                                        <td class="text-center">{{ $book_student->loan_date}}</td>
+                                        <td class="text-center">{{ $book_student->delivery_date}}</td>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning btn-sm px-3" data-bs-toggle="modal" data-bs-target="#formEditBookStudent{{ $book_student->id }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -164,13 +166,14 @@
                                                                         <div class="row mb-5 mt-4 text-left">
                                                                             <div class="col ms-3">
                                                                                 <label for="loan_date"><b>Data de Empréstimo:</b></label>
-                                                                                <input type="date" name="loan_date" id="loan_date" class="form-control" value="{{ $book_student->loan_date }}">
+                                                                                <input type="DateTime" name="loan_date" id="loan_date" class="form-control" value="{{ $book_student->loan_date }}">
                                                                             </div>
                                                                             <div class="col me-3">
                                                                                 <label for="loan_date"><b>Previsão de entrega:</b></label>
-                                                                                <input type="date" name="delivery_date" id="delivery_date" class="form-control" value="{{ $book_student->delivery_date }}">
+                                                                                <input type="DateTime" name="delivery_date" id="delivery_date" class="form-control" value="{{ $book_student->delivery_date }}">
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="modal-footer">
                                                                             <button class="btn btn-primary" type="submit">Finalizar</button>
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -193,7 +196,7 @@
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
 
-                                                    
+
                                                         <form action="{{route('register_history_book_student', ['book_student' => $book_student]) }}" method="POST">
                                                             <div class="modal-header bg-success text-white titulos d-flex justify-content-center align-items-center">
                                                                 <h3 class="modal-title fs-5 fw-bold mt-4" id="warningLabel">
@@ -212,12 +215,13 @@
                                                                         <label for="return_date" class="mt-4"><b>Data em que o livro está sendo entregue:</b></label>
                                                                     </div>
                                                                     <div class="col mb-4">
-                                                                        <input type="hidden" value="{{$book_student->student->id}}" name="student_id" id="student_id">
-                                                                        <input type="hidden" value="{{$book_student->book->id}}" name="book_id" id="book_id">
-                                                                        <input type="date" value="{{$book_student->loan_date}}" class="form-control" name="loan_date" id="loan_date" readonly>
-                                                                        <input type="date" value="{{$book_student->delivery_date }}" class="form-control  mt-3" name="delivery_date" id="delivery_date" readonly>
+                                                                        <input type="hidden" value="{{ $book_student->student->id }}" name="student_id" id="student_id">
+                                                                        <input type="hidden" value="{{ $book_student->book->id }}" name="book_id" id="book_id">
+                                                                        <input type="text" value="{{ $book_student->loan_date }}" class="form-control" name="loan_date" id="loan_date" readonly>
+                                                                        <input type="text" value="{{ $book_student->delivery_date}}" class="form-control mt-3" name="delivery_date" id="delivery_date" readonly>
                                                                         <input type="date" name="return_date" id="return_date" class="form-control mt-3" required>
                                                                     </div>
+
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -226,11 +230,17 @@
                                                                 <button type="submit" class="btn btn-success">Concluir</button>
                                                             </div>
                                                         </form>
-
-
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="text-center {{ Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isFuture() ? 'text-warning' : (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast() ? 'text-danger' : '') }}">
+                                            {{ $book_student->formattedDeliveryDate }}
+                                            @if (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isFuture())
+                                            <span class="badge bg-success text-dark">A entregar</span>
+                                            @elseif (Carbon\Carbon::createFromFormat('d-m-Y', $book_student->delivery_date)->isPast())
+                                            <span class="badge bg-danger text-white">Atrasado</span>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

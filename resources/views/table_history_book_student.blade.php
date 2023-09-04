@@ -18,12 +18,12 @@
                             <table class="table table-borderless mb-1" id="completedLoanTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col" class="text-center">ALUNOS</th>
-                                        <th scope="col" class="text-center">LIVROS EMPRESTADOS</th>
+                                        <th scope="col">ALUNOS</th>
+                                        <th scope="col">LIVROS EMPRESTADOS</th>
                                         <th scope="col" class="text-center">TURMAS</th>
                                         <th scope="col" class="text-center">MATRÍCULAS</th>
                                         <th scope="col" class="text-center">EMPRÉSTIMO</th>
-                                        <th scope="col" class="text-center">DEVOLUÇÃO</th>
+                                        <th scope="col" class="text-center"> PRAZO DE DEVOLUÇÃO</th>
                                         <th scope="col" class="d-flex justify-content-center">ENTREGA</th>
                                     </tr>
                                 </thead>
@@ -45,8 +45,14 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-end">
+            <div class="paginate" style="min-width: 270px">
+            </div>
+            <a class="btn btn-primary py-2" href="/history_report">Gerar Relatorios</a>
         </div>
     </div>
 </div>

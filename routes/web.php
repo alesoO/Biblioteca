@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\BookStudentController;
+use App\Http\Controllers\ReportHistoryController;
 use App\Http\Controllers\HistoryBookStudentController;
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +97,10 @@ Route::post('/register_history_book_student/{book_student}', [HistoryBookStudent
 
 
 
-/* ->name('home')->middleware('auth') */
+/* Rotas de Relatorios History*/
+Route::get('/history_report', [ReportHistoryController::class, 'index']);
+Route::post('/generate_History_PDF', [ReportHistoryController::class, 'generateHistorysPDF']);
+Route::get('/generate_History_Table', [ReportHistoryController::class, 'generateHistoryTable']);
 
 /* Auth::routes();
 
