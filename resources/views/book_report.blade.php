@@ -188,7 +188,7 @@
                                         </table>
                                     </div>
                                     <div
-                                        class="d-flex mt-4 mb-4 justify-content-between border-top border-secondary border-opacity-25">
+                                        class="d-flex mb-4 pt-4 justify-content-between border-top border-secondary border-opacity-25">
                                         <div id="paginationContainer" class="paginate" style="min-width: 270px">
                                         </div>
                                         <div id="genPDF" class="d-flex align-items-end">
