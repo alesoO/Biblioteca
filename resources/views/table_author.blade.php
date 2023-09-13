@@ -51,7 +51,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+                            <div class="card shadow-2-strong" >
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table table-borderless mb-0">
