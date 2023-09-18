@@ -1,0 +1,24 @@
+[98] Log opened at 2023-09-18 13:54:03.800051
+[98] [Step Debug] INFO: Checking for client discovery headers: 'HTTP_X_FORWARDED_FOR,REMOTE_ADDR'.
+[98] [Step Debug] INFO: Checking header 'HTTP_X_FORWARDED_FOR'.
+[98] [Step Debug] INFO: Checking header 'REMOTE_ADDR'.
+[98] [Step Debug] WARN: Could not discover client host through HTTP headers, connecting to configured address/port: host.docker.internal:9003.
+[98] [Step Debug] WARN: Creating socket for 'host.docker.internal:9003', getaddrinfo: Success.
+[98] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+[610] Log opened at 2023-09-18 13:54:22.885312
+[610] [Step Debug] INFO: Checking for client discovery headers: 'HTTP_X_FORWARDED_FOR,REMOTE_ADDR'.
+[610] [Step Debug] INFO: Checking header 'HTTP_X_FORWARDED_FOR'.
+[610] [Step Debug] INFO: Checking header 'REMOTE_ADDR'.
+[610] [Step Debug] WARN: Could not discover client host through HTTP headers, connecting to configured address/port: host.docker.internal:9003.
+[610] [Step Debug] WARN: Creating socket for 'host.docker.internal:9003', getaddrinfo: Inappropriate ioctl for device.
+[610] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+[610] [Step Debug] INFO: Checking for client discovery headers: 'HTTP_X_FORWARDED_FOR,REMOTE_ADDR'.
+[610] [Step Debug] INFO: Checking header 'HTTP_X_FORWARDED_FOR'.
+[610] [Step Debug] INFO: Checking header 'REMOTE_ADDR'.
+[610] [Step Debug] WARN: Could not discover client host through HTTP headers, connecting to configured address/port: host.docker.internal:9003.
+[610] [Step Debug] WARN: Creating socket for 'host.docker.internal:9003', getaddrinfo: Success.
+[610] [Step Debug] ERR: Could not connect to debugging client. Tried: host.docker.internal:9003 (fallback through xdebug.client_host/xdebug.client_port).
+[610] Log closed at 2023-09-18 13:54:23.056519
+
+[98] Log closed at 2023-09-18 13:54:23.088841
+
